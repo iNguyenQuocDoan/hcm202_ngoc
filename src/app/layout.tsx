@@ -1,19 +1,26 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Playfair_Display, Lora } from 'next/font/google';
 import './globals.css';
+import { Header } from '@/shared/components/layout';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin', 'latin-ext'],
+const playfair = Playfair_Display({
+  variable: '--font-display',
+  subsets: ['latin', 'latin-ext', 'vietnamese'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const lora = Lora({
+  variable: '--font-body',
+  subsets: ['latin', 'latin-ext', 'vietnamese'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'Vượt Bão 1991 — Bài Học Từ Khủng Hoảng Và Tư Duy Đổi Mới',
+  title: 'Vượt Bão 1991 — Bài Học Từ Khủng Hoảng & Tư Duy Đổi Mới',
   description:
     'Vận dụng tư tưởng Hồ Chí Minh trong giai đoạn khủng hoảng 1991 — bối cảnh, đường lối, và bài học cho hôm nay.',
 };
@@ -26,9 +33,12 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${playfair.variable} ${lora.variable} snap-root h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-stone-50 text-stone-900">{children}</body>
+      <body className="flex min-h-full flex-col bg-paper text-ink selection:bg-flame selection:text-paper">
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
