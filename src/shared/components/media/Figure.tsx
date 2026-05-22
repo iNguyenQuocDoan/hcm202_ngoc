@@ -1,8 +1,4 @@
-'use client';
-
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { useReducedMotion } from '@/shared/hooks/useReducedMotion';
 import { cn } from '@/shared/utils';
 
 interface FigureProps {
@@ -19,6 +15,11 @@ interface FigureProps {
   className?: string;
 }
 
+/**
+ * Framed editorial photo. The image is always visible; the entrance is handled
+ * by the parent Slide's fade-in, so a missed scroll trigger can never leave the
+ * picture hidden. Hover adds a slow zoom and a sheen sweep.
+ */
 export function Figure({
   src,
   alt,
@@ -30,36 +31,21 @@ export function Figure({
   priority = false,
   className,
 }: FigureProps) {
-  const reduce = useReducedMotion();
-
   return (
     <figure className={cn('group', className)}>
       <div className="relative overflow-hidden rounded-[1.75rem] border border-ink/10 bg-paper-deep p-1.5">
         <div className={cn('relative overflow-hidden rounded-[1.375rem] bg-storm', ratio)}>
-          {/* Clip-path wipe + slow zoom-out as the image enters the viewport */}
-          <motion.div
-            className="absolute inset-0"
-            initial={
-              reduce
-                ? { clipPath: 'inset(0 0 0% 0)' }
-                : { clipPath: 'inset(0 0 100% 0)', scale: 1.12 }
-            }
-            whileInView={{ clipPath: 'inset(0 0 0% 0)', scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              sizes={sizes}
-              priority={priority}
-              className={cn(
-                'object-cover transition-transform duration-900 ease-out-quart group-hover:scale-[1.05]',
-                focus,
-              )}
-            />
-          </motion.div>
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes={sizes}
+            priority={priority}
+            className={cn(
+              'object-cover transition-transform duration-700 ease-out-quart group-hover:scale-[1.05]',
+              focus,
+            )}
+          />
           {/* Warm editorial wash keeps photos cohesive with the paper palette */}
           <div
             aria-hidden
