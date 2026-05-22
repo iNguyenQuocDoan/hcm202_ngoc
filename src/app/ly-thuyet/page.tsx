@@ -15,6 +15,7 @@ import {
   Users,
 } from 'lucide-react';
 import { IMAGES } from '@/shared/assets/images';
+import { DetailButton } from '@/shared/components/feedback';
 import { Footer, Slide, SlideHeading } from '@/shared/components/layout';
 import { Figure } from '@/shared/components/media';
 import {
@@ -26,6 +27,7 @@ import {
   Stagger,
   StaggerItem,
 } from '@/shared/components/motion';
+import { DETAILS } from './details';
 
 const slideNav = [
   { id: 'mo-1', label: 'Mở đầu' },
@@ -74,26 +76,31 @@ const timeline = [
 const principles = [
   {
     icon: HandHeart,
+    key: 'dan-lam-goc',
     title: 'Lấy dân làm gốc',
     body: 'Nhân dân là trung tâm của cách mạng và là nguồn sức mạnh quyết định. Mọi chính sách đổi mới đều hướng đến việc làm, lương thực, ổn định giá cả và quyền làm chủ của người dân.',
   },
   {
     icon: Users,
+    key: 'doan-ket',
     title: 'Đại đoàn kết toàn dân',
     body: 'Đoàn kết là sức mạnh nền tảng của dân tộc. Giữ vững đồng thuận xã hội giúp ổn định chính trị và tạo môi trường cho đổi mới kinh tế.',
   },
   {
     icon: Mountain,
+    key: 'tu-luc',
     title: 'Tự lực, tự cường',
     body: 'Khi nguồn lực bên ngoài đảo lộn, đất nước phải phát huy nội lực. Tự lực không phải tự cô lập, mà là có thực lực để chủ động hội nhập.',
   },
   {
     icon: Compass,
+    key: 'kien-dinh',
     title: 'Kiên định, linh hoạt',
     body: 'Giữ vững mục tiêu độc lập dân tộc gắn với chủ nghĩa xã hội, nhưng không bảo thủ với cơ chế cũ. Đổi mới là điều chỉnh phương pháp, không phải từ bỏ lý tưởng.',
   },
   {
     icon: Globe2,
+    key: 'doc-lap-hop-tac',
     title: 'Độc lập gắn hợp tác',
     body: 'Việt Nam không khép kín mà đa phương hóa quan hệ. Tinh thần Đại hội VII: muốn là bạn của tất cả các nước, vì hòa bình và phát triển.',
   },
@@ -102,21 +109,25 @@ const principles = [
 const policies = [
   {
     icon: Sprout,
+    key: 'kinh-te-nhieu-thanh-phan',
     title: 'Kinh tế nhiều thành phần',
     body: 'Thừa nhận và phát triển nền kinh tế hàng hóa nhiều thành phần, giải phóng sức sản xuất. Người dân, hộ gia đình, doanh nghiệp tư nhân và nhà nước cùng tham gia phát triển.',
   },
   {
     icon: Globe2,
+    key: 'co-che-thi-truong',
     title: 'Cơ chế thị trường có quản lý',
     body: 'Không phủ nhận thị trường nhưng không để vận hành tự phát. Nhà nước định hướng và điều tiết bằng pháp luật, kế hoạch và chính sách.',
   },
   {
     icon: Handshake,
+    key: 'mo-cua',
     title: 'Mở cửa, tăng cường đối ngoại',
     body: 'Mở rộng quan hệ với các nước và tổ chức quốc tế, kết hợp sức mạnh dân tộc với sức mạnh thời đại — tự lực nhưng không tự cô lập.',
   },
   {
     icon: HeartHandshake,
+    key: 'cham-lo-dan',
     title: 'Chăm lo đời sống nhân dân',
     body: 'Đổi mới gắn với việc làm, giáo dục, văn hóa và sức khỏe. Cải thiện đời sống để giữ vững niềm tin xã hội.',
   },
@@ -132,25 +143,25 @@ const results = [
 const lessons = [
   {
     n: '01',
-    accent: 'text-flame-soft',
+    key: 'bh-niem-tin',
     title: 'Giữ niềm tin và đoàn kết',
     body: 'Trong biến động, nguy hiểm lớn nhất là mất phương hướng. Đoàn kết và niềm tin xã hội là nền tảng để xử lý khủng hoảng.',
   },
   {
     n: '02',
-    accent: 'text-sun',
+    key: 'bh-kien-dinh',
     title: 'Kiên định, không bảo thủ',
     body: 'Giữ vững mục tiêu nhưng sẵn sàng đổi mới cách làm, với tư duy sáng tạo và bám sát thực tiễn.',
   },
   {
     n: '03',
-    accent: 'text-emerald-300',
+    key: 'bh-tu-luc',
     title: 'Tự lực là nền của hội nhập',
     body: 'Hội nhập chỉ hiệu quả khi có nội lực về sản xuất, con người và thể chế; nếu không, dễ thành phụ thuộc.',
   },
   {
     n: '04',
-    accent: 'text-sky-300',
+    key: 'bh-lay-dan',
     title: 'Lấy dân làm trung tâm',
     body: 'Nhân dân chịu ảnh hưởng trực tiếp nhất, nhưng cũng là nguồn lực quan trọng nhất để vượt qua khó khăn.',
   },
@@ -238,10 +249,19 @@ export default function LyThuyetPage() {
               </p>
             </Reveal>
             <Reveal delay={0.26}>
-              <p className="mt-5 border-l-0 bg-paper/70 px-5 py-3.5 font-display text-[15px] italic leading-snug text-ink">
+              <p className="mt-5 bg-paper/70 px-5 py-3.5 font-display text-[15px] italic leading-snug text-ink">
                 “Việt Nam không vượt qua khó khăn bằng cách đứng yên, mà bằng cách kiên định mục
                 tiêu nhưng linh hoạt trong phương pháp.”
               </p>
+            </Reveal>
+            <Reveal delay={0.34}>
+              <div className="mt-6">
+                <DetailButton
+                  detail={DETAILS['mo-dau']}
+                  variant="pill"
+                  label="Đọc lý thuyết chi tiết"
+                />
+              </div>
             </Reveal>
           </div>
           <Reveal delay={0.16}>
@@ -289,31 +309,39 @@ export default function LyThuyetPage() {
             );
           })}
         </Stagger>
+        <Reveal delay={0.3}>
+          <div className="mt-7">
+            <DetailButton
+              detail={DETAILS['boi-canh']}
+              variant="pill"
+              label="Đọc lý thuyết chi tiết"
+            />
+          </div>
+        </Reveal>
       </Slide>
 
       {/* 04 — Trục thời gian */}
-      <Slide id="truc-thoi-gian" tone="storm" grain>
+      <Slide id="truc-thoi-gian" tone="deep" grain>
         <SlideHeading
           eyebrow="Trục thời gian"
           index="01·b"
           title="Năm năm bản lề của Đổi mới"
-          tone="dark"
         />
         <Stagger className="mt-10 grid gap-5 sm:grid-cols-3 lg:grid-cols-5">
           {timeline.map((t, i) => (
             <StaggerItem key={t.year}>
-              <article className="lift group relative h-full rounded-3xl border border-paper/12 bg-paper/4 p-5">
+              <article className="lift group relative h-full rounded-3xl border border-ink/10 bg-paper p-5">
                 <div className="flex items-center gap-2">
-                  <span className="font-display text-3xl font-black text-flame-soft transition-transform duration-300 ease-out-quart group-hover:scale-110">
+                  <span className="font-display text-3xl font-black text-flame transition-transform duration-300 ease-out-quart group-hover:scale-110">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="h-px flex-1 bg-paper/15" />
+                  <span className="h-px flex-1 bg-ink/12" />
                 </div>
-                <div className="mt-3 font-display text-sm font-bold uppercase tracking-[0.18em] text-sun">
+                <div className="mt-3 font-display text-sm font-bold uppercase tracking-[0.18em] text-ink-soft">
                   {t.year}
                 </div>
-                <h3 className="mt-1 font-display text-lg font-bold text-paper">{t.title}</h3>
-                <p className="mt-1.5 text-[13.5px] leading-relaxed text-paper/65">{t.body}</p>
+                <h3 className="mt-1 font-display text-lg font-bold text-ink">{t.title}</h3>
+                <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-soft">{t.body}</p>
               </article>
             </StaggerItem>
           ))}
@@ -327,12 +355,18 @@ export default function LyThuyetPage() {
           index="02"
           title="Năm luận điểm dẫn đường vượt bão"
         />
-        <Stagger className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal delay={0.1}>
+          <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-ink-soft">
+            Mỗi luận điểm là một thẻ riêng — chọn “Đọc chi tiết” để xem cách tư tưởng Hồ Chí Minh
+            được vận dụng đầy đủ vào bối cảnh năm 1991.
+          </p>
+        </Reveal>
+        <Stagger className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {principles.map((p, i) => {
             const Icon = p.icon;
             return (
               <StaggerItem key={p.title}>
-                <article className="lift group relative h-full overflow-hidden rounded-3xl border border-ink/10 bg-paper p-5">
+                <article className="lift group relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-paper p-5">
                   <div className="flex items-center justify-between">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/12 bg-paper-deep/60 transition-transform duration-300 ease-out-quart group-hover:-rotate-6 group-hover:scale-110">
                       <Icon className="h-5 w-5 text-flame" strokeWidth={1.5} />
@@ -345,6 +379,12 @@ export default function LyThuyetPage() {
                     {p.title}
                   </h3>
                   <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-soft">{p.body}</p>
+                  <div className="mt-auto pt-4">
+                    <DetailButton
+                      detail={DETAILS[p.key]}
+                      className="w-full border-t border-ink/[0.08] pt-3.5"
+                    />
+                  </div>
                 </article>
               </StaggerItem>
             );
@@ -370,7 +410,7 @@ export default function LyThuyetPage() {
             const Icon = p.icon;
             return (
               <StaggerItem key={p.title}>
-                <article className="lift group relative h-full overflow-hidden rounded-3xl border border-ink/10 bg-paper-deep/55 p-5">
+                <article className="lift group relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-paper-deep/55 p-5">
                   <div className="flex items-center justify-between">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-paper transition-all duration-300 ease-out-quart group-hover:scale-110 group-hover:bg-flame">
                       <Icon className="h-5 w-5" strokeWidth={1.6} />
@@ -383,16 +423,17 @@ export default function LyThuyetPage() {
                     {p.title}
                   </h3>
                   <p className="mt-1.5 text-[13px] leading-relaxed text-ink-soft">{p.body}</p>
+                  <div className="mt-auto pt-4">
+                    <DetailButton
+                      detail={DETAILS[p.key]}
+                      className="w-full border-t border-ink/[0.08] pt-3.5"
+                    />
+                  </div>
                 </article>
               </StaggerItem>
             );
           })}
         </Stagger>
-        <Reveal delay={0.2}>
-          <p className="mt-5 font-display text-[15px] italic text-ink-soft">
-            Kinh tế nhiều thành phần giúp biến sức dân thành động lực phát triển.
-          </p>
-        </Reveal>
       </Slide>
 
       {/* 07 — Lời dạy */}
@@ -467,33 +508,47 @@ export default function LyThuyetPage() {
             những năm đầu thập niên 1990, chứ không vượt qua hoàn toàn ngay trong năm đó.
           </p>
         </Reveal>
+        <Reveal delay={0.28}>
+          <div className="mt-6">
+            <DetailButton
+              detail={DETAILS['ket-qua']}
+              variant="pill"
+              label="Đọc lý thuyết chi tiết"
+            />
+          </div>
+        </Reveal>
       </Slide>
 
       {/* 09 — Bài học */}
-      <Slide id="bai-hoc" tone="storm" grain>
+      <Slide id="bai-hoc" tone="deep" grain>
         <SlideHeading
           eyebrow="Bài học"
           index="05"
           title="Giá trị bền vững cho hiện tại"
-          tone="dark"
         />
         <Stagger className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {lessons.map((l) => (
             <StaggerItem key={l.n}>
-              <article className="lift group relative h-full rounded-3xl border border-paper/12 bg-paper/4 p-5">
+              <article className="lift group relative flex h-full flex-col rounded-3xl border border-ink/10 bg-paper p-5">
                 <div className="flex items-center justify-between">
-                  <span className={`font-display text-[11px] font-bold uppercase tracking-[0.28em] ${l.accent}`}>
+                  <span className="font-display text-[11px] font-bold uppercase tracking-[0.28em] text-flame">
                     Bài học {l.n}
                   </span>
                   <Lightbulb
-                    className={`h-5 w-5 transition-transform duration-300 ease-out-quart group-hover:scale-125 group-hover:rotate-12 ${l.accent}`}
+                    className="h-5 w-5 text-flame transition-transform duration-300 ease-out-quart group-hover:scale-125 group-hover:rotate-12"
                     strokeWidth={1.3}
                   />
                 </div>
-                <h3 className="mt-4 font-display text-lg font-black leading-tight text-paper">
+                <h3 className="mt-4 font-display text-lg font-black leading-tight text-ink">
                   {l.title}
                 </h3>
-                <p className="mt-2 text-[13.5px] leading-relaxed text-paper/70">{l.body}</p>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-ink-soft">{l.body}</p>
+                <div className="mt-auto pt-4">
+                  <DetailButton
+                    detail={DETAILS[l.key]}
+                    className="w-full border-t border-ink/[0.08] pt-3.5"
+                  />
+                </div>
               </article>
             </StaggerItem>
           ))}

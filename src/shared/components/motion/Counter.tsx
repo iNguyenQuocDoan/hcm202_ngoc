@@ -1,6 +1,7 @@
 'use client';
 
-import { animate, useInView, useReducedMotion } from 'framer-motion';
+import { animate, useInView } from 'framer-motion';
+import { useReducedMotion } from '@/shared/hooks/useReducedMotion';
 import { useEffect, useRef, useState } from 'react';
 
 interface CounterProps {

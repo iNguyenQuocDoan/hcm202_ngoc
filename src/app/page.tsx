@@ -1,28 +1,45 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Bot, Brain, Code2, NotebookPen } from 'lucide-react';
+import { ArrowUpRight, Bot, Brain, Code2, NotebookPen, Sunrise } from 'lucide-react';
 import { SiGithubcopilot, SiGooglegemini, SiOpenai } from 'react-icons/si';
 import { IMAGES } from '@/shared/assets/images';
 import { Footer, Slide, SlideHeading } from '@/shared/components/layout';
-import { Figure } from '@/shared/components/media';
 import {
+  HeroBackdrop,
+  Marquee,
   MaskReveal,
+  Parallax,
   Reveal,
   ScrollProgress,
   SlideNav,
   Stagger,
   StaggerItem,
+  TiltCard,
 } from '@/shared/components/motion';
+import { cn } from '@/shared/utils';
 
 const slideNav = [
   { id: 'gioi-thieu', label: 'Giới thiệu' },
   { id: 'thanh-vien', label: 'Nhóm tác giả' },
   { id: 'noi-dung', label: 'Nội dung' },
+  { id: 'hanh-trinh', label: 'Hành trình' },
+  { id: 'hinh-anh', label: 'Hình ảnh' },
   { id: 'cong-cu-ai', label: 'Công cụ AI' },
   { id: 'bat-dau', label: 'Bắt đầu' },
 ];
 
 const lecturer = { name: 'Hoàng Thắng', role: 'Giảng viên hướng dẫn' };
+
+const marqueeWords = [
+  'Vượt Bão 1991',
+  'Đổi mới 1986',
+  'Đại hội VII',
+  'Tự lực tự cường',
+  'Lấy dân làm gốc',
+  'Đại đoàn kết toàn dân',
+  'Kinh tế nhiều thành phần',
+  'Kiên định mục tiêu',
+];
 
 const groupMembers = [
   { name: 'Nguyễn Thành Ngọc', id: 'SE180279', role: 'Lý thuyết & giao diện' },
@@ -35,7 +52,7 @@ const outline = [
   {
     n: '01',
     title: 'Bối cảnh lịch sử năm 1991',
-    body: 'Khủng hoảng kinh tế trong nước và biến động quốc tế.',
+    body: 'Khủng hoảng kinh tế trong nước và biến động quốc tế dồn dập đặt đất nước trước một bước ngoặt.',
   },
   {
     n: '02',
@@ -50,7 +67,7 @@ const outline = [
   {
     n: '04',
     title: 'Bài học cho giai đoạn hiện nay',
-    body: 'Kiên định nguyên tắc, đổi mới liên tục từ sức dân.',
+    body: 'Kiên định nguyên tắc, đổi mới liên tục, khơi dậy nội lực và sức mạnh từ nhân dân.',
   },
 ];
 
@@ -75,6 +92,39 @@ const aiSupports = [
   },
 ];
 
+const gallery = [
+  { ...IMAGES.hanoiCity, label: 'Thành phố Hà Nội' },
+  { ...IMAGES.hanoiSunset, label: 'Hoàng hôn sau mưa' },
+  { ...IMAGES.ricePaddy, label: 'Mùa lúa Việt Nam' },
+  { ...IMAGES.duckHerding, label: 'Đồng quê thanh bình' },
+  { ...IMAGES.onePillarPagoda, label: 'Chùa Một Cột' },
+  { ...IMAGES.mausoleum, label: 'Lăng Chủ tịch Hồ Chí Minh' },
+];
+
+function GalleryCard({ src, alt, label }: { src: string; alt: string; label: string }) {
+  return (
+    <figure className="group/ph relative mx-2 aspect-[4/3] w-[clamp(15rem,24vw,18rem)] shrink-0 overflow-hidden rounded-2xl border border-ink/10 bg-storm">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="18rem"
+        className="object-cover transition-transform duration-[900ms] ease-out-quart group-hover/ph:scale-105"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(180deg, transparent 42%, oklch(0.20 0.038 250 / 0.82) 100%)',
+        }}
+      />
+      <figcaption className="absolute inset-x-0 bottom-0 p-3.5 font-display text-[12px] font-semibold uppercase tracking-[0.16em] text-paper">
+        {label}
+      </figcaption>
+    </figure>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
@@ -82,16 +132,7 @@ export default function HomePage() {
       <SlideNav items={slideNav} />
 
       {/* 01 — Hero */}
-      <Slide id="gioi-thieu" tone="paper" grain>
-        <div
-          aria-hidden
-          className="storm-drift pointer-events-none absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(55% 70% at 12% 5%, oklch(0.52 0.196 26 / 0.18) 0%, transparent 60%),' +
-              'radial-gradient(50% 60% at 92% 25%, oklch(0.82 0.150 78 / 0.20) 0%, transparent 60%)',
-          }}
-        />
+      <Slide id="gioi-thieu" tone="paper" backdrop={<HeroBackdrop />}>
         <div className="relative grid grid-cols-1 items-center gap-10 md:grid-cols-12">
           <div className="md:col-span-7">
             <Reveal>
@@ -139,7 +180,10 @@ export default function HomePage() {
 
           <div className="md:col-span-5">
             <Reveal delay={0.18}>
-              <div className="relative rounded-[2rem] border border-ink/10 bg-paper-deep/70 p-2 backdrop-blur-sm">
+              <TiltCard
+                intensity={6}
+                className="rounded-[2rem] border border-ink/10 bg-paper-deep/80 p-2 backdrop-blur-sm"
+              >
                 <div className="bezel-inner rounded-3xl bg-paper p-6">
                   <div className="font-display text-[11px] uppercase tracking-[0.35em] text-flame">
                     Học phần
@@ -175,58 +219,63 @@ export default function HomePage() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </Reveal>
           </div>
         </div>
       </Slide>
 
+      {/* Marquee band */}
+      <section className="relative overflow-hidden bg-flame py-3.5">
+        <Marquee speed={46}>
+          {marqueeWords.map((w) => (
+            <span key={w} className="flex items-center gap-7 px-7">
+              <span className="font-display text-sm font-semibold uppercase tracking-[0.32em] text-paper">
+                {w}
+              </span>
+              <span className="h-1.5 w-1.5 rotate-45 bg-paper/45" />
+            </span>
+          ))}
+        </Marquee>
+      </section>
+
       {/* 02 — Thành viên */}
       <Slide id="thanh-vien" tone="deep">
-        <div className="grid items-center gap-8 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
-          <div>
-            <SlideHeading
-              eyebrow="Nhóm tác giả"
-              index="01"
-              title={
-                <>
-                  Bốn cây bút, một <span className="italic text-flame">câu chuyện</span>
-                </>
-              }
-            />
-            <Stagger className="mt-6 divide-y divide-ink/10 border-y border-ink/10">
-              {groupMembers.map((m, i) => (
-                <StaggerItem key={m.name + i}>
-                  <article className="grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3.5">
-                    <span className="font-display text-2xl font-black text-flame">0{i + 1}</span>
-                    <div>
-                      <h3 className="font-display text-lg font-bold tracking-tight text-ink">
-                        {m.name}
-                      </h3>
-                      <p className="text-[13.5px] text-ink-soft">{m.role}</p>
-                    </div>
-                    <span className="rounded-full border border-ink/15 bg-paper px-2.5 py-1 font-mono text-[11px] tracking-wider text-ink">
-                      {m.id}
-                    </span>
-                  </article>
-                </StaggerItem>
-              ))}
-            </Stagger>
-          </div>
-          <Reveal delay={0.16}>
-            <Figure
-              src={IMAGES.hanoiCity.src}
-              alt={IMAGES.hanoiCity.alt}
-              caption="Hà Nội — trung tâm những quyết sách của đất nước."
-              credit={IMAGES.hanoiCity.credit}
-              ratio="aspect-[4/3]"
-              priority
-            />
-          </Reveal>
-        </div>
+        <SlideHeading
+          eyebrow="Nhóm tác giả"
+          index="01"
+          title={
+            <>
+              Bốn cây bút, một <span className="italic text-flame">câu chuyện</span>
+            </>
+          }
+        />
+        <Reveal delay={0.1}>
+          <p className="mt-4 max-w-xl text-[15.5px] leading-relaxed text-ink-soft">
+            Di chuột lên mỗi thẻ để xem nó nghiêng theo con trỏ.
+          </p>
+        </Reveal>
+        <Stagger className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {groupMembers.map((m, i) => (
+            <StaggerItem key={m.name + i} className="h-full">
+              <TiltCard className="lift h-full rounded-3xl border border-ink/10 bg-paper p-6">
+                <div className="flex items-center justify-between">
+                  <span className="font-display text-4xl font-black text-flame/25">0{i + 1}</span>
+                  <span className="rounded-full border border-ink/15 bg-paper-deep px-2.5 py-1 font-mono text-[11px] tracking-wider text-ink">
+                    {m.id}
+                  </span>
+                </div>
+                <h3 className="mt-6 font-display text-lg font-bold tracking-tight text-ink">
+                  {m.name}
+                </h3>
+                <p className="mt-1 text-[13.5px] text-ink-soft">{m.role}</p>
+              </TiltCard>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </Slide>
 
-      {/* 03 — Nội dung */}
+      {/* 03 — Nội dung (bento) */}
       <Slide id="noi-dung" tone="paper">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <SlideHeading eyebrow="Nội dung thuyết trình" index="02" title="Mục lục buổi trình bày" />
@@ -240,11 +289,14 @@ export default function HomePage() {
             </Link>
           </Reveal>
         </div>
-        <Stagger className="mt-8 grid gap-4 sm:grid-cols-2">
-          {outline.map((o) => (
-            <StaggerItem key={o.n}>
-              <article className="lift group relative h-full overflow-hidden rounded-3xl border border-ink/10 bg-paper-deep/55 p-6">
-                <div className="flex items-start justify-between gap-4">
+        <Stagger className="mt-8 grid gap-4 md:auto-rows-fr md:grid-cols-3">
+          {outline.map((o, i) => (
+            <StaggerItem
+              key={o.n}
+              className={cn('h-full', (i === 0 || i === 3) && 'md:col-span-2')}
+            >
+              <TiltCard className="lift h-full rounded-3xl border border-ink/10 bg-paper-deep/55 p-6">
+                <div className="flex h-full items-start justify-between gap-4">
                   <div>
                     <div className="font-display text-[11px] uppercase tracking-[0.3em] text-flame">
                       Phần {o.n}
@@ -254,21 +306,115 @@ export default function HomePage() {
                     </h3>
                     <p className="mt-2 text-[14px] leading-relaxed text-ink-soft">{o.body}</p>
                   </div>
-                  <span className="select-none font-display text-5xl font-black leading-none text-flame/12 transition-all duration-300 ease-out-quart group-hover:scale-110 group-hover:text-flame/25">
+                  <span className="select-none font-display text-6xl font-black leading-none text-flame/12 transition-all duration-300 ease-out-quart group-hover/tilt:scale-110 group-hover/tilt:text-flame/25">
                     {o.n}
                   </span>
                 </div>
-              </article>
+              </TiltCard>
             </StaggerItem>
           ))}
         </Stagger>
       </Slide>
 
-      {/* 04 — Công cụ AI */}
-      <Slide id="cong-cu-ai" tone="deep">
+      {/* 04 — Hành trình (parallax showcase) */}
+      <Slide id="hanh-trinh" tone="deep">
+        <SlideHeading
+          eyebrow="Hành trình"
+          index="03"
+          title={
+            <>
+              Sau cơn bão là <span className="italic text-flame">ngày mới</span>
+            </>
+          }
+        />
+        <div className="mt-8 grid items-center gap-6 md:grid-cols-12">
+          <Reveal delay={0.14} className="md:col-span-7">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-ink/10 bg-storm">
+              <Parallax distance={64} className="absolute inset-x-0 -inset-y-[20%]">
+                <Image
+                  src={IMAGES.hanoiSunset.src}
+                  alt={IMAGES.hanoiSunset.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="object-cover"
+                />
+              </Parallax>
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    'linear-gradient(180deg, oklch(0.22 0.030 50 / 0) 45%, oklch(0.20 0.038 250 / 0.78) 100%)',
+                }}
+              />
+              <div className="absolute bottom-5 left-5 flex items-center gap-2.5">
+                <Sunrise className="h-4 w-4 text-sun" strokeWidth={1.6} />
+                <span className="font-display text-[11px] uppercase tracking-[0.3em] text-paper/85">
+                  Hoàng hôn sau mưa · Hà Nội
+                </span>
+              </div>
+            </div>
+          </Reveal>
+          <div className="md:col-span-5">
+            <Reveal delay={0.2}>
+              <p className="text-[16px] leading-relaxed text-ink/85">
+                Hoàng hôn rực sáng sau cơn mưa cũng giống hành trình năm 1991: đi qua giông bão
+                bằng bản lĩnh và sự kiên định, để mở ra một thời kỳ phát triển mới.
+              </p>
+            </Reveal>
+            <Parallax distance={34} className="mt-6">
+              <div className="lift rounded-3xl border border-ink/10 bg-paper p-6">
+                <div className="font-display text-[11px] uppercase tracking-[0.3em] text-flame">
+                  Giai đoạn 1991 – 1995
+                </div>
+                <div className="mt-2 font-display text-5xl font-black tracking-tight text-flame">
+                  8,2%
+                </div>
+                <p className="mt-1.5 text-[14px] leading-relaxed text-ink-soft">
+                  Tăng trưởng GDP bình quân mỗi năm sau khi kiên trì đường lối Đổi mới.
+                </p>
+              </div>
+            </Parallax>
+          </div>
+        </div>
+      </Slide>
+
+      {/* 05 — Hình ảnh (gallery carousel) */}
+      <Slide id="hinh-anh" tone="deep">
+        <SlideHeading
+          eyebrow="Tư liệu hình ảnh"
+          index="04"
+          title={
+            <>
+              Việt Nam qua <span className="italic text-flame">ống kính</span>
+            </>
+          }
+        />
+        <Reveal delay={0.1}>
+          <p className="mt-4 max-w-xl text-[15.5px] leading-relaxed text-ink-soft">
+            Những khung hình về đất nước và con người Việt Nam — mạch nguồn của mọi đường lối đổi
+            mới. Rê chuột để dừng băng ảnh.
+          </p>
+        </Reveal>
+        <div className="mt-8 flex flex-col gap-4">
+          <Marquee speed={58}>
+            {gallery.map((g) => (
+              <GalleryCard key={g.label} src={g.src} alt={g.alt} label={g.label} />
+            ))}
+          </Marquee>
+          <Marquee speed={58} reverse>
+            {[...gallery].reverse().map((g) => (
+              <GalleryCard key={g.label} src={g.src} alt={g.alt} label={g.label} />
+            ))}
+          </Marquee>
+        </div>
+      </Slide>
+
+      {/* 06 — Công cụ AI */}
+      <Slide id="cong-cu-ai" tone="paper">
         <SlideHeading
           eyebrow="Công cụ hỗ trợ"
-          index="03"
+          index="05"
           title={
             <>
               Đồng hành cùng các trợ lý <span className="italic text-flame">AI</span>
@@ -277,14 +423,14 @@ export default function HomePage() {
         />
         <Stagger className="mt-8 grid gap-5 md:grid-cols-3">
           {aiSupports.map(({ name, purpose, Icon, Accent }) => (
-            <StaggerItem key={name}>
-              <article className="lift group relative h-full overflow-hidden rounded-3xl border border-ink/10 bg-paper p-6">
+            <StaggerItem key={name} className="h-full">
+              <TiltCard className="lift h-full rounded-3xl border border-ink/10 bg-paper-deep/55 p-6">
                 <div className="flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-ink/15 bg-paper-deep/60 transition-transform duration-300 ease-out-quart group-hover:-rotate-6 group-hover:scale-110">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-ink/15 bg-paper transition-transform duration-300 ease-out-quart group-hover/tilt:-rotate-6 group-hover/tilt:scale-110">
                     <Icon className="h-5 w-5 text-ink" aria-hidden />
                   </div>
                   <Accent
-                    className="h-4 w-4 text-flame/60 transition-transform duration-300 ease-out-quart group-hover:scale-125"
+                    className="h-4 w-4 text-flame/60 transition-transform duration-300 ease-out-quart group-hover/tilt:scale-125"
                     strokeWidth={1.4}
                     aria-hidden
                   />
@@ -293,7 +439,7 @@ export default function HomePage() {
                   {name}
                 </h3>
                 <p className="mt-2 text-[14.5px] leading-relaxed text-ink-soft">{purpose}</p>
-              </article>
+              </TiltCard>
             </StaggerItem>
           ))}
         </Stagger>
@@ -307,7 +453,7 @@ export default function HomePage() {
         </Reveal>
       </Slide>
 
-      {/* 05 — CTA */}
+      {/* 07 — CTA */}
       <Slide id="bat-dau" tone="ink" grain center>
         <Image
           src={IMAGES.mausoleum.src}
@@ -326,6 +472,17 @@ export default function HomePage() {
         />
         <div className="relative mx-auto max-w-2xl text-center">
           <Reveal>
+            <div className="mx-auto mb-6 h-12 w-[4.5rem] overflow-hidden rounded-md border border-paper/20 shadow-[0_10px_24px_-12px_oklch(0_0_0/0.7)]">
+              <Image
+                src={IMAGES.flag.src}
+                alt={IMAGES.flag.alt}
+                width={72}
+                height={48}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.06}>
             <div className="font-display text-[11px] uppercase tracking-[0.35em] text-sun">
               Sẵn sàng bắt đầu
             </div>

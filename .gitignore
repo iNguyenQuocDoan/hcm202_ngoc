@@ -44,4 +44,6 @@ next-env.d.ts
 /.agents/
 /.claude/
 /.tmp-screenshots/
+/.screenshots/
+dev-server.log
 skills-lock.json

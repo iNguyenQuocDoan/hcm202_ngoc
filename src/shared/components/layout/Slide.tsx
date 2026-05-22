@@ -1,4 +1,8 @@
+'use client';
+
 import type { ReactNode } from 'react';
+import { motion } from 'framer-motion';
+import { useReducedMotion } from '@/shared/hooks/useReducedMotion';
 import { cn } from '@/shared/utils';
 
 const tones = {
@@ -14,27 +18,48 @@ interface SlideProps {
   children: ReactNode;
   className?: string;
   grain?: boolean;
+  /** Full-bleed layer rendered behind the content, edge to edge. */
+  backdrop?: ReactNode;
   /** Centre content both axes (title slides). */
   center?: boolean;
 }
 
 /**
- * One presentation frame. Fills exactly one viewport and snap-aligns,
- * so each section can be shown on its own when presenting.
+ * One presentation frame. Fills exactly one viewport and snap-aligns, so each
+ * section shows on its own. Content fades in whenever the frame enters view,
+ * giving every jump between sections a clear arrival cue.
  */
-export function Slide({ id, tone = 'paper', children, className, grain, center }: SlideProps) {
+export function Slide({
+  id,
+  tone = 'paper',
+  children,
+  className,
+  grain,
+  backdrop,
+  center,
+}: SlideProps) {
+  const reduce = useReducedMotion();
   return (
     <section
       id={id}
       className={cn(
-        'slide relative flex min-h-svh w-full flex-col overflow-hidden',
+        'slide relative flex min-h-svh w-full flex-col justify-center overflow-hidden',
         'px-4 pb-14 pt-24 md:pb-16 md:pt-28',
-        center ? 'justify-center' : 'justify-center',
         tones[tone],
       )}
+      data-center={center ? '' : undefined}
     >
+      {backdrop}
       {grain && <div className="grain pointer-events-none absolute inset-0 opacity-40" />}
-      <div className={cn('relative mx-auto w-full max-w-6xl', className)}>{children}</div>
+      <motion.div
+        className={cn('relative mx-auto w-full max-w-6xl', className)}
+        initial={reduce ? false : { opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
+        {children}
+      </motion.div>
     </section>
   );
 }

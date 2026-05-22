@@ -83,19 +83,24 @@ body {
   transform: scale(0.97);
 }
 
-/* Lift on hover for editorial cards */
+/* Lift for editorial cards on light slides — resting elevation gives definition */
 .lift {
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.4),
+    0 1px 2px oklch(0.22 0.030 50 / 0.04),
+    0 12px 24px -20px oklch(0.38 0.172 25 / 0.28);
   transition:
-    transform 320ms var(--ease-out-quart),
-    box-shadow 320ms var(--ease-out-quart),
-    border-color 320ms var(--ease-out-quart);
+    transform 340ms var(--ease-out-quart),
+    box-shadow 340ms var(--ease-out-quart),
+    border-color 340ms var(--ease-out-quart);
 }
 @media (hover: hover) and (pointer: fine) {
   .lift:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     box-shadow:
-      0 1px 0 oklch(0.22 0.030 50 / 0.04),
-      0 22px 36px -24px oklch(0.38 0.172 25 / 0.32);
+      inset 0 1px 0 oklch(1 0 0 / 0.55),
+      0 2px 4px oklch(0.22 0.030 50 / 0.05),
+      0 32px 48px -26px oklch(0.38 0.172 25 / 0.45);
   }
 }
 
@@ -138,9 +143,20 @@ body {
   animation: marquee 40s linear infinite;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .storm-drift,
-  .marquee {
-    animation: none;
-  }
+/* Ambient orbs — slow autonomous drift for hero / showcase backdrops */
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(7%, 5%, 0) scale(1.14); }
 }
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.08); }
+  50% { transform: translate3d(-6%, 7%, 0) scale(0.93); }
+}
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(-5%, -4%, 0) scale(1.1); }
+  66% { transform: translate3d(5%, 4%, 0) scale(0.95); }
+}
+.orb-1 { animation: orb-drift-1 19s ease-in-out infinite; }
+.orb-2 { animation: orb-drift-2 23s ease-in-out infinite; }
+.orb-3 { animation: orb-drift-3 27s ease-in-out infinite; }

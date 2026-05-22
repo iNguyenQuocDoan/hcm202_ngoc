@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Lora } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/shared/components/layout';
+import { MotionProvider } from '@/shared/components/motion';
 
 const playfair = Playfair_Display({
   variable: '--font-display',
@@ -36,8 +37,10 @@ export default function RootLayout({
       className={`${playfair.variable} ${lora.variable} snap-root h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink selection:bg-flame selection:text-paper">
-        <Header />
-        {children}
+        <MotionProvider>
+          <Header />
+          {children}
+        </MotionProvider>
       </body>
     </html>
   );

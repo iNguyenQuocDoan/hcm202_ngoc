@@ -6,3 +6,8 @@ export { Timeline } from './Timeline';
 export { SlideNav } from './SlideNav';
 export { Counter } from './Counter';
 export { MaskReveal } from './MaskReveal';
+export { MotionProvider } from './MotionProvider';
+export { Marquee } from './Marquee';
+export { TiltCard } from './TiltCard';
+export { Parallax } from './Parallax';
+export { HeroBackdrop } from './HeroBackdrop';
