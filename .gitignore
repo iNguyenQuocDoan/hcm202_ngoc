@@ -47,3 +47,4 @@ next-env.d.ts
 /.screenshots/
 dev-server.log
 skills-lock.json
+package-lock.json
