@@ -36,7 +36,7 @@ const marqueeWords = [
   'Đại hội VII',
   'Tự lực tự cường',
   'Lấy dân làm gốc',
-  'Đại đoàn kết toàn dân',
+  'Cơ chế thị trường',
   'Kinh tế nhiều thành phần',
   'Kiên định mục tiêu',
 ];
@@ -57,7 +57,7 @@ const outline = [
   {
     n: '02',
     title: 'Vận dụng tư tưởng Hồ Chí Minh',
-    body: 'Tự lực, đoàn kết và lấy nhân dân làm trung tâm.',
+    body: 'Lấy dân làm gốc, tự lực tự cường, sáng tạo không giáo điều và độc lập gắn hợp tác.',
   },
   {
     n: '03',
