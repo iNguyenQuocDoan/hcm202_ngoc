@@ -8,23 +8,19 @@ export const DETAILS: Record<string, Detail> = {
   // Slide: Mở đầu
   'mo-dau': {
     eyebrow: 'Phần I · Mở đầu',
-    title: 'Một thời điểm đặc biệt của lịch sử',
+    title: 'Một mốc quan trọng của Đổi mới kinh tế',
     blocks: [
       {
         type: 'p',
-        text: 'Năm 1991 là một thời điểm đặc biệt trong lịch sử Việt Nam hiện đại. Đây không chỉ là một năm có nhiều khó khăn về kinh tế, chính trị và đối ngoại, mà còn là thời điểm Việt Nam phải chứng minh bản lĩnh lựa chọn con đường phát triển của mình trong bối cảnh thế giới biến động mạnh.',
+        text: 'Năm 1991 là một mốc quan trọng trong quá trình Đổi mới kinh tế của Việt Nam. Cần hiểu đúng: Đổi mới không bắt đầu từ năm 1991, mà đã được khởi xướng từ Đại hội VI năm 1986. Năm 1991 là thời điểm Việt Nam tiếp tục kiểm nghiệm, củng cố và phát triển đường lối Đổi mới trong bối cảnh trong nước và quốc tế có nhiều biến động lớn.',
       },
       {
         type: 'p',
-        text: 'Đại hội VII của Đảng diễn ra tại Hà Nội từ ngày 24 đến 27/6/1991, trong bối cảnh quốc tế và trong nước có nhiều diễn biến phức tạp, đặc biệt là sự khủng hoảng nghiêm trọng của hệ thống xã hội chủ nghĩa ở Liên Xô và Đông Âu.',
-      },
-      {
-        type: 'p',
-        text: 'Chủ đề “Vượt Bão 1991” có thể hiểu là câu chuyện Việt Nam vận dụng tư tưởng Hồ Chí Minh để giữ vững mục tiêu độc lập dân tộc gắn với chủ nghĩa xã hội, đồng thời đổi mới tư duy, đổi mới cách làm, mở cửa nền kinh tế và mở rộng quan hệ quốc tế.',
+        text: 'Đại hội VII của Đảng diễn ra tại Hà Nội từ ngày 24 đến 27/6/1991, trong bối cảnh kinh tế xã hội trong nước còn khó khăn, đồng thời hệ thống xã hội chủ nghĩa ở Liên Xô và Đông Âu rơi vào khủng hoảng nghiêm trọng. Công cuộc Đổi mới từ Đại hội VI đã đạt được những thành tựu bước đầu, giúp Việt Nam đứng vững và tiếp tục phát triển.',
       },
       {
         type: 'callout',
-        text: 'Điểm quan trọng nhất: Việt Nam không vượt qua khó khăn bằng cách đứng yên, mà bằng cách kiên định mục tiêu nhưng linh hoạt trong phương pháp.',
+        text: 'Trọng tâm: Việt Nam vận dụng tư tưởng Hồ Chí Minh để tiếp tục Đổi mới kinh tế — phát huy nội lực, lấy đời sống nhân dân làm mục tiêu, và từng bước chuyển từ cơ chế bao cấp sang nền kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường có sự quản lý của Nhà nước.',
       },
     ],
     sources: ['tulieuvankien.dangcongsan.vn'],
@@ -33,127 +29,123 @@ export const DETAILS: Record<string, Detail> = {
   // Slide: Bối cảnh
   'boi-canh': {
     eyebrow: 'Phần I · Bối cảnh',
-    title: 'Việt Nam cuối thập niên 1980, đầu 1990',
+    title: 'Bối cảnh kinh tế trước và trong năm 1991',
     blocks: [
       {
         type: 'p',
-        text: 'Sau năm 1975, Việt Nam bước vào thời kỳ xây dựng đất nước trong điều kiện rất khó khăn. Nền kinh tế còn nặng tính bao cấp, sản xuất trì trệ, đời sống nhân dân thiếu thốn, cơ chế quản lý chưa phù hợp với thực tiễn. Đến năm 1986, lạm phát ở Việt Nam được ghi nhận ở mức rất cao, có nguồn thống kê nêu con số 774,7%, cho thấy nền kinh tế khi đó chịu sức ép nghiêm trọng về giá cả và đời sống.',
+        text: 'Trước Đổi mới, nền kinh tế Việt Nam còn chịu ảnh hưởng nặng của cơ chế kế hoạch hóa tập trung, bao cấp. Cơ chế này từng có vai trò trong một số giai đoạn lịch sử, nhưng về lâu dài đã bộc lộ nhiều hạn chế: sản xuất thiếu động lực, lưu thông hàng hóa khó khăn, đời sống nhân dân thiếu thốn, nền kinh tế vận hành kém linh hoạt.',
       },
       {
         type: 'p',
-        text: 'Trước tình hình đó, Đại hội VI năm 1986 mở ra đường lối Đổi mới. Nội dung đổi mới không phải là từ bỏ mục tiêu xã hội chủ nghĩa, mà là thay đổi cách quản lý và phát triển đất nước cho phù hợp hơn với thực tiễn: đổi mới cơ chế quản lý kinh tế, chính sách xã hội, giải quyết việc làm, chăm lo giáo dục, văn hóa và sức khỏe nhân dân.',
+        text: 'Đại hội VI năm 1986 đã xác định ba chương trình kinh tế lớn: lương thực thực phẩm, hàng tiêu dùng và hàng xuất khẩu. Đây là những chương trình rất thực tế: lương thực, thực phẩm và hàng tiêu dùng gắn trực tiếp với ổn định đời sống nhân dân; xuất khẩu là nguồn lực quan trọng để phục vụ sản xuất và nhập khẩu vật tư cần thiết.',
       },
       {
         type: 'p',
-        text: 'Tuy nhiên, đến năm 1991, Việt Nam lại đứng trước một cơn bão mới. Liên Xô và Đông Âu, những đối tác truyền thống quan trọng, rơi vào khủng hoảng và tan rã, làm đảo lộn các quan hệ kinh tế, thương mại và viện trợ trước đó. Cùng thời điểm, Mỹ vẫn tiếp tục cấm vận, khiến đất nước gặp thêm khó khăn trong mở rộng quan hệ kinh tế quốc tế.',
+        text: 'Đến năm 1991, Việt Nam tiếp tục gặp áp lực lớn hơn do biến động quốc tế. Liên Xô và Đông Âu khủng hoảng, làm đảo lộn nhiều quan hệ kinh tế, thương mại và viện trợ truyền thống. Trong nước, kinh tế và đời sống nhân dân vẫn còn khó khăn.',
       },
       {
         type: 'callout',
-        text: 'Năm 1991 là một điểm thử thách lớn: vừa phải xử lý khó khăn kinh tế trong nước, vừa phải thích ứng với trật tự thế giới đang thay đổi, vừa phải giữ vững ổn định chính trị và niềm tin xã hội.',
+        text: 'Vấn đề đặt ra không chỉ là giải quyết thiếu thốn trước mắt, mà còn là phải tiếp tục đổi mới mô hình quản lý kinh tế cho phù hợp với thực tiễn.',
       },
     ],
-    sources: ['tulieuvankien.dangcongsan.vn', 'Nhân Dân Online'],
+    sources: ['daihoidangtoanquoc.vn', 'tulieuvankien.dangcongsan.vn'],
   },
 
-  // Slide: Vận dụng tư tưởng — 5 luận điểm
+  // Slide: Vận dụng tư tưởng — 4 luận điểm
   'dan-lam-goc': {
     eyebrow: 'Vận dụng tư tưởng · 01',
-    title: 'Lấy dân làm gốc',
+    title: 'Lấy dân làm gốc — Đổi mới hướng vào đời sống nhân dân',
     blocks: [
       {
         type: 'p',
-        text: 'Trong tư tưởng Hồ Chí Minh, nhân dân là trung tâm của cách mạng. Sức mạnh của đất nước không chỉ nằm ở bộ máy nhà nước hay chính sách, mà trước hết nằm ở lòng dân, đời sống nhân dân và sự tham gia của nhân dân. Tư tưởng đại đoàn kết Hồ Chí Minh nhấn mạnh rằng dân là nền tảng của đoàn kết, là nguồn sức mạnh quyết định thắng lợi của cách mạng.',
+        text: 'Tư tưởng lấy dân làm gốc là nội dung quan trọng trong tư tưởng Hồ Chí Minh. Quan điểm này nhấn mạnh nhân dân là nền tảng, là chủ thể và là nguồn sức mạnh của cách mạng.',
       },
       {
         type: 'p',
-        text: 'Vận dụng vào bối cảnh 1991, mọi chính sách đổi mới phải hướng đến giải quyết đời sống nhân dân: có việc làm, có lương thực, ổn định giá cả, khuyến khích sản xuất, phát huy quyền làm chủ và khả năng sáng tạo của người dân. Nếu nhân dân không được đặt ở trung tâm, đổi mới sẽ chỉ là thay đổi trên giấy tờ.',
+        text: 'Áp dụng vào kinh tế năm 1991: Đổi mới không chỉ nhằm thay đổi cơ chế quản lý, mà trước hết phải cải thiện đời sống nhân dân. Khi đời sống còn khó khăn, hàng hóa thiếu thốn, sản xuất chưa ổn định, chính sách kinh tế phải tập trung vào những nhu cầu thiết thực nhất: lương thực, thực phẩm, hàng tiêu dùng, việc làm, thu nhập và lưu thông hàng hóa.',
+      },
+      {
+        type: 'p',
+        text: 'Các chương trình lương thực thực phẩm, hàng tiêu dùng và hàng xuất khẩu là biểu hiện kinh tế cụ thể của tinh thần vì dân. Đổi mới không phải để tạo thay đổi trên giấy tờ, mà để người dân có điều kiện sản xuất, kinh doanh, cải thiện đời sống và tham gia vào quá trình phát triển đất nước.',
       },
       {
         type: 'callout',
-        text: 'Vượt qua khủng hoảng không chỉ là nhiệm vụ của Nhà nước, mà là quá trình khơi dậy sức dân, dựa vào dân và vì dân.',
+        text: 'Lấy dân làm gốc trong kinh tế nghĩa là lấy đời sống nhân dân làm mục tiêu và lấy sức dân làm động lực phát triển.',
       },
     ],
-    sources: ['hochiminh.vn'],
-  },
-
-  'doan-ket': {
-    eyebrow: 'Vận dụng tư tưởng · 02',
-    title: 'Đại đoàn kết toàn dân',
-    blocks: [
-      {
-        type: 'p',
-        text: 'Hồ Chí Minh coi đoàn kết là sức mạnh nền tảng của dân tộc. Trong bối cảnh 1991, khi một bộ phận cán bộ, đảng viên và nhân dân có thể hoang mang trước biến động ở Liên Xô và Đông Âu, việc giữ vững đoàn kết trong xã hội có ý nghĩa rất quan trọng. Tư liệu về Đại hội VII cũng ghi nhận khủng hoảng ở Liên Xô và Đông Âu đã tác động đến tư tưởng, tình cảm của một bộ phận cán bộ, đảng viên và nhân dân.',
-      },
-      {
-        type: 'p',
-        text: 'Vận dụng tư tưởng đại đoàn kết trong giai đoạn này nghĩa là củng cố niềm tin xã hội, tránh chia rẽ, phát huy vai trò của các tầng lớp nhân dân trong sản xuất, xây dựng và bảo vệ đất nước.',
-      },
-      {
-        type: 'callout',
-        text: 'Đoàn kết ở đây không phải khẩu hiệu chung chung, mà là điều kiện để giữ ổn định chính trị, ổn định xã hội và tạo môi trường cho đổi mới kinh tế.',
-      },
-    ],
-    sources: ['tulieuvankien.dangcongsan.vn'],
+    sources: ['nlv.gov.vn'],
   },
 
   'tu-luc': {
-    eyebrow: 'Vận dụng tư tưởng · 03',
-    title: 'Tự lực, tự cường',
+    eyebrow: 'Vận dụng tư tưởng · 02',
+    title: 'Tự lực, tự cường — Phát huy nội lực',
     blocks: [
       {
         type: 'p',
-        text: 'Tư tưởng Hồ Chí Minh luôn đề cao tinh thần tự lực, tự cường, tự lực cánh sinh. Theo các tài liệu về tư tưởng Hồ Chí Minh, Người coi tự lực, tự cường là tiền đề của độc lập, tự do và là điều kiện quan trọng để phát triển quan hệ đối ngoại.',
+        text: 'Tư tưởng Hồ Chí Minh đề cao tinh thần tự lực, tự cường: không trông chờ, ỷ lại, không phụ thuộc vào bên ngoài, mà phải tự xây dựng sức mạnh của mình.',
       },
       {
         type: 'p',
-        text: 'Trong bối cảnh năm 1991, khi nguồn viện trợ và quan hệ kinh tế truyền thống bị đảo lộn, Việt Nam không thể tiếp tục phụ thuộc vào bên ngoài. Muốn tồn tại và phát triển, đất nước phải phát huy nội lực: sản xuất trong nước, đổi mới quản lý kinh tế, khuyến khích các thành phần kinh tế, nâng cao năng lực tự chủ của nền kinh tế.',
+        text: 'Trong bối cảnh năm 1991, khi Liên Xô và Đông Âu khủng hoảng, Việt Nam không thể tiếp tục dựa nhiều vào hệ thống viện trợ, thương mại và hợp tác truyền thống như trước. Nếu nền kinh tế phụ thuộc quá lớn vào bên ngoài, khi bối cảnh quốc tế thay đổi, đất nước sẽ rơi vào thế bị động.',
+      },
+      {
+        type: 'p',
+        text: 'Vận dụng tư tưởng tự lực, Việt Nam phát huy nội lực trong nước: sức lao động của nhân dân, tiềm năng nông nghiệp, sản xuất hàng tiêu dùng, xuất khẩu, doanh nghiệp, hộ gia đình và các thành phần kinh tế. Phát triển kinh tế hàng hóa nhiều thành phần mở đường cho nhiều chủ thể trong xã hội tham gia tạo ra của cải.',
       },
       {
         type: 'callout',
-        text: 'Tự lực, tự cường không có nghĩa là tự cô lập. Tự lực là có nội lực; tự cường là làm cho đất nước mạnh lên; mở cửa là để kết hợp sức mạnh bên trong với nguồn lực bên ngoài.',
+        text: 'Tự lực, tự cường trong kinh tế năm 1991 là phát huy nội lực để nền kinh tế không bị động trước biến động quốc tế.',
       },
     ],
-    sources: ['hochiminh.vn'],
+    sources: ['truongchinhtri.quangngai.gov.vn'],
   },
 
   'kien-dinh': {
-    eyebrow: 'Vận dụng tư tưởng · 04',
-    title: 'Kiên định mục tiêu, linh hoạt phương pháp',
+    eyebrow: 'Vận dụng tư tưởng · 03',
+    title: 'Sáng tạo, không giáo điều — Không giữ máy móc cơ chế bao cấp cũ',
     blocks: [
       {
         type: 'p',
-        text: 'Một điểm rất quan trọng trong tư tưởng Hồ Chí Minh là tinh thần độc lập, sáng tạo, không giáo điều. Hồ Chí Minh vận dụng chủ nghĩa Mác Lênin vào điều kiện cụ thể của Việt Nam, không máy móc sao chép mô hình bên ngoài, mà sáng tạo trong việc “Việt hóa” lý luận cho phù hợp với điều kiện Việt Nam.',
+        text: 'Một điểm quan trọng trong tư tưởng Hồ Chí Minh là tinh thần vận dụng sáng tạo lý luận vào điều kiện cụ thể của Việt Nam, không rập khuôn, không giáo điều. Hồ Chí Minh vận dụng chủ nghĩa Mác Lênin vào thực tiễn Việt Nam một cách sáng tạo, phù hợp với hoàn cảnh đất nước.',
       },
       {
         type: 'p',
-        text: 'Đây chính là nền tảng tư duy cho Đổi mới. Việt Nam vẫn kiên định mục tiêu độc lập dân tộc và chủ nghĩa xã hội, nhưng không giữ nguyên cơ chế quản lý cũ khi cơ chế đó không còn phù hợp. Đổi mới vì vậy là sự điều chỉnh phương pháp phát triển, không phải sự từ bỏ lý tưởng.',
+        text: 'Áp dụng vào kinh tế, tinh thần này thể hiện ở việc Việt Nam không đồng nhất chủ nghĩa xã hội với cơ chế bao cấp. Khi thực tế chứng minh cơ chế bao cấp làm sản xuất thiếu động lực và đời sống khó khăn, việc tiếp tục giữ nguyên cách quản lý cũ không còn phù hợp.',
+      },
+      {
+        type: 'p',
+        text: 'Chuyển sang nền kinh tế hàng hóa nhiều thành phần, sử dụng cơ chế thị trường có sự quản lý của Nhà nước là biểu hiện của tư duy sáng tạo, thực tiễn. Việt Nam vẫn giữ mục tiêu phát triển theo định hướng xã hội chủ nghĩa, nhưng thay đổi phương pháp tổ chức nền kinh tế để giải phóng sức sản xuất.',
       },
       {
         type: 'callout',
-        text: 'Kiên định không có nghĩa là bảo thủ. Linh hoạt không có nghĩa là mất phương hướng. Việt Nam năm 1991 chọn cách giữ vững mục tiêu, nhưng thay đổi cách đi.',
+        text: 'Vận dụng tư tưởng Hồ Chí Minh ở đây là giữ vững mục tiêu, nhưng không bảo thủ trong cách làm.',
       },
     ],
-    sources: ['hochiminh.vn'],
+    sources: ['nhandan.vn'],
   },
 
   'doc-lap-hop-tac': {
-    eyebrow: 'Vận dụng tư tưởng · 05',
-    title: 'Độc lập, tự chủ gắn với hợp tác quốc tế',
+    eyebrow: 'Vận dụng tư tưởng · 04',
+    title: 'Độc lập tự chủ gắn hợp tác quốc tế — Mở cửa kinh tế không phụ thuộc',
     blocks: [
       {
         type: 'p',
-        text: 'Tư tưởng ngoại giao Hồ Chí Minh nhấn mạnh mối quan hệ giữa độc lập, tự chủ với đoàn kết, hợp tác quốc tế: độc lập, tự chủ, tự lực, tự cường phải gắn với đoàn kết và hợp tác quốc tế trên cơ sở bảo vệ lợi ích quốc gia, dân tộc.',
+        text: 'Hồ Chí Minh luôn coi trọng việc kết hợp sức mạnh dân tộc với sức mạnh thời đại. Trong phát triển đất nước, điều đó có nghĩa là phải dựa vào nội lực dân tộc, đồng thời tranh thủ điều kiện thuận lợi từ bên ngoài.',
       },
       {
         type: 'p',
-        text: 'Vận dụng vào năm 1991, Việt Nam không chọn con đường khép kín. Ngược lại, đất nước mở rộng quan hệ quốc tế, đa phương hóa, đa dạng hóa quan hệ đối ngoại, tìm kiếm môi trường hòa bình để phát triển.',
+        text: 'Áp dụng vào kinh tế đầu thập niên 1990, Việt Nam không thể tự cô lập. Khi các quan hệ kinh tế truyền thống bị đảo lộn, đất nước cần mở rộng quan hệ kinh tế đối ngoại, tìm kiếm thị trường mới, nguồn vốn, công nghệ và phương thức hợp tác mới.',
+      },
+      {
+        type: 'p',
+        text: 'Tuy nhiên, mở cửa không có nghĩa là phụ thuộc. Tinh thần đúng là: mở cửa trên nền tảng độc lập tự chủ. Việt Nam hội nhập để phát triển, nhưng vẫn đặt lợi ích dân tộc, ổn định xã hội và quyền tự quyết trong phát triển kinh tế lên hàng đầu.',
       },
       {
         type: 'callout',
-        text: 'Đại hội VII nêu tinh thần Việt Nam muốn là bạn của tất cả các nước trong cộng đồng thế giới, phấn đấu vì hòa bình, độc lập và phát triển.',
+        text: 'Tư tưởng Hồ Chí Minh được vận dụng ở chỗ Việt Nam biết kết hợp nội lực với ngoại lực, vừa tự chủ vừa hợp tác.',
       },
     ],
-    sources: ['hochiminh.vn', 'tulieuvankien.dangcongsan.vn'],
+    sources: ['hocvienchinhtribqp.edu.vn'],
   },
 
   // Slide: Chính sách — 4 nhóm
@@ -163,11 +155,11 @@ export const DETAILS: Record<string, Detail> = {
     blocks: [
       {
         type: 'p',
-        text: 'Một thay đổi quan trọng sau Đổi mới là thừa nhận và phát triển nền kinh tế hàng hóa nhiều thành phần. Nghị quyết Trung ương khóa VII năm 1991 nêu rõ việc tiếp tục triển khai đường lối đổi mới theo hướng phát triển nền kinh tế hàng hóa nhiều thành phần, vận động theo cơ chế thị trường có sự quản lý của Nhà nước.',
+        text: 'Chính sách này khơi dậy sức dân, phát huy vai trò của nhiều chủ thể kinh tế, tạo thêm động lực cho sản xuất và lưu thông hàng hóa. Thay vì chỉ dựa vào khu vực nhà nước và cơ chế bao cấp, nền kinh tế cho phép nhiều chủ thể tham gia: người dân, hộ gia đình, hợp tác xã, doanh nghiệp tư nhân, doanh nghiệp nhà nước và các hình thức kinh tế khác đều có vai trò trong phát triển đất nước.',
       },
       {
         type: 'p',
-        text: 'Ý nghĩa của chính sách này là giải phóng sức sản xuất. Thay vì chỉ dựa vào khu vực nhà nước và cơ chế bao cấp, nền kinh tế cho phép nhiều chủ thể tham gia: người dân, hộ gia đình, hợp tác xã, doanh nghiệp tư nhân, doanh nghiệp nhà nước và các hình thức kinh tế khác đều có vai trò trong phát triển đất nước.',
+        text: 'Đây là bước chuyển quan trọng trong giai đoạn 1991 tới 1995, giúp giải phóng sức sản xuất sau nhiều năm chịu ảnh hưởng của cơ chế bao cấp.',
       },
       {
         type: 'callout',
@@ -183,51 +175,55 @@ export const DETAILS: Record<string, Detail> = {
     blocks: [
       {
         type: 'p',
-        text: 'Đại hội VII năm 1991 xác định cơ chế vận hành nền kinh tế hàng hóa nhiều thành phần theo định hướng xã hội chủ nghĩa là cơ chế thị trường có sự quản lý của Nhà nước bằng pháp luật, kế hoạch, chính sách và các công cụ khác.',
+        text: 'Thị trường giúp phản ánh cung cầu, giá cả và nhu cầu xã hội; Nhà nước giữ vai trò định hướng, quản lý và điều tiết bằng pháp luật, kế hoạch, chính sách để bảo đảm ổn định chung.',
       },
       {
         type: 'p',
-        text: 'Điểm cốt lõi là Việt Nam không phủ nhận vai trò của thị trường, nhưng cũng không để thị trường vận hành tự phát hoàn toàn. Nhà nước vẫn giữ vai trò định hướng, điều tiết, ổn định xã hội và chăm lo lợi ích chung.',
+        text: 'Điểm cốt lõi: Việt Nam không phủ nhận vai trò của thị trường, nhưng cũng không để thị trường vận hành tự phát hoàn toàn. Đây là bước chuyển lớn trong tư duy kinh tế — từ quản lý bằng mệnh lệnh hành chính sang quản lý bằng cơ chế, pháp luật và chính sách.',
       },
       {
         type: 'callout',
-        text: 'Đây là bước chuyển lớn trong tư duy kinh tế: từ quản lý bằng mệnh lệnh hành chính sang quản lý bằng cơ chế, pháp luật và chính sách.',
+        text: 'Thị trường có quản lý là cách Việt Nam giải phóng sức sản xuất mà vẫn giữ định hướng xã hội chủ nghĩa.',
       },
     ],
     sources: ['Tạp chí Cộng sản'],
   },
 
-  'mo-cua': {
+  'nhu-cau-thiet-thuc': {
     eyebrow: 'Chính sách · 03',
-    title: 'Mở cửa và tăng cường đối ngoại',
+    title: 'Tập trung vào nhu cầu kinh tế thiết thực',
     blocks: [
       {
         type: 'p',
-        text: 'Trong bối cảnh mất đi nhiều quan hệ kinh tế truyền thống, Việt Nam cần mở rộng quan hệ với các nước và tổ chức quốc tế. Tinh thần Việt Nam muốn là bạn của tất cả các nước trong cộng đồng thế giới tại Đại hội VII thể hiện rõ sự chuyển hướng đối ngoại theo hướng rộng mở, hòa bình và hợp tác.',
+        text: 'Ba chương trình kinh tế lớn từ Đại hội VI tiếp tục được triển khai trong giai đoạn này: lương thực thực phẩm, hàng tiêu dùng và hàng xuất khẩu.',
       },
       {
         type: 'p',
-        text: 'Chính sách này phù hợp với tư tưởng Hồ Chí Minh về kết hợp sức mạnh dân tộc với sức mạnh thời đại. Muốn phát triển, Việt Nam phải tự lực nhưng không tự cô lập; giữ độc lập tự chủ nhưng vẫn tranh thủ nguồn lực, tri thức, thị trường và quan hệ quốc tế.',
-      },
-    ],
-    sources: ['tulieuvankien.dangcongsan.vn'],
-  },
-
-  'cham-lo-dan': {
-    eyebrow: 'Chính sách · 04',
-    title: 'Chăm lo đời sống nhân dân',
-    blocks: [
-      {
-        type: 'p',
-        text: 'Đổi mới không chỉ nhằm tăng trưởng kinh tế, mà còn nhằm ổn định đời sống nhân dân. Đại hội VI đã đặt ra các nhiệm vụ về chính sách xã hội, việc làm, giáo dục, văn hóa, bảo vệ và tăng cường sức khỏe nhân dân.',
-      },
-      {
-        type: 'p',
-        text: 'Điều này thể hiện rõ tinh thần lấy dân làm gốc. Khi đất nước khủng hoảng, nếu đời sống nhân dân không được cải thiện thì niềm tin xã hội sẽ suy giảm.',
+        text: 'Lương thực và hàng tiêu dùng gắn trực tiếp với ổn định đời sống nhân dân. Xuất khẩu là nguồn lực quan trọng để phục vụ sản xuất và nhập khẩu vật tư cần thiết. Đây là hướng đi sát đời sống: muốn ổn định đất nước thì trước hết phải ổn định đời sống nhân dân.',
       },
       {
         type: 'callout',
-        text: 'Chăm lo đời sống nhân dân vừa là mục tiêu, vừa là điều kiện để giữ ổn định và phát triển.',
+        text: 'Bám sát nhu cầu thiết thực là biểu hiện kinh tế cụ thể của tinh thần vì dân.',
+      },
+    ],
+    sources: ['daihoidangtoanquoc.vn'],
+  },
+
+  'mo-cua': {
+    eyebrow: 'Chính sách · 04',
+    title: 'Mở rộng quan hệ kinh tế đối ngoại',
+    blocks: [
+      {
+        type: 'p',
+        text: 'Khi môi trường quốc tế thay đổi, Việt Nam cần tìm kiếm thêm thị trường, đối tác và nguồn lực mới. Tinh thần Việt Nam muốn là bạn của tất cả các nước trong cộng đồng thế giới tại Đại hội VII thể hiện rõ sự chuyển hướng đối ngoại theo hướng rộng mở, hòa bình và hợp tác.',
+      },
+      {
+        type: 'p',
+        text: 'Chính sách này phù hợp với tư tưởng Hồ Chí Minh về kết hợp sức mạnh dân tộc với sức mạnh thời đại. Việt Nam phải tự lực nhưng không tự cô lập; giữ độc lập tự chủ nhưng vẫn tranh thủ nguồn lực, tri thức, thị trường và quan hệ quốc tế.',
+      },
+      {
+        type: 'callout',
+        text: 'Mở cửa trên nguyên tắc giữ vững lợi ích dân tộc và quyền tự chủ.',
       },
     ],
     sources: ['tulieuvankien.dangcongsan.vn'],
@@ -236,81 +232,81 @@ export const DETAILS: Record<string, Detail> = {
   // Slide: Kết quả
   'ket-qua': {
     eyebrow: 'Phần I · Kết quả',
-    title: 'Kết quả bước đầu sau giai đoạn 1991',
+    title: 'Kết quả giai đoạn 1991 tới 1995',
     blocks: [
       {
         type: 'p',
-        text: 'Sau Đại hội VII, Việt Nam tiếp tục kiên trì đường lối đổi mới và đạt nhiều kết quả quan trọng. Báo cáo tại Đại hội VIII cho biết giai đoạn 1991 tới 1995, tốc độ tăng trưởng GDP bình quân hằng năm đạt 8,2%, sản xuất công nghiệp tăng bình quân 13,3%, sản xuất nông nghiệp tăng 4,5%, kim ngạch xuất khẩu tăng 20%.',
+        text: 'Sau Đại hội VII, Việt Nam tiếp tục kiên trì đường lối Đổi mới. Báo cáo tại Đại hội VIII đánh giá rằng nền kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường có sự quản lý của Nhà nước theo định hướng xã hội chủ nghĩa tiếp tục được xây dựng.',
       },
       {
         type: 'p',
-        text: 'Những kết quả này cho thấy lựa chọn Đổi mới không chỉ là giải pháp tình thế, mà là hướng đi có cơ sở thực tiễn. Việt Nam từng bước ra khỏi tình trạng khủng hoảng, ổn định kinh tế, xã hội và mở rộng quan hệ quốc tế.',
+        text: 'Trong 5 năm 1991 tới 1995, GDP tăng bình quân 8,2% mỗi năm, công nghiệp tăng 13,3%, nông nghiệp tăng 4,5%, kim ngạch xuất khẩu tăng 20%.',
       },
       {
         type: 'callout',
-        text: 'Cách nói chính xác: năm 1991 là điểm thử thách lớn; từ sau Đại hội VII, Việt Nam kiên trì Đổi mới và từng bước vượt qua khủng hoảng trong những năm đầu thập niên 1990, chứ không vượt qua hoàn toàn ngay trong năm đó.',
+        text: 'Những số liệu này cho thấy kết quả của quá trình tiếp tục Đổi mới — không nên hiểu là Việt Nam đã vượt qua hoàn toàn khủng hoảng ngay trong năm 1991. Quá trình vượt khó kinh tế diễn ra trong cả giai đoạn đầu thập niên 1990, đặc biệt là kế hoạch 5 năm 1991 tới 1995.',
       },
     ],
     sources: ['tulieuvankien.dangcongsan.vn'],
   },
 
   // Slide: Bài học — 4 bài học
-  'bh-niem-tin': {
+  'bh-thuc-tien': {
     eyebrow: 'Bài học · 01',
-    title: 'Giữ vững niềm tin và đoàn kết xã hội',
+    title: 'Đổi mới kinh tế phải xuất phát từ thực tiễn',
     blocks: [
       {
         type: 'p',
-        text: 'Khi thế giới biến động, nguy hiểm lớn không chỉ nằm ở khó khăn vật chất, mà còn nằm ở sự mất phương hướng.',
+        text: 'Khi mô hình cũ không còn phù hợp, cần mạnh dạn điều chỉnh cách quản lý, không được bảo thủ hoặc máy móc.',
       },
       {
         type: 'p',
-        text: 'Bài học từ năm 1991 cho thấy đoàn kết toàn dân, ổn định chính trị và niềm tin xã hội là nền tảng để đất nước có thể xử lý khủng hoảng.',
+        text: 'Tinh thần sáng tạo, không giáo điều của tư tưởng Hồ Chí Minh chính là nền tảng giúp Việt Nam dám đổi mới mô hình kinh tế đúng lúc.',
       },
     ],
   },
 
-  'bh-kien-dinh': {
+  'bh-dan-trung-tam': {
     eyebrow: 'Bài học · 02',
-    title: 'Kiên định mục tiêu, không bảo thủ cách làm',
+    title: 'Đặt đời sống nhân dân ở trung tâm',
     blocks: [
       {
         type: 'p',
-        text: 'Đổi mới thành công vì Việt Nam không máy móc giữ lại cơ chế cũ. Tinh thần Hồ Chí Minh là sáng tạo, thực tiễn và phù hợp với điều kiện Việt Nam.',
-      },
-      {
-        type: 'p',
-        text: 'Vì vậy hiện nay, khi đối mặt với chuyển đổi số, biến đổi khí hậu, cạnh tranh kinh tế hay khủng hoảng toàn cầu, Việt Nam cũng cần một tư duy linh hoạt như vậy.',
-      },
-    ],
-  },
-
-  'bh-tu-luc': {
-    eyebrow: 'Bài học · 03',
-    title: 'Tự lực, tự cường là nền tảng của hội nhập',
-    blocks: [
-      {
-        type: 'p',
-        text: 'Hội nhập quốc tế chỉ có hiệu quả khi đất nước có nội lực. Nếu không có năng lực sản xuất, con người, khoa học công nghệ và thể chế đủ mạnh, hội nhập dễ trở thành phụ thuộc.',
-      },
-      {
-        type: 'p',
-        text: 'Tự lực, tự cường vì vậy không đối lập với mở cửa, mà là điều kiện để mở cửa một cách chủ động.',
-      },
-    ],
-  },
-
-  'bh-lay-dan': {
-    eyebrow: 'Bài học · 04',
-    title: 'Lấy dân làm trung tâm của phát triển',
-    blocks: [
-      {
-        type: 'p',
-        text: 'Mọi chính sách phát triển cuối cùng phải hướng đến đời sống nhân dân. Trong khủng hoảng, người dân là đối tượng chịu ảnh hưởng trực tiếp nhất, nhưng cũng là nguồn lực quan trọng nhất để vượt qua khó khăn.',
+        text: 'Tăng trưởng kinh tế chỉ có ý nghĩa bền vững khi góp phần tạo việc làm, tăng thu nhập, ổn định đời sống và nâng cao chất lượng sống của người dân.',
       },
       {
         type: 'callout',
-        text: 'Đây là giá trị cốt lõi của tư tưởng Hồ Chí Minh và vẫn còn nguyên ý nghĩa cho hôm nay.',
+        text: 'Lấy đời sống nhân dân làm mục tiêu là sợi chỉ xuyên suốt từ tư tưởng Hồ Chí Minh đến chính sách kinh tế hôm nay.',
+      },
+    ],
+  },
+
+  'bh-noi-luc': {
+    eyebrow: 'Bài học · 03',
+    title: 'Phát huy nội lực',
+    blocks: [
+      {
+        type: 'p',
+        text: 'Một nền kinh tế muốn đứng vững trước biến động bên ngoài cần có năng lực sản xuất, nguồn nhân lực, doanh nghiệp và thể chế đủ mạnh.',
+      },
+      {
+        type: 'p',
+        text: 'Bài học từ 1991: khi điểm tựa kinh tế truyền thống bị đảo lộn, chính nội lực trong nước — sức dân, đất đai, doanh nghiệp — là cứu cánh.',
+      },
+    ],
+  },
+
+  'bh-mo-cua-tu-chu': {
+    eyebrow: 'Bài học · 04',
+    title: 'Mở cửa đi cùng tự chủ',
+    blocks: [
+      {
+        type: 'p',
+        text: 'Hội nhập quốc tế là cần thiết, nhưng phải dựa trên nền tảng lợi ích quốc gia và khả năng tự chủ của nền kinh tế.',
+      },
+      {
+        type: 'callout',
+        text: 'Mở cửa trong thế chủ động — không tự cô lập, cũng không phụ thuộc.',
       },
     ],
   },

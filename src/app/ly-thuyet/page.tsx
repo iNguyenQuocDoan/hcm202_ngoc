@@ -4,15 +4,14 @@ import {
   Globe2,
   HandHeart,
   Handshake,
-  HeartHandshake,
   Lightbulb,
   Mountain,
   Network,
   Quote,
-  ScrollText,
   ShieldAlert,
+  ShoppingBasket,
   Sprout,
-  Users,
+  Wheat,
 } from 'lucide-react';
 import { IMAGES } from '@/shared/assets/images';
 import { DetailButton } from '@/shared/components/feedback';
@@ -45,13 +44,13 @@ const slideNav = [
 const crisisFacets = [
   {
     icon: ShieldAlert,
-    title: 'Kinh tế bao cấp trì trệ',
-    body: 'Sau 1975, sản xuất trì trệ, đời sống thiếu thốn; lạm phát năm 1986 từng được ghi nhận tới 774,7%.',
+    title: 'Cơ chế bao cấp trì trệ',
+    body: 'Kế hoạch hóa tập trung làm sản xuất thiếu động lực, lưu thông hàng hóa khó khăn, nền kinh tế kém linh hoạt.',
   },
   {
     icon: CloudLightning,
-    title: 'Liên Xô, Đông Âu tan rã',
-    body: 'Các đối tác truyền thống khủng hoảng, làm đảo lộn quan hệ kinh tế, thương mại và viện trợ.',
+    title: 'Liên Xô, Đông Âu khủng hoảng',
+    body: 'Các đối tác kinh tế, thương mại và viện trợ truyền thống đảo lộn, mất một điểm tựa lớn của nền kinh tế.',
   },
   {
     icon: Network,
@@ -59,18 +58,18 @@ const crisisFacets = [
     body: 'Mỹ tiếp tục cấm vận, khiến việc mở rộng quan hệ kinh tế quốc tế thêm khó khăn.',
   },
   {
-    icon: ScrollText,
-    title: 'Giữ vững ổn định và niềm tin',
-    body: 'Biến động thế giới tác động tới tư tưởng của một bộ phận cán bộ, đảng viên và nhân dân.',
+    icon: ShoppingBasket,
+    title: 'Đời sống nhân dân thiếu thốn',
+    body: 'Hàng hóa khan hiếm, sản xuất chưa ổn định — nhu cầu cải thiện đời sống thúc đẩy tiếp tục Đổi mới.',
   },
 ];
 
 const timeline = [
-  { year: '1986', title: 'Đại hội VI', body: 'Khởi xướng đường lối Đổi mới toàn diện.' },
+  { year: '1986', title: 'Đại hội VI', body: 'Khởi xướng Đổi mới: ba chương trình lương thực, hàng tiêu dùng, xuất khẩu.' },
   { year: '1989', title: 'Biến động Đông Âu', body: 'Các nước XHCN Đông Âu rơi vào khủng hoảng.' },
-  { year: '6 · 1991', title: 'Đại hội VII', body: 'Họp tại Hà Nội ngày 24 – 27/6, kiên định mục tiêu.' },
+  { year: '6 · 1991', title: 'Đại hội VII', body: 'Họp tại Hà Nội ngày 24 – 27/6, tiếp tục đường lối Đổi mới.' },
   { year: '12 · 1991', title: 'Liên Xô tan rã', body: 'Trật tự thế giới thay đổi, Việt Nam phải tự chủ.' },
-  { year: '1991 – 95', title: 'Kiên trì Đổi mới', body: 'Từng bước ổn định và phục hồi nền kinh tế.' },
+  { year: '1991 – 95', title: 'Kiên trì Đổi mới', body: 'GDP bình quân +8,2%/năm, từng bước phục hồi nền kinh tế.' },
 ];
 
 const principles = [
@@ -78,31 +77,25 @@ const principles = [
     icon: HandHeart,
     key: 'dan-lam-goc',
     title: 'Lấy dân làm gốc',
-    body: 'Nhân dân là trung tâm của cách mạng và là nguồn sức mạnh quyết định. Mọi chính sách đổi mới đều hướng đến việc làm, lương thực, ổn định giá cả và quyền làm chủ của người dân.',
-  },
-  {
-    icon: Users,
-    key: 'doan-ket',
-    title: 'Đại đoàn kết toàn dân',
-    body: 'Đoàn kết là sức mạnh nền tảng của dân tộc. Giữ vững đồng thuận xã hội giúp ổn định chính trị và tạo môi trường cho đổi mới kinh tế.',
+    body: 'Đổi mới kinh tế phải hướng vào đời sống nhân dân: việc làm, lương thực, hàng tiêu dùng, thu nhập và quyền làm chủ.',
   },
   {
     icon: Mountain,
     key: 'tu-luc',
     title: 'Tự lực, tự cường',
-    body: 'Khi nguồn lực bên ngoài đảo lộn, đất nước phải phát huy nội lực. Tự lực không phải tự cô lập, mà là có thực lực để chủ động hội nhập.',
+    body: 'Khi điểm tựa kinh tế truyền thống đảo lộn, đất nước phải phát huy nội lực để không bị động trước biến động quốc tế.',
   },
   {
     icon: Compass,
     key: 'kien-dinh',
-    title: 'Kiên định, linh hoạt',
-    body: 'Giữ vững mục tiêu độc lập dân tộc gắn với chủ nghĩa xã hội, nhưng không bảo thủ với cơ chế cũ. Đổi mới là điều chỉnh phương pháp, không phải từ bỏ lý tưởng.',
+    title: 'Sáng tạo, không giáo điều',
+    body: 'Giữ mục tiêu xã hội chủ nghĩa nhưng không đồng nhất nó với cơ chế bao cấp — đổi mới phương pháp tổ chức nền kinh tế.',
   },
   {
     icon: Globe2,
     key: 'doc-lap-hop-tac',
-    title: 'Độc lập gắn hợp tác',
-    body: 'Việt Nam không khép kín mà đa phương hóa quan hệ. Tinh thần Đại hội VII: muốn là bạn của tất cả các nước, vì hòa bình và phát triển.',
+    title: 'Độc lập tự chủ, mở cửa',
+    body: 'Mở rộng quan hệ kinh tế đối ngoại trên nền tảng độc lập tự chủ: kết hợp sức mạnh dân tộc với sức mạnh thời đại.',
   },
 ];
 
@@ -116,20 +109,20 @@ const policies = [
   {
     icon: Globe2,
     key: 'co-che-thi-truong',
-    title: 'Cơ chế thị trường có quản lý',
+    title: 'Thị trường có quản lý',
     body: 'Không phủ nhận thị trường nhưng không để vận hành tự phát. Nhà nước định hướng và điều tiết bằng pháp luật, kế hoạch và chính sách.',
+  },
+  {
+    icon: Wheat,
+    key: 'nhu-cau-thiet-thuc',
+    title: 'Nhu cầu kinh tế thiết thực',
+    body: 'Tiếp tục ba chương trình từ Đại hội VI: lương thực thực phẩm, hàng tiêu dùng và hàng xuất khẩu — bám sát đời sống nhân dân.',
   },
   {
     icon: Handshake,
     key: 'mo-cua',
-    title: 'Mở cửa, tăng cường đối ngoại',
-    body: 'Mở rộng quan hệ với các nước và tổ chức quốc tế, kết hợp sức mạnh dân tộc với sức mạnh thời đại — tự lực nhưng không tự cô lập.',
-  },
-  {
-    icon: HeartHandshake,
-    key: 'cham-lo-dan',
-    title: 'Chăm lo đời sống nhân dân',
-    body: 'Đổi mới gắn với việc làm, giáo dục, văn hóa và sức khỏe. Cải thiện đời sống để giữ vững niềm tin xã hội.',
+    title: 'Mở rộng đối ngoại',
+    body: 'Mở rộng quan hệ kinh tế với các nước và tổ chức quốc tế, kết hợp sức mạnh dân tộc với sức mạnh thời đại — tự lực nhưng không tự cô lập.',
   },
 ];
 
@@ -143,27 +136,27 @@ const results = [
 const lessons = [
   {
     n: '01',
-    key: 'bh-niem-tin',
-    title: 'Giữ niềm tin và đoàn kết',
-    body: 'Trong biến động, nguy hiểm lớn nhất là mất phương hướng. Đoàn kết và niềm tin xã hội là nền tảng để xử lý khủng hoảng.',
+    key: 'bh-thuc-tien',
+    title: 'Xuất phát từ thực tiễn',
+    body: 'Khi mô hình cũ không còn phù hợp, cần mạnh dạn đổi mới cách quản lý, không bảo thủ, không máy móc.',
   },
   {
     n: '02',
-    key: 'bh-kien-dinh',
-    title: 'Kiên định, không bảo thủ',
-    body: 'Giữ vững mục tiêu nhưng sẵn sàng đổi mới cách làm, với tư duy sáng tạo và bám sát thực tiễn.',
+    key: 'bh-dan-trung-tam',
+    title: 'Đời sống nhân dân là trung tâm',
+    body: 'Tăng trưởng kinh tế chỉ bền vững khi tạo việc làm, tăng thu nhập, nâng chất lượng sống của người dân.',
   },
   {
     n: '03',
-    key: 'bh-tu-luc',
-    title: 'Tự lực là nền của hội nhập',
-    body: 'Hội nhập chỉ hiệu quả khi có nội lực về sản xuất, con người và thể chế; nếu không, dễ thành phụ thuộc.',
+    key: 'bh-noi-luc',
+    title: 'Phát huy nội lực',
+    body: 'Muốn đứng vững trước biến động bên ngoài, nền kinh tế phải có năng lực sản xuất, con người và thể chế đủ mạnh.',
   },
   {
     n: '04',
-    key: 'bh-lay-dan',
-    title: 'Lấy dân làm trung tâm',
-    body: 'Nhân dân chịu ảnh hưởng trực tiếp nhất, nhưng cũng là nguồn lực quan trọng nhất để vượt qua khó khăn.',
+    key: 'bh-mo-cua-tu-chu',
+    title: 'Mở cửa đi cùng tự chủ',
+    body: 'Hội nhập là cần thiết, nhưng phải dựa trên lợi ích quốc gia và khả năng tự chủ của nền kinh tế.',
   },
 ];
 
@@ -208,13 +201,13 @@ export default function LyThuyetPage() {
           </h1>
           <Reveal delay={0.22}>
             <p className="mt-6 max-w-2xl font-display text-2xl italic leading-snug text-ink-soft md:text-3xl">
-              Bài học từ khủng hoảng và tư duy Đổi mới.
+              Vận dụng tư tưởng Hồ Chí Minh trong tiếp tục Đổi mới kinh tế.
             </p>
           </Reveal>
           <Reveal delay={0.34}>
             <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-ink/75">
-              Việt Nam không vượt qua khó khăn bằng cách đứng yên, mà bằng cách kiên định mục tiêu
-              và linh hoạt trong phương pháp.
+              Đổi mới không bắt đầu từ 1991 mà từ Đại hội VI năm 1986. Năm 1991 là mốc Việt Nam
+              tiếp tục kiểm nghiệm, củng cố và phát triển đường lối Đổi mới giữa biến động lớn.
             </p>
           </Reveal>
           <Reveal delay={0.46}>
@@ -232,26 +225,31 @@ export default function LyThuyetPage() {
       <Slide id="mo-dau" tone="deep">
         <div className="grid items-center gap-8 md:grid-cols-[1.05fr_0.95fr] md:gap-12">
           <div>
-            <SlideHeading eyebrow="Mở đầu" index="00" title="Một thời điểm đặc biệt của lịch sử" />
+            <SlideHeading
+              eyebrow="Mở đầu"
+              index="00"
+              title="Một mốc quan trọng của Đổi mới kinh tế"
+            />
             <Reveal delay={0.1}>
               <p className="mt-6 text-[16px] leading-relaxed text-ink/85">
-                Năm 1991 là thời điểm Việt Nam phải chứng minh bản lĩnh lựa chọn con đường phát
-                triển giữa một thế giới biến động mạnh. Đại hội VII của Đảng họp tại Hà Nội từ
-                ngày 24 đến 27 tháng 6 năm 1991, đúng lúc hệ thống xã hội chủ nghĩa ở Liên Xô và
-                Đông Âu lâm vào khủng hoảng nghiêm trọng.
+                Năm 1991 là một mốc quan trọng trong quá trình Đổi mới kinh tế của Việt Nam.
+                Đổi mới không bắt đầu từ năm 1991, mà đã được khởi xướng từ Đại hội VI năm 1986.
+                Năm 1991 là thời điểm Việt Nam tiếp tục kiểm nghiệm, củng cố và phát triển đường
+                lối Đổi mới giữa nhiều biến động lớn.
               </p>
             </Reveal>
             <Reveal delay={0.18}>
               <p className="mt-3.5 text-[16px] leading-relaxed text-ink-soft">
-                Vượt Bão 1991 là câu chuyện vận dụng tư tưởng Hồ Chí Minh để giữ vững mục tiêu độc
-                lập dân tộc gắn với chủ nghĩa xã hội, đồng thời đổi mới tư duy, đổi mới cách làm và
-                mở rộng quan hệ quốc tế.
+                Đại hội VII của Đảng họp tại Hà Nội từ 24 đến 27/6/1991, đúng lúc kinh tế trong
+                nước còn khó khăn và hệ thống xã hội chủ nghĩa ở Liên Xô, Đông Âu lâm vào khủng
+                hoảng. Đổi mới từ Đại hội VI đã đạt thành tựu bước đầu, giúp Việt Nam đứng vững.
               </p>
             </Reveal>
             <Reveal delay={0.26}>
               <p className="mt-5 bg-paper/70 px-5 py-3.5 font-display text-[15px] italic leading-snug text-ink">
-                “Việt Nam không vượt qua khó khăn bằng cách đứng yên, mà bằng cách kiên định mục
-                tiêu nhưng linh hoạt trong phương pháp.”
+                Việt Nam vận dụng tư tưởng Hồ Chí Minh để tiếp tục Đổi mới — phát huy nội lực,
+                lấy đời sống nhân dân làm mục tiêu, chuyển dần từ bao cấp sang kinh tế hàng hóa
+                nhiều thành phần.
               </p>
             </Reveal>
             <Reveal delay={0.34}>
@@ -282,13 +280,13 @@ export default function LyThuyetPage() {
         <SlideHeading
           eyebrow="Bối cảnh"
           index="01"
-          title="Khủng hoảng dồn dập trên nhiều mặt trận"
+          title="Khó khăn dồn dập trên nhiều mặt trận"
         />
         <Reveal delay={0.1}>
           <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-ink-soft">
-            Đại hội VI năm 1986 đã mở ra đường lối Đổi mới — thay đổi cách quản lý chứ không từ bỏ
-            mục tiêu xã hội chủ nghĩa. Nhưng đến năm 1991, đất nước lại đứng trước một cơn bão mới
-            với nhiều thử thách cùng lúc.
+            Đại hội VI năm 1986 đã mở đường lối Đổi mới với ba chương trình kinh tế: lương thực
+            thực phẩm, hàng tiêu dùng, xuất khẩu. Nhưng đến năm 1991, đất nước lại đứng trước
+            áp lực lớn từ trong nước và biến động quốc tế.
           </p>
         </Reveal>
         <Stagger className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -353,15 +351,15 @@ export default function LyThuyetPage() {
         <SlideHeading
           eyebrow="Vận dụng tư tưởng"
           index="02"
-          title="Năm luận điểm dẫn đường vượt bão"
+          title="Bốn luận điểm dẫn đường Đổi mới kinh tế"
         />
         <Reveal delay={0.1}>
           <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-ink-soft">
-            Mỗi luận điểm là một thẻ riêng — chọn “Đọc chi tiết” để xem cách tư tưởng Hồ Chí Minh
-            được vận dụng đầy đủ vào bối cảnh năm 1991.
+            Tư tưởng Hồ Chí Minh không nằm ở một chính sách kinh tế cụ thể duy nhất, mà nằm ở
+            cách Việt Nam xác định mục tiêu, nguyên tắc và phương pháp giải quyết khó khăn kinh tế.
           </p>
         </Reveal>
-        <Stagger className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Stagger className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {principles.map((p, i) => {
             const Icon = p.icon;
             return (
@@ -397,12 +395,12 @@ export default function LyThuyetPage() {
         <SlideHeading
           eyebrow="Chính sách"
           index="03"
-          title="Đổi mới linh hoạt, mở cửa có nguyên tắc"
+          title="Biểu hiện cụ thể trong chính sách kinh tế"
         />
         <Reveal delay={0.1}>
           <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-ink-soft">
-            Từ những định hướng tư tưởng đó, bốn nhóm chính sách then chốt được triển khai, từng
-            bước đưa Việt Nam thoát khỏi khủng hoảng.
+            Từ các định hướng tư tưởng đó, bốn nhóm chính sách then chốt được triển khai, từng
+            bước đưa Việt Nam thoát khỏi tình trạng khủng hoảng kinh tế đầu thập niên 1990.
           </p>
         </Reveal>
         <Stagger className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -468,8 +466,8 @@ export default function LyThuyetPage() {
             </Reveal>
             <Reveal delay={0.28}>
               <p className="mt-6 max-w-md text-[15px] leading-relaxed text-paper/70">
-                Lấy dân làm gốc là điểm tựa xuyên suốt: vượt qua khủng hoảng không chỉ là nhiệm vụ
-                của Nhà nước, mà là quá trình khơi dậy sức dân, dựa vào dân và vì dân.
+                Lấy dân làm gốc trong kinh tế nghĩa là lấy đời sống nhân dân làm mục tiêu và lấy
+                sức dân làm động lực phát triển. Đây là sợi chỉ xuyên suốt mọi chính sách Đổi mới.
               </p>
             </Reveal>
           </div>
@@ -485,8 +483,9 @@ export default function LyThuyetPage() {
         />
         <Reveal delay={0.1}>
           <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-ink-soft">
-            Sau Đại hội VII, Việt Nam kiên trì đường lối đổi mới. Theo báo cáo tại Đại hội VIII,
-            giai đoạn 1991 đến 1995 ghi nhận những kết quả quan trọng.
+            Sau Đại hội VII, Việt Nam tiếp tục kiên trì đường lối Đổi mới. Báo cáo tại Đại hội VIII
+            đánh giá nền kinh tế hàng hóa nhiều thành phần tiếp tục được xây dựng và đạt nhiều
+            kết quả quan trọng.
           </p>
         </Reveal>
         <Stagger className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -503,9 +502,10 @@ export default function LyThuyetPage() {
         </Stagger>
         <Reveal delay={0.2}>
           <p className="mt-5 text-[14.5px] italic leading-relaxed text-ink-soft">
-            Năm 1991 là điểm thử thách lớn; từ sau Đại hội VII, Việt Nam{' '}
-            <strong className="not-italic text-ink">từng bước</strong> vượt qua khủng hoảng trong
-            những năm đầu thập niên 1990, chứ không vượt qua hoàn toàn ngay trong năm đó.
+            Cần hiểu đúng: năm 1991 là mốc thử thách lớn, còn quá trình vượt khó kinh tế diễn ra
+            trong cả{' '}
+            <strong className="not-italic text-ink">kế hoạch 5 năm 1991 – 1995</strong>, chứ
+            không vượt qua hoàn toàn ngay trong năm đó.
           </p>
         </Reveal>
         <Reveal delay={0.28}>
@@ -562,15 +562,16 @@ export default function LyThuyetPage() {
             <SlideHeading eyebrow="Kết luận" index="06" title="Kiên định mục tiêu, đổi mới cách đi" />
             <Reveal delay={0.1}>
               <p className="mt-6 text-xl leading-relaxed text-ink md:text-2xl">
-                Kiên định không có nghĩa là bảo thủ; linh hoạt không có nghĩa là mất phương hướng.
-                Việt Nam năm 1991 chọn cách giữ vững mục tiêu nhưng thay đổi cách đi.
+                Việt Nam đã không quay lại cơ chế bao cấp cũ, cũng không dao động trước biến động
+                quốc tế. Đổi mới tiếp tục theo hướng thực tế: phát huy sức dân, nhiều thành phần
+                kinh tế, thị trường có quản lý và mở rộng đối ngoại.
               </p>
             </Reveal>
             <Reveal delay={0.18}>
               <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
-                Trong khủng hoảng, một quốc gia cần bản lĩnh, đoàn kết, nội lực và tư duy đổi mới.
-                Sức mạnh bền vững phải bắt đầu từ nhân dân — đó là sức sống của tư tưởng Hồ Chí
-                Minh, còn nguyên giá trị cho hôm nay.
+                Bài học từ tư tưởng Hồ Chí Minh: muốn vượt khó khăn kinh tế, một quốc gia cần dám
+                đổi mới tư duy quản lý, phát huy sức dân, xây dựng nội lực, mở cửa trong thế chủ
+                động và luôn đặt đời sống nhân dân ở trung tâm.
               </p>
             </Reveal>
             <Reveal delay={0.26}>
