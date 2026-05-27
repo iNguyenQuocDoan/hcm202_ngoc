@@ -45,64 +45,64 @@ const slideNav = [
 const crisisFacets = [
   {
     icon: ShieldAlert,
-    title: 'Kinh tế bao cấp trì trệ',
-    body: 'Sau 1975, sản xuất trì trệ, đời sống thiếu thốn; lạm phát năm 1986 từng được ghi nhận tới 774,7%.',
+    title: 'Đứt gãy nguồn viện trợ',
+    body: 'Liên Xô cắt đứt hoàn toàn khoản viện trợ 1 tỷ USD hằng năm cùng 90% lượng phân bón, xăng dầu thiết yếu cung cấp cho nước ta.',
   },
   {
     icon: CloudLightning,
-    title: 'Liên Xô, Đông Âu tan rã',
-    body: 'Các đối tác truyền thống khủng hoảng, làm đảo lộn quan hệ kinh tế, thương mại và viện trợ.',
+    title: 'Mất thị trường COMECON',
+    body: 'Khối Đông Âu sụp đổ đột ngột, xóa sổ thị trường xuất nhập khẩu truyền thống vốn chiếm tới 80% tổng kim ngạch thương mại.',
   },
   {
     icon: Network,
-    title: 'Vẫn chịu bao vây, cấm vận',
-    body: 'Mỹ tiếp tục cấm vận, khiến việc mở rộng quan hệ kinh tế quốc tế thêm khó khăn.',
+    title: 'Cơn bão lạm phát 67.5%',
+    body: 'Đồng tiền mất giá phi mã, người dân đổ xô trữ vàng/USD kéo theo khủng hoảng tín dụng tự phát đổ vỡ nghiêm trọng.',
   },
   {
     icon: ScrollText,
-    title: 'Giữ vững ổn định và niềm tin',
-    body: 'Biến động thế giới tác động tới tư tưởng của một bộ phận cán bộ, đảng viên và nhân dân.',
+    title: 'Bao vây cấm vận của Mỹ',
+    body: 'Mỹ tiếp tục siết chặt cấm vận, ngăn chặn hoàn toàn khả năng tiếp cận các nguồn vốn vay ưu đãi quốc tế từ IMF và WB.',
   },
 ];
 
 const timeline = [
-  { year: '1986', title: 'Đại hội VI', body: 'Khởi xướng đường lối Đổi mới toàn diện.' },
-  { year: '1989', title: 'Biến động Đông Âu', body: 'Các nước XHCN Đông Âu rơi vào khủng hoảng.' },
-  { year: '6 · 1991', title: 'Đại hội VII', body: 'Họp tại Hà Nội ngày 24 – 27/6, kiên định mục tiêu.' },
-  { year: '12 · 1991', title: 'Liên Xô tan rã', body: 'Trật tự thế giới thay đổi, Việt Nam phải tự chủ.' },
-  { year: '1991 – 95', title: 'Kiên trì Đổi mới', body: 'Từng bước ổn định và phục hồi nền kinh tế.' },
+  { year: '1986', title: 'Đại hội VI', body: 'Khởi xướng đường lối Đổi mới, chuyển đổi tư duy kinh tế.' },
+  { year: '1989', title: 'Cột mốc xuất khẩu', body: 'Việt Nam tự chủ lương thực, bắt đầu xuất khẩu gạo lớn lần đầu tiên.' },
+  { year: '6 · 1991', title: 'Đại hội VII', body: 'Họp tại Hà Nội ngày 24 – 27/6, kiên định định hướng, thúc đẩy thị trường.' },
+  { year: '11 · 1991', title: 'Bình thường hóa quan hệ', body: 'Việt - Trung bình thường hóa ngoại giao, khai thông mậu dịch biên giới.' },
+  { year: '1991 – 95', title: 'Vượt bão kinh tế', body: 'Kiên trì cải cách tiền tệ và cởi trói tư nhân, kéo lạm phát về một con số.' },
 ];
 
 const principles = [
   {
     icon: HandHeart,
     key: 'dan-lam-goc',
-    title: 'Lấy dân làm gốc',
-    body: 'Nhân dân là trung tâm của cách mạng và là nguồn sức mạnh quyết định. Mọi chính sách đổi mới đều hướng đến việc làm, lương thực, ổn định giá cả và quyền làm chủ của người dân.',
+    title: 'Giải phóng sức sản xuất',
+    body: 'Lấy lợi ích thực chất của dân làm gốc. Việc giao quyền tự chủ ruộng đất lâu dài cho hộ nông dân qua Khoán 10 đã tạo động lực nông nghiệp khổng lồ.',
   },
   {
     icon: Users,
     key: 'doan-ket',
-    title: 'Đại đoàn kết toàn dân',
-    body: 'Đoàn kết là sức mạnh nền tảng của dân tộc. Giữ vững đồng thuận xã hội giúp ổn định chính trị và tạo môi trường cho đổi mới kinh tế.',
+    title: 'Ổn định vĩ mô giữ lòng dân',
+    body: 'Đồng thuận vượt khó. Kiểm soát lạm phát và ổn định đồng nội tệ là nền tảng sống còn để giữ vững lòng tin xã hội và củng cố khối đoàn kết.',
   },
   {
     icon: Mountain,
     key: 'tu-luc',
-    title: 'Tự lực, tự cường',
-    body: 'Khi nguồn lực bên ngoài đảo lộn, đất nước phải phát huy nội lực. Tự lực không phải tự cô lập, mà là có thực lực để chủ động hội nhập.',
+    title: 'Huy động nội lực tài chính',
+    body: 'Tự lực cánh sinh. Khơi thông dòng vốn nhàn rỗi, vàng và ngoại tệ trữ trong dân bằng chính sách lãi suất thực dương cao để tự cứu mình.',
   },
   {
     icon: Compass,
     key: 'kien-dinh',
-    title: 'Kiên định, linh hoạt',
-    body: 'Giữ vững mục tiêu độc lập dân tộc gắn với chủ nghĩa xã hội, nhưng không bảo thủ với cơ chế cũ. Đổi mới là điều chỉnh phương pháp, không phải từ bỏ lý tưởng.',
+    title: 'Kiên định và linh hoạt',
+    body: 'Giữ vững độc lập định hướng phát triển, nhưng linh hoạt tối đa áp dụng các quy luật thị trường khách quan và công cụ quản lý tiền tệ mới.',
   },
   {
     icon: Globe2,
     key: 'doc-lap-hop-tac',
-    title: 'Độc lập gắn hợp tác',
-    body: 'Việt Nam không khép kín mà đa phương hóa quan hệ. Tinh thần Đại hội VII: muốn là bạn của tất cả các nước, vì hòa bình và phát triển.',
+    title: 'Tự chủ gắn với mở cửa',
+    body: 'Mở rộng thị trường ngoại thương đa phương, xoay trục thương mại sang ASEAN, Nhật Bản để giải tỏa thế cấm vận bị cô lập.',
   },
 ];
 
@@ -110,60 +110,60 @@ const policies = [
   {
     icon: Sprout,
     key: 'kinh-te-nhieu-thanh-phan',
-    title: 'Kinh tế nhiều thành phần',
-    body: 'Thừa nhận và phát triển nền kinh tế hàng hóa nhiều thành phần, giải phóng sức sản xuất. Người dân, hộ gia đình, doanh nghiệp tư nhân và nhà nước cùng tham gia phát triển.',
+    title: 'Cởi trói kinh tế tư nhân',
+    body: 'Luật Doanh nghiệp tư nhân và Luật Công ty 1990 (hiệu lực năm 1991) tạo hành lang pháp lý chính thức cho tư nhân bỏ vốn thành lập công ty.',
   },
   {
     icon: Globe2,
     key: 'co-che-thi-truong',
-    title: 'Cơ chế thị trường có quản lý',
-    body: 'Không phủ nhận thị trường nhưng không để vận hành tự phát. Nhà nước định hướng và điều tiết bằng pháp luật, kế hoạch và chính sách.',
+    title: 'Xóa bao cấp SOE & Giá cả',
+    body: 'Xóa bỏ bù lỗ bao cấp cho quốc doanh (SOE), buộc tự hạch toán độc lập; áp dụng giá thị trường tự do và đẩy mạnh lãi suất thực dương.',
   },
   {
     icon: Handshake,
     key: 'mo-cua',
-    title: 'Mở cửa, tăng cường đối ngoại',
-    body: 'Mở rộng quan hệ với các nước và tổ chức quốc tế, kết hợp sức mạnh dân tộc với sức mạnh thời đại — tự lực nhưng không tự cô lập.',
+    title: 'Đa phương hóa thương mại',
+    body: 'Tìm bạn hàng ngoại thương mới, thúc đẩy liên doanh đầu tư trực tiếp nước ngoài (FDI) bù đắp khoảng trống vốn và công nghệ.',
   },
   {
     icon: HeartHandshake,
     key: 'cham-lo-dan',
-    title: 'Chăm lo đời sống nhân dân',
-    body: 'Đổi mới gắn với việc làm, giáo dục, văn hóa và sức khỏe. Cải thiện đời sống để giữ vững niềm tin xã hội.',
+    title: 'Giải quyết việc làm thực chất',
+    body: 'Giải quyết an sinh cho lao động dôi dư bằng cách khuyến khích tự doanh, lập quỹ vốn vay nhỏ quốc gia và phát triển tiểu thủ công nghiệp.',
   },
 ];
 
 const results = [
-  { value: 8.2, decimals: 1, label: 'Tăng trưởng GDP bình quân mỗi năm' },
+  { value: 8.2, decimals: 1, label: 'Tăng trưởng GDP bình quân mỗi năm (1991-1995)' },
   { value: 13.3, decimals: 1, label: 'Tăng bình quân sản xuất công nghiệp' },
   { value: 4.5, decimals: 1, label: 'Tăng bình quân sản xuất nông nghiệp' },
-  { value: 20, decimals: 0, label: 'Mức tăng kim ngạch xuất khẩu' },
+  { value: 20, decimals: 0, label: 'Mức tăng kim ngạch xuất khẩu ngoại thương' },
 ];
 
 const lessons = [
   {
     n: '01',
     key: 'bh-niem-tin',
-    title: 'Giữ niềm tin và đoàn kết',
-    body: 'Trong biến động, nguy hiểm lớn nhất là mất phương hướng. Đoàn kết và niềm tin xã hội là nền tảng để xử lý khủng hoảng.',
+    title: 'Kiềm lạm phát, ổn định vĩ mô',
+    body: 'Trong mọi cuộc khủng hoảng kinh tế, ổn định đồng tiền và kiềm chế lạm phát là nền tảng cốt lõi để giữ lòng dân và duy trì sản xuất.',
   },
   {
     n: '02',
     key: 'bh-kien-dinh',
-    title: 'Kiên định, không bảo thủ',
-    body: 'Giữ vững mục tiêu nhưng sẵn sàng đổi mới cách làm, với tư duy sáng tạo và bám sát thực tiễn.',
+    title: 'Tôn trọng quy luật thị trường',
+    body: 'Dũng cảm xóa bỏ cơ chế quản lý hành chính ép giá, để quy luật cung cầu điều tiết và cởi trói quyền tự do kinh doanh của nhân dân.',
   },
   {
     n: '03',
     key: 'bh-tu-luc',
-    title: 'Tự lực là nền của hội nhập',
-    body: 'Hội nhập chỉ hiệu quả khi có nội lực về sản xuất, con người và thể chế; nếu không, dễ thành phụ thuộc.',
+    title: 'Xây dựng nền kinh tế tự chủ',
+    body: 'Đa dạng hóa đối tác ngoại thương, tránh phụ thuộc vào một thị trường duy nhất để nâng cao khả năng chống chịu trước địa chính trị.',
   },
   {
     n: '04',
     key: 'bh-lay-dan',
-    title: 'Lấy dân làm trung tâm',
-    body: 'Nhân dân chịu ảnh hưởng trực tiếp nhất, nhưng cũng là nguồn lực quan trọng nhất để vượt qua khó khăn.',
+    title: 'Dân giàu để nước mạnh',
+    body: 'Giải phóng tiềm năng lao động sáng tạo và tài sản nhàn rỗi trong dân là cội nguồn động lực vượt qua mọi sóng gió phát triển.',
   },
 ];
 

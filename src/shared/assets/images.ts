@@ -26,6 +26,11 @@ export const IMAGES = {
     alt: 'Một góc thành phố Hà Nội.',
     credit: 'Wikimedia Commons',
   },
+  videoPoster1991: {
+    src: '/images/video-poster-1991.png',
+    alt: 'Cảnh phố cổ Hà Nội năm 1991 và tia nắng đổi mới.',
+    credit: 'AI Generated',
+  },
   hanoiSunset: {
     src: '/images/hanoi-sunset.jpg',
     alt: 'Hoàng hôn trên bầu trời Hà Nội sau cơn mưa.',

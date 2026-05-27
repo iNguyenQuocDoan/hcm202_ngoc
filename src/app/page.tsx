@@ -31,14 +31,15 @@ const slideNav = [
 const lecturer = { name: 'Hoàng Thắng', role: 'Giảng viên hướng dẫn' };
 
 const marqueeWords = [
-  'Vượt Bão 1991',
-  'Đổi mới 1986',
-  'Đại hội VII',
+  'Vượt Bão Kinh Tế 1991',
+  'Đổi mới Kinh tế 1986',
+  'Luật Doanh nghiệp 1990',
+  'Khoán 10 Nông nghiệp',
+  'Xóa bỏ bao cấp',
+  'Kiềm chế siêu lạm phát',
   'Tự lực tự cường',
-  'Lấy dân làm gốc',
-  'Đại đoàn kết toàn dân',
-  'Kinh tế nhiều thành phần',
-  'Kiên định mục tiêu',
+  'Cơ chế thị trường',
+  'Đa phương hóa thương mại',
 ];
 
 const groupMembers = [
@@ -51,23 +52,23 @@ const groupMembers = [
 const outline = [
   {
     n: '01',
-    title: 'Bối cảnh lịch sử năm 1991',
-    body: 'Khủng hoảng kinh tế trong nước và biến động quốc tế dồn dập đặt đất nước trước một bước ngoặt.',
+    title: 'Bối cảnh Khủng hoảng & Cú sốc 1991',
+    body: 'Mất nguồn viện trợ Liên Xô, sụp đổ thị trường COMECON và cơn bão siêu lạm phát 67.5%.',
   },
   {
     n: '02',
-    title: 'Vận dụng tư tưởng Hồ Chí Minh',
-    body: 'Tự lực, đoàn kết và lấy nhân dân làm trung tâm.',
+    title: 'Tư duy Đổi mới trong Kinh tế',
+    body: 'Vận dụng tư tưởng Hồ Chí Minh về tự lực cánh sinh và giải phóng sức sản xuất trong dân.',
   },
   {
     n: '03',
-    title: 'Đường lối đổi mới và chính sách',
-    body: 'Mở cửa có nguyên tắc, kinh tế nhiều thành phần.',
+    title: 'Cải cách Thể chế & Mở cửa Ngoại thương',
+    body: 'Luật Doanh nghiệp tư nhân 1990, xóa bao cấp xí nghiệp nhà nước và đa phương hóa đối tác.',
   },
   {
     n: '04',
-    title: 'Bài học cho giai đoạn hiện nay',
-    body: 'Kiên định nguyên tắc, đổi mới liên tục, khơi dậy nội lực và sức mạnh từ nhân dân.',
+    title: 'Bài học Quản trị Kinh tế Vĩ mô',
+    body: 'Kiềm chế lạm phát, tôn trọng quy luật thị trường và lấy sự thịnh vượng của dân làm gốc.',
   },
 ];
 
@@ -154,7 +155,7 @@ export default function HomePage() {
             </h1>
             <Reveal delay={0.22}>
               <p className="mt-6 max-w-xl font-display text-2xl italic leading-snug text-ink-soft md:text-3xl">
-                Bài học từ khủng hoảng và tư duy Đổi mới.
+                Bài học tư duy và áp dụng đổi mới trong kinh tế.
               </p>
             </Reveal>
             <Reveal delay={0.34}>

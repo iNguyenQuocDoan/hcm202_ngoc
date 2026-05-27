@@ -16,13 +16,11 @@ import {
   Sparkles,
   RotateCcw,
   Activity,
-  FileText,
   Bookmark,
   ExternalLink,
 } from 'lucide-react';
 import { Footer } from '@/shared/components/layout';
 import { Reveal, ScrollProgress, TiltCard, Stagger, StaggerItem } from '@/shared/components/motion';
-import { IMAGES } from '@/shared/assets/images';
 import { cn } from '@/shared/utils';
 
 // Helper to format seconds to MM:SS
@@ -44,168 +42,45 @@ interface Chapter {
 const CHAPTERS: Chapter[] = [
   {
     id: 'mo-dau',
-    title: 'Mở đầu & Bối cảnh Lịch sử',
+    title: 'Giới thiệu: Khủng hoảng & Đổi mới',
     start: 0,
-    end: 70, // 01:10
-    description: 'Đại hội VII năm 1991 diễn ra giữa lúc hệ thống xã hội chủ nghĩa ở Liên Xô và Đông Âu khủng hoảng nghiêm trọng.',
+    end: 40,
+    description: 'Tổng quan bối cảnh khủng hoảng kinh tế năm 1991 và bước ngoặt đổi mới của Việt Nam.',
   },
   {
-    id: 'thu-thach',
-    title: 'Thử thách & Khó khăn Chồng chất',
-    start: 70,
-    end: 160, // 02:40
-    description: 'Mỹ cấm vận khắc nghiệt, nước ta mất đi nguồn viện trợ và thị trường truyền thống, đòi hỏi lối thoát tự chủ.',
+    id: 'chuong-1',
+    title: 'Chương 1: Sụp đổ khối COMECON',
+    start: 40,
+    end: 100,
+    description: 'Cú sốc ngoại sinh khi Liên Xô tan rã, cắt đứt hoàn toàn viện trợ và 80% thị trường xuất nhập khẩu.',
   },
   {
-    id: 'tu-tuong',
-    title: 'Vận dụng Tư tưởng Hồ Chí Minh',
-    start: 160,
-    end: 270, // 04:30
-    description: 'Khơi dậy sức mạnh của lòng dân qua tinh thần lấy dân làm gốc, tự lực tự cường và đại đoàn kết.',
+    id: 'chuong-2',
+    title: 'Chương 2: Khủng hoảng Lạm phát',
+    start: 100,
+    end: 159,
+    description: 'Điểm đứt gãy bên trong với siêu lạm phát 67.5% và sự đổ vỡ của các hợp tác xã tín dụng.',
   },
   {
-    id: 'chinh-sach',
-    title: 'Chính sách Đổi mới Thực tiễn',
-    start: 270,
-    end: 360, // 06:00
-    description: 'Thừa nhận kinh tế nhiều thành phần, mở cửa ngoại giao và lấy hạnh phúc của dân làm thước đo phát triển.',
+    id: 'chuong-3',
+    title: 'Chương 3: Cởi trói Kinh tế',
+    start: 159,
+    end: 230,
+    description: 'Áp dụng Khoán 10 nông nghiệp, Luật Doanh nghiệp tư nhân 1990 và xóa bao cấp quốc doanh.',
   },
   {
-    id: 'bai-hoc',
-    title: 'Kết quả & Bài học Hôm nay',
-    start: 360,
-    end: 419, // 06:59
-    description: 'Thành tựu tăng trưởng GDP 8.2% (1991-1995) và bài học về bản lĩnh vượt bão trong kỷ nguyên hội nhập.',
-  },
-];
-
-interface TranscriptItem {
-  start: number;
-  end: number;
-  text: string;
-  speaker: string;
-}
-
-const TRANSCRIPT: TranscriptItem[] = [
-  {
-    start: 0,
-    end: 15,
-    speaker: 'Thuyết minh',
-    text: 'Năm 1991. Giữa lúc trật tự thế giới đang đảo lộn dữ dội với sự khủng hoảng và sụp đổ của Liên Xô và Đông Âu, đất nước Việt Nam đứng trước một cơn bão lớn chưa từng có.',
+    id: 'chuong-4',
+    title: 'Chương 4: Phá thế Cô lập',
+    start: 230,
+    end: 290,
+    description: 'Xoay trục ngoại giao, bình thường hóa quan hệ Việt - Trung và mở rộng thị trường sang ASEAN, Đông Á.',
   },
   {
-    start: 15,
-    end: 35,
-    speaker: 'Thuyết minh',
-    text: 'Đại hội Đảng toàn quốc lần thứ VII diễn ra trong bầu không khí đầy thử thách. Khủng hoảng kinh tế trong nước cộng hưởng với những biến động dồn dập từ quốc tế đã đặt sự sinh tồn của chế độ và sự phát triển của quốc gia trước bước ngoặt sống còn.',
-  },
-  {
-    start: 35,
-    end: 55,
-    speaker: 'Thuyết minh',
-    text: 'Lạm phát phi mã kéo dài từ cuối những năm 1980 khiến đời sống nhân dân vô cùng chật vật. Nguồn lương thực, thực phẩm thiếu thốn, sản xuất công nghiệp và nông nghiệp bị đình trệ.',
-  },
-  {
-    start: 55,
-    end: 70,
-    speaker: 'Thuyết minh',
-    text: 'Trong cơn giông bão ấy, câu hỏi lớn đặt ra là: Việt Nam sẽ đi về đâu? Làm thế nào để giữ vững độc lập dân tộc và tiếp tục vững bước trên con đường xã hội chủ nghĩa?',
-  },
-  {
-    start: 70,
-    end: 95,
-    speaker: 'Thuyết minh',
-    text: 'Thử thách càng thêm khắc nghiệt khi Hoa Kỳ tiếp tục duy trì chính sách bao vây cấm vận. Việc mất đi nguồn viện trợ tài chính và các bạn hàng truyền thống từ khối Đông Âu đã cắt đứt mạch máu giao thương chủ yếu của nền kinh tế Việt Nam lúc bấy giờ.',
-  },
-  {
-    start: 95,
-    end: 120,
-    speaker: 'Thuyết minh',
-    text: 'Sự hoang mang về tư tưởng bắt đầu xuất hiện trong một bộ phận cán bộ và nhân dân trước sự sụp đổ của mô hình chủ nghĩa xã hội hiện thực ở châu Âu. Đây là lúc bản lĩnh và trí tuệ của một dân tộc kiên cường cần phải được chứng minh.',
-  },
-  {
-    start: 120,
-    end: 140,
-    speaker: 'Thuyết minh',
-    text: 'Đại hội VII của Đảng không chỉ là một kỳ đại hội chuyển giao thế hệ lãnh đạo, mà quan trọng hơn, đó là cột mốc khẳng định ý chí kiên quyết tự đứng trên đôi chân của mình, giữ vững định hướng đã chọn.',
-  },
-  {
-    start: 140,
-    end: 160,
-    speaker: 'Thuyết minh',
-    text: 'Việt Nam không lựa chọn đóng cửa hay thụ động chịu trận, mà quyết định tìm lối thoát bằng con đường mở rộng quan hệ đối ngoại và giải phóng triệt để nội lực quốc gia.',
-  },
-  {
-    start: 160,
-    end: 185,
-    speaker: 'Thuyết minh',
-    text: 'Điểm mấu chốt giúp Việt Nam đứng vững trong cơn bão chính là việc vận dụng sâu sắc và sáng tạo Tư tưởng Hồ Chí Minh. Bài học đầu tiên là "Lấy dân làm gốc". Trong tư tưởng của Người, nước lấy dân làm gốc, cách mạng là sự nghiệp của quần chúng nhân dân.',
-  },
-  {
-    start: 185,
-    end: 210,
-    speaker: 'Thuyết minh',
-    text: 'Thứ hai là bài học "Đại đoàn kết toàn dân". Để vượt qua hoang mang, Đảng và Nhà nước đã chú trọng củng cố niềm tin xã hội, tập hợp mọi tầng lớp nhân dân, biến sức mạnh đại đoàn kết thành động lực vượt qua khó khăn chung.',
-  },
-  {
-    start: 210,
-    end: 235,
-    speaker: 'Thuyết minh',
-    text: 'Đặc biệt, tinh thần "Tự lực, tự cường, tự lực cánh sinh" được khơi dậy mạnh mẽ. Khi viện trợ bên ngoài không còn, người Việt Nam đã tự tìm tòi, sáng tạo trong lao động sản xuất để tự cứu lấy mình.',
-  },
-  {
-    start: 235,
-    end: 255,
-    speaker: 'Thuyết minh',
-    text: 'Phương châm ngoại giao và hành động được xác định: "Kiên định mục tiêu, linh hoạt phương pháp". Chúng ta giữ vững định hướng độc lập dân tộc gắn liền với chủ nghĩa xã hội, nhưng thay đổi cách làm và biện pháp kinh tế cho phù hợp thực tiễn.',
-  },
-  {
-    start: 255,
-    end: 270,
-    speaker: 'Thuyết minh',
-    text: 'Chính sự kiên định trong nguyên tắc và uyển chuyển trong giải pháp đã tạo nên thế đứng vững chãi, đưa đất nước vượt qua hiểm nghèo mà không bị mất phương hướng.',
-  },
-  {
-    start: 270,
-    end: 295,
-    speaker: 'Thuyết minh',
-    text: 'Nhờ sự vận dụng sáng tạo ấy, các chính sách Đổi mới thực tiễn đã nhanh chóng đi vào cuộc sống. Việt Nam chính thức phát triển nền kinh tế hàng hóa nhiều thành phần vận động theo cơ chế thị trường có sự quản lý của Nhà nước.',
-  },
-  {
-    start: 295,
-    end: 320,
-    speaker: 'Thuyết minh',
-    text: 'Xóa bỏ hoàn toàn cơ chế quan liêu bao cấp, thừa nhận quyền tự do kinh doanh hợp pháp của người dân, hộ gia đình và các doanh nghiệp tư nhân. Sự cởi trói về mặt cơ chế đã kích hoạt năng lượng sản xuất vô tận của hàng triệu người dân Việt Nam.',
-  },
-  {
-    start: 320,
-    end: 340,
-    speaker: 'Thuyết minh',
-    text: 'Chính sách đối ngoại cũng có bước chuyển mình lịch sử. Việt Nam tuyên bố "muốn làm bạn với tất cả các nước trong cộng đồng thế giới", chủ động phá vỡ thế bao vây cô lập, từng bước bình thường hóa quan hệ đối ngoại và hội nhập quốc tế rộng rãi.',
-  },
-  {
-    start: 340,
-    end: 360,
-    speaker: 'Thuyết minh',
-    text: 'Đồng thời, mọi hoạt động phát triển kinh tế đều gắn liền với chính sách xã hội, chăm lo đời sống vật chất, tinh thần của nhân dân, lấy sự ấm no hạnh phúc của dân làm thước đo cao nhất cho thành công của Đổi mới.',
-  },
-  {
-    start: 360,
-    end: 380,
-    speaker: 'Thuyết minh',
-    text: 'Những nỗ lực bền bỉ ấy đã mang lại kết quả ngọt ngào. Giai đoạn 1991 - 1995 chứng kiến tốc độ tăng trưởng GDP bình quân hàng năm đạt 8.2%, một con số kỷ lục chứng minh sự đúng đắn của con đường Đổi mới.',
-  },
-  {
-    start: 380,
-    end: 400,
-    speaker: 'Thuyết minh',
-    text: 'Sản xuất công nghiệp tăng trưởng vượt bậc, nông nghiệp phát triển vững chắc giúp Việt Nam từ một nước thiếu đói trở thành nước xuất khẩu gạo lớn trên thế giới, đời sống nhân dân được cải thiện rõ rệt.',
-  },
-  {
-    start: 400,
-    end: 419,
-    speaker: 'Thuyết minh',
-    text: 'Hành trình vượt bão năm 1991 đã để lại những bài học quý báu cho hôm nay. Đó là bài học về niềm tin, về phát huy nội lực tự lực tự cường và lấy nhân dân làm trung tâm trong mọi quyết sách phát triển đất nước bền vững.',
+    id: 'chuong-5',
+    title: 'Chương 5: Trái ngọt & Bài học',
+    start: 290,
+    end: 356,
+    description: 'GDP tăng trưởng bình quân 8.2% (1991-1995) và bài học về tự lực tự cường, lấy dân làm gốc.',
   },
 ];
 
@@ -235,7 +110,7 @@ const TAKEAWAYS = [
 export default function VideoPage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(419); // Default fallback to 419s
+  const [duration, setDuration] = useState(356); // Default fallback to 356s (new video duration)
   const [volume, setVolume] = useState(0.8);
   const [isMuted, setIsMuted] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
@@ -253,7 +128,6 @@ export default function VideoPage() {
   const playerContainerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const controlsTimeoutRef = useRef<number | null>(null);
-  const transcriptRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Format dynamic buffered range percentage
   const [bufferedPercent, setBufferedPercent] = useState(0);
@@ -264,21 +138,7 @@ export default function VideoPage() {
     return current ? current.id : CHAPTERS[0].id;
   }, [currentTime]);
 
-  const activeTranscriptIndex = useMemo(() => {
-    const idx = TRANSCRIPT.findIndex(item => currentTime >= item.start && currentTime < item.end);
-    return idx !== -1 ? idx : 0;
-  }, [currentTime]);
 
-  // Synchronize dynamic scrolling of the active transcript paragraph
-  useEffect(() => {
-    const activeEl = transcriptRefs.current[activeTranscriptIndex];
-    if (activeEl) {
-      activeEl.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-      });
-    }
-  }, [activeTranscriptIndex]);
 
   // Sync volume state to actual HTML5 video element
   useEffect(() => {
@@ -569,7 +429,7 @@ export default function VideoPage() {
               <div className="mt-6 flex flex-wrap justify-center gap-4 text-xs font-semibold uppercase tracking-wider text-ink-soft">
                 <span className="flex items-center gap-1.5 rounded-full bg-paper-deep px-3.5 py-1.5 border border-ink/5">
                   <Clock className="h-3.5 w-3.5 text-flame" />
-                  Thời lượng: 06:59
+                  Thời lượng: 05:56
                 </span>
                 <span className="flex items-center gap-1.5 rounded-full bg-paper-deep px-3.5 py-1.5 border border-ink/5">
                   <Sparkles className="h-3.5 w-3.5 text-flame" />
@@ -584,370 +444,286 @@ export default function VideoPage() {
           </div>
         </section>
 
-        {/* Video Player + Transcript Layout Grid */}
-        <section className="relative bg-paper-deep/45 py-12">
-          <div className="mx-auto max-w-6xl px-4">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-              
-              {/* Left Column: Player & Chapters */}
-              <div className="flex flex-col gap-6 lg:col-span-8">
-                
-                {/* 1. Custom Player Container */}
+        {/* Video Player + Chapters Layout Grid */}
+        <section className="relative bg-paper-deep/45 py-12 md:py-16">
+          <div className="mx-auto max-w-7xl px-4 md:px-8 flex flex-col gap-12">
+            
+            {/* 1. Video Player Container */}
+            <div className="w-full max-w-6xl mx-auto">
+              <div
+                ref={playerContainerRef}
+                onMouseMove={handleMouseMovePlayer}
+                onMouseLeave={() => isPlaying && setShowControls(false)}
+                className={cn(
+                  'group/player relative overflow-hidden bg-storm select-none w-full transition-all duration-300',
+                  isFullscreen 
+                    ? 'w-screen h-screen flex items-center justify-center'
+                    : 'aspect-video rounded-3xl border border-ink/12 shadow-[0_30px_60px_-15px_oklch(0.20_0.038_250/0.3)] hover:shadow-[0_40px_85px_-20px_oklch(0.20_0.038_250/0.45)]'
+                )}
+              >
+                <video
+                  ref={videoRef}
+                  src="/video/Khủng_Hoảng_1991_&_Đổi_Mới.mp4"
+                  preload="metadata"
+                  onClick={togglePlay}
+                  onTimeUpdate={handleTimeUpdate}
+                  onLoadedMetadata={handleLoadedMetadata}
+                  onPlay={() => handlePlayState(true)}
+                  onPause={() => handlePlayState(false)}
+                  onWaiting={() => setIsLoading(true)}
+                  onPlaying={() => setIsLoading(false)}
+                  className="h-full w-full object-contain"
+                />
+
+                {/* Grain filter over video to match historical aesthetic */}
+                <div className="grain pointer-events-none absolute inset-0 opacity-15" />
+
+                {/* Loading spinner overlay */}
+                {isLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-storm/60 backdrop-blur-xs z-20">
+                    <div className="h-10 w-10 animate-spin rounded-full border-4 border-paper/20 border-t-flame" />
+                  </div>
+                )}
+
+                {/* Big Play Button Overlay on Pause */}
+                {!isPlaying && !isLoading && (
+                  <button
+                    onClick={togglePlay}
+                    aria-label="Phát video"
+                    className="press absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-20 w-20 items-center justify-center rounded-full border border-paper/15 bg-storm/75 text-paper backdrop-blur-sm transition-transform duration-300 hover:scale-110 hover:border-flame hover:text-flame shadow-2xl z-10"
+                  >
+                    <Play className="ml-1 h-8 w-8 fill-current" />
+                  </button>
+                )}
+
+                {/* Custom Controls Bar */}
                 <div
-                  ref={playerContainerRef}
-                  onMouseMove={handleMouseMovePlayer}
-                  onMouseLeave={() => isPlaying && setShowControls(false)}
                   className={cn(
-                    'group/player relative overflow-hidden bg-storm select-none',
-                    isFullscreen 
-                      ? 'w-screen h-screen flex items-center justify-center'
-                      : 'aspect-video rounded-3xl border border-ink/12 shadow-[0_22px_44px_-24px_oklch(0.20_0.038_250/0.45)]'
+                    'absolute bottom-0 inset-x-0 bg-linear-to-t from-storm/95 via-storm/85 to-transparent px-4 pb-4 pt-10 transition-all duration-300 z-10 flex flex-col gap-3',
+                    showControls ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
                   )}
                 >
-                  <video
-                    ref={videoRef}
-                    src="/video/Vượt_Bão_1991__Bài_Học_Đổi_Mới.mp4"
-                    poster={IMAGES.hanoiCity.src}
-                    preload="metadata"
-                    onClick={togglePlay}
-                    onTimeUpdate={handleTimeUpdate}
-                    onLoadedMetadata={handleLoadedMetadata}
-                    onPlay={() => handlePlayState(true)}
-                    onPause={() => handlePlayState(false)}
-                    onWaiting={() => setIsLoading(true)}
-                    onPlaying={() => setIsLoading(false)}
-                    className="h-full w-full object-contain"
-                  />
-
-                  {/* Grain filter over video to match historical aesthetic */}
-                  <div className="grain pointer-events-none absolute inset-0 opacity-15" />
-
-                  {/* Loading spinner overlay */}
-                  {isLoading && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-storm/60 backdrop-blur-xs z-20">
-                      <div className="h-10 w-10 animate-spin rounded-full border-4 border-paper/20 border-t-flame" />
-                    </div>
-                  )}
-
-                  {/* Big Play Button Overlay on Pause */}
-                  {!isPlaying && !isLoading && (
-                    <button
-                      onClick={togglePlay}
-                      aria-label="Phát video"
-                      className="press absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-20 w-20 items-center justify-center rounded-full border border-paper/15 bg-storm/75 text-paper backdrop-blur-sm transition-transform duration-300 hover:scale-110 hover:border-flame hover:text-flame shadow-2xl z-10"
+                  
+                  {/* Timeline Slider Track */}
+                  <div className="relative group/timeline flex items-center h-4">
+                    <div
+                      ref={timelineRef}
+                      onClick={handleTimelineClick}
+                      onMouseDown={handleTimelineMouseDown}
+                      onMouseMove={handleTimelineMouseMove}
+                      onMouseLeave={handleTimelineMouseLeave}
+                      className="relative h-1.5 w-full cursor-pointer rounded-full bg-paper/20 transition-all duration-200 group-hover/timeline:h-2.5"
                     >
-                      <Play className="ml-1 h-8 w-8 fill-current" />
-                    </button>
-                  )}
-
-                  {/* Custom Controls Bar */}
-                  <div
-                    className={cn(
-                      'absolute bottom-0 inset-x-0 bg-linear-to-t from-storm/95 via-storm/85 to-transparent px-4 pb-4 pt-10 transition-all duration-300 z-10 flex flex-col gap-3',
-                      showControls ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
-                    )}
-                  >
-                    
-                    {/* Timeline Slider Track */}
-                    <div className="relative group/timeline flex items-center h-4">
+                      {/* Buffered Bar */}
                       <div
-                        ref={timelineRef}
-                        onClick={handleTimelineClick}
-                        onMouseDown={handleTimelineMouseDown}
-                        onMouseMove={handleTimelineMouseMove}
-                        onMouseLeave={handleTimelineMouseLeave}
-                        className="relative h-1.5 w-full cursor-pointer rounded-full bg-paper/20 transition-all duration-200 group-hover/timeline:h-2.5"
-                      >
-                        {/* Buffered Bar */}
+                        className="absolute inset-y-0 left-0 bg-paper/15 rounded-full"
+                        style={{ width: `${bufferedPercent}%` }}
+                      />
+                      {/* Current Progress bar */}
+                      <div
+                        className="absolute inset-y-0 left-0 bg-flame rounded-full"
+                        style={{ width: `${progressPercent}%` }}
+                      />
+                      {/* Progress Scrubber Knob */}
+                      <div
+                        className="absolute top-1/2 -translate-y-1/2 h-3.5 w-3.5 rounded-full bg-paper border-2 border-flame shadow-lg opacity-0 transition-opacity duration-150 group-hover/timeline:opacity-100"
+                        style={{ left: `calc(${progressPercent}% - 7px)` }}
+                      />
+
+                      {/* Chapter Markers Ticks */}
+                      {CHAPTERS.map(ch => (
                         <div
-                          className="absolute inset-y-0 left-0 bg-paper/15 rounded-full"
-                          style={{ width: `${bufferedPercent}%` }}
-                        />
-                        {/* Current Progress bar */}
-                        <div
-                          className="absolute inset-y-0 left-0 bg-flame rounded-full"
-                          style={{ width: `${progressPercent}%` }}
-                        />
-                        {/* Progress Scrubber Knob */}
-                        <div
-                          className="absolute top-1/2 -translate-y-1/2 h-3.5 w-3.5 rounded-full bg-paper border-2 border-flame shadow-lg opacity-0 transition-opacity duration-150 group-hover/timeline:opacity-100"
-                          style={{ left: `calc(${progressPercent}% - 7px)` }}
-                        />
-
-                        {/* Chapter Markers Ticks */}
-                        {CHAPTERS.map(ch => (
-                          <div
-                            key={ch.id}
-                            className="absolute top-0 bottom-0 w-0.5 bg-storm/80"
-                            style={{ left: `${(ch.start / duration) * 100}%` }}
-                          />
-                        ))}
-                      </div>
-
-                      {/* Timeline Tooltip */}
-                      {hoverTime !== null && (
-                        <div
-                          className="absolute bottom-6 -translate-x-1/2 pointer-events-none rounded-xl border border-paper/10 bg-storm/95 px-3 py-2 text-[11px] text-paper shadow-2xl flex flex-col items-center gap-1 whitespace-nowrap z-30"
-                          style={{ left: `${hoverX}px` }}
-                        >
-                          <span className="font-display font-bold text-flame-soft">{hoverChapter}</span>
-                          <span className="font-mono text-paper/70">{formatTime(hoverTime)}</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Bottom Action Row */}
-                    <div className="flex items-center justify-between gap-4 text-paper">
-                      <div className="flex items-center gap-3">
-                        {/* Play/Pause icon */}
-                        <button
-                          onClick={togglePlay}
-                          aria-label={isPlaying ? 'Tạm dừng' : 'Phát'}
-                          className="press flex h-9 w-9 items-center justify-center rounded-full hover:bg-paper/10 transition-colors"
-                        >
-                          {isPlaying ? (
-                            <Pause className="h-5 w-5 fill-current" />
-                          ) : (
-                            <Play className="ml-0.5 h-5 w-5 fill-current" />
-                          )}
-                        </button>
-
-                        {/* Rewind */}
-                        <button
-                          onClick={() => seekDelta(-10)}
-                          aria-label="Tua lùi 10 giây"
-                          className="press hidden sm:flex h-9 w-9 items-center justify-center rounded-full hover:bg-paper/10 transition-colors"
-                        >
-                          <RotateCcw className="h-4.5 w-4.5" />
-                        </button>
-
-                        {/* Time display */}
-                        <div className="font-mono text-xs text-paper/80 select-none">
-                          {formatTime(currentTime)} <span className="opacity-40">/</span> {formatTime(duration)}
-                        </div>
-                      </div>
-
-                      {/* Right controls: Playback rate, volume, fullscreen */}
-                      <div className="flex items-center gap-2 sm:gap-3">
-                        
-                        {/* Playback speed menu */}
-                        <div className="relative group/speed">
-                          <button
-                            aria-label="Tốc độ phát"
-                            className="press rounded-md px-2 py-1 text-xs font-mono font-bold border border-paper/10 bg-paper/5 hover:bg-paper/10 hover:border-paper/20 transition-all"
-                          >
-                            {playbackRate === 1 ? 'Tốc độ' : `${playbackRate}x`}
-                          </button>
-                          <div className="absolute bottom-full right-0 pb-2.5 w-20 opacity-0 scale-95 translate-y-2 pointer-events-none group-hover/speed:opacity-100 group-hover/speed:scale-100 group-hover/speed:translate-y-0 group-hover/speed:pointer-events-auto transition-all duration-200 shadow-2xl flex flex-col text-center">
-                            <div className="overflow-hidden rounded-xl border border-paper/10 bg-storm/95 flex flex-col">
-                              {[0.5, 0.75, 1, 1.25, 1.5, 2].map(rate => (
-                                <button
-                                  key={rate}
-                                  onClick={() => handleRateChange(rate)}
-                                  className={cn(
-                                    'py-1.5 text-xs font-mono transition-colors hover:bg-paper/10',
-                                    playbackRate === rate ? 'bg-flame text-paper font-bold' : 'text-paper/70'
-                                  )}
-                                >
-                                  {rate}x
-                                </button>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Volume controls */}
-                        <div className="flex items-center gap-1.5 group/volume">
-                          <button
-                            onClick={toggleMute}
-                            aria-label={isMuted ? 'Bật âm thanh' : 'Tắt âm thanh'}
-                            className="press flex h-9 w-9 items-center justify-center rounded-full hover:bg-paper/10 transition-colors"
-                          >
-                            {isMuted ? (
-                              <VolumeX className="h-5 w-5" />
-                            ) : volume < 0.4 ? (
-                              <Volume1 className="h-5 w-5" />
-                            ) : (
-                              <Volume2 className="h-5 w-5" />
-                            )}
-                          </button>
-                          
-                          <input
-                            type="range"
-                            min="0"
-                            max="1"
-                            step="0.05"
-                            value={isMuted ? 0 : volume}
-                            onChange={handleVolumeChange}
-                            className="w-0 opacity-0 scale-x-0 origin-right transition-all duration-300 group-hover/volume:w-16 group-hover/volume:opacity-100 group-hover/volume:scale-x-100 h-1 accent-flame bg-paper/20 rounded-lg cursor-pointer"
-                          />
-                        </div>
-
-                        {/* Fullscreen icon */}
-                        <button
-                          onClick={toggleFullscreen}
-                          aria-label={isFullscreen ? 'Thoát toàn màn hình' : 'Mở toàn màn hình'}
-                          className="press flex h-9 w-9 items-center justify-center rounded-full hover:bg-paper/10 transition-colors"
-                        >
-                          {isFullscreen ? (
-                            <Minimize className="h-5 w-5" />
-                          ) : (
-                            <Maximize className="h-5 w-5" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* 2. Interactive Chapters List Section */}
-                <div className="flex flex-col gap-4">
-                  <h2 className="font-display text-lg font-black tracking-tight text-ink flex items-center gap-2">
-                    <Bookmark className="h-4.5 w-4.5 text-flame" />
-                    Phân cảnh bài học
-                  </h2>
-                  <div className="grid gap-3 sm:grid-cols-1">
-                    {CHAPTERS.map((ch, idx) => {
-                      const isActive = activeChapter === ch.id;
-                      return (
-                        <button
                           key={ch.id}
-                          onClick={() => seekTo(ch.start)}
-                          className={cn(
-                            'text-left flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl border transition-all duration-300 press',
-                            isActive
-                              ? 'bg-paper border-flame shadow-[inset_0_1px_0_oklch(1_0_0/0.45),0_12px_24px_-18px_oklch(0.52_0.196_26/0.25)]'
-                              : 'bg-paper/40 border-ink/8 hover:border-ink/15 hover:bg-paper/60'
-                          )}
+                          className="absolute top-0 bottom-0 w-0.5 bg-storm/80"
+                          style={{ left: `${(ch.start / duration) * 100}%` }}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Timeline Tooltip */}
+                    {hoverTime !== null && (
+                      <div
+                        className="absolute bottom-6 -translate-x-1/2 pointer-events-none rounded-xl border border-paper/10 bg-storm/95 px-3 py-2 text-[11px] text-paper shadow-2xl flex flex-col items-center gap-1 whitespace-nowrap z-30"
+                        style={{ left: `${hoverX}px` }}
+                      >
+                        <span className="font-display font-bold text-flame-soft">{hoverChapter}</span>
+                        <span className="font-mono text-paper/70">{formatTime(hoverTime)}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Bottom Action Row */}
+                  <div className="flex items-center justify-between gap-4 text-paper">
+                    <div className="flex items-center gap-3">
+                      {/* Play/Pause icon */}
+                      <button
+                        onClick={togglePlay}
+                        aria-label={isPlaying ? 'Tạm dừng' : 'Phát'}
+                        className="press flex h-9 w-9 items-center justify-center rounded-full hover:bg-paper/10 transition-colors"
+                      >
+                        {isPlaying ? (
+                          <Pause className="h-5 w-5 fill-current" />
+                        ) : (
+                          <Play className="ml-0.5 h-5 w-5 fill-current" />
+                        )}
+                      </button>
+
+                      {/* Rewind */}
+                      <button
+                        onClick={() => seekDelta(-10)}
+                        aria-label="Tua lùi 10 giây"
+                        className="press hidden sm:flex h-9 w-9 items-center justify-center rounded-full hover:bg-paper/10 transition-colors"
+                      >
+                        <RotateCcw className="h-4.5 w-4.5" />
+                      </button>
+
+                      {/* Time display */}
+                      <div className="font-mono text-xs text-paper/80 select-none">
+                        {formatTime(currentTime)} <span className="opacity-40">/</span> {formatTime(duration)}
+                      </div>
+                    </div>
+
+                    {/* Right controls: Playback rate, volume, fullscreen */}
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      
+                      {/* Playback speed menu */}
+                      <div className="relative group/speed">
+                        <button
+                          aria-label="Tốc độ phát"
+                          className="press rounded-md px-2 py-1 text-xs font-mono font-bold border border-paper/10 bg-paper/5 hover:bg-paper/10 hover:border-paper/20 transition-all"
                         >
-                          <div className="flex gap-3">
-                            <span className={cn(
-                              'font-display text-2xl font-black shrink-0 select-none transition-colors duration-300',
-                              isActive ? 'text-flame' : 'text-ink-mute'
-                            )}>
-                              0{idx + 1}
-                            </span>
-                            <div>
-                              <h3 className={cn(
-                                'font-display font-bold leading-tight text-sm tracking-tight',
-                                isActive ? 'text-flame' : 'text-ink'
-                              )}>
-                                {ch.title}
-                              </h3>
-                              <p className="mt-1 text-[13px] leading-snug text-ink-soft max-w-xl">
-                                {ch.description}
-                              </p>
-                            </div>
-                          </div>
-                          
-                          {/* Time tag / Pulse Indicator */}
-                          <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
-                            {isActive && (
-                              <span className="relative flex h-2 w-2">
-                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-flame/75 opacity-75" />
-                                <span className="relative inline-flex h-2 w-2 rounded-full bg-flame" />
-                              </span>
-                            )}
-                            <span className={cn(
-                              'font-mono text-xs rounded-full px-2.5 py-1 border',
-                              isActive
-                                ? 'bg-flame/[0.06] border-flame/20 text-flame font-semibold'
-                                : 'bg-paper-deep/60 border-ink/8 text-ink-soft'
-                            )}>
-                              {formatTime(ch.start)}
-                            </span>
-                          </div>
+                          {playbackRate === 1 ? 'Tốc độ' : `${playbackRate}x`}
                         </button>
-                      );
-                    })}
+                        <div className="absolute bottom-full right-0 pb-2.5 w-20 opacity-0 scale-95 translate-y-2 pointer-events-none group-hover/speed:opacity-100 group-hover/speed:scale-100 group-hover/speed:translate-y-0 group-hover/speed:pointer-events-auto transition-all duration-200 shadow-2xl flex flex-col text-center">
+                          <div className="overflow-hidden rounded-xl border border-paper/10 bg-storm/95 flex flex-col">
+                            {[0.5, 0.75, 1, 1.25, 1.5, 2].map(rate => (
+                              <button
+                                key={rate}
+                                onClick={() => handleRateChange(rate)}
+                                className={cn(
+                                  'py-1.5 text-xs font-mono transition-colors hover:bg-paper/10',
+                                  playbackRate === rate ? 'bg-flame text-paper font-bold' : 'text-paper/70'
+                                )}
+                              >
+                                {rate}x
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Volume controls */}
+                      <div className="flex items-center gap-1.5 group/volume">
+                        <button
+                          onClick={toggleMute}
+                          aria-label={isMuted ? 'Bật âm thanh' : 'Tắt âm thanh'}
+                          className="press flex h-9 w-9 items-center justify-center rounded-full hover:bg-paper/10 transition-colors"
+                        >
+                          {isMuted ? (
+                            <VolumeX className="h-5 w-5" />
+                          ) : volume < 0.4 ? (
+                            <Volume1 className="h-5 w-5" />
+                          ) : (
+                            <Volume2 className="h-5 w-5" />
+                          )}
+                        </button>
+                        
+                        <input
+                          type="range"
+                          min="0"
+                          max="1"
+                          step="0.05"
+                          value={isMuted ? 0 : volume}
+                          onChange={handleVolumeChange}
+                          className="w-0 opacity-0 scale-x-0 origin-right transition-all duration-300 group-hover/volume:w-16 group-hover/volume:opacity-100 group-hover/volume:scale-x-100 h-1 accent-flame bg-paper/20 rounded-lg cursor-pointer"
+                        />
+                      </div>
+
+                      {/* Fullscreen icon */}
+                      <button
+                        onClick={toggleFullscreen}
+                        aria-label={isFullscreen ? 'Thoát toàn màn hình' : 'Mở toàn màn hình'}
+                        className="press flex h-9 w-9 items-center justify-center rounded-full hover:bg-paper/10 transition-colors"
+                      >
+                        {isFullscreen ? (
+                          <Minimize className="h-5 w-5" />
+                        ) : (
+                          <Maximize className="h-5 w-5" />
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Right Column: Synchronized Transcript */}
-              <div className="flex flex-col lg:col-span-4 h-full">
-                <div className={cn(
-                  'flex flex-col h-[520px] lg:h-[630px] overflow-hidden rounded-3xl border border-ink/10 bg-paper/65 backdrop-blur-sm',
-                  'shadow-[inset_0_1.5px_0_oklch(1_0_0/0.45),0_20px_40px_-28px_oklch(0.20_0.038_250/0.15)]'
-                )}>
-                  
-                  {/* Transcript Header */}
-                  <div className="flex items-center justify-between border-b border-ink/8 bg-paper-deep/45 px-5 py-4">
-                    <div className="flex items-center gap-2">
-                      <FileText className="h-4.5 w-4.5 text-flame" />
-                      <span className="font-display text-sm font-black uppercase tracking-wider text-ink">
-                        Kịch bản thuyết minh
-                      </span>
-                    </div>
-                    <span className="rounded-full bg-paper px-2 py-0.5 font-mono text-[10px] text-ink-soft border border-ink/5">
-                      Đồng bộ
-                    </span>
-                  </div>
-
-                  {/* Scrollable Transcript List */}
-                  <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3.5 scrollbar-thin">
-                    {TRANSCRIPT.map((item, idx) => {
-                      const isActive = activeTranscriptIndex === idx;
-                      return (
-                        <div
-                          key={idx}
-                          ref={el => {
-                            transcriptRefs.current[idx] = el;
-                          }}
-                          onClick={() => seekTo(item.start)}
-                          className={cn(
-                            'group/item relative cursor-pointer p-3.5 rounded-2xl border transition-all duration-300',
-                            isActive
-                              ? 'bg-paper border-flame/20 shadow-sm'
-                              : 'bg-transparent border-transparent hover:bg-paper/40 hover:border-ink/5'
-                          )}
-                        >
-                          {/* Active highlight side indicator bar */}
-                          <div className={cn(
-                            'absolute left-0 top-3 bottom-3 w-0.75 rounded-r-md transition-all duration-300',
-                            isActive ? 'bg-flame opacity-100 scale-y-100' : 'bg-ink-mute opacity-0 scale-y-50'
-                          )} />
-
-                          <div className="flex justify-between items-center gap-2 mb-1.5 pl-1.5">
-                            <span className={cn(
-                              'text-[10px] font-display uppercase tracking-widest px-2 py-0.5 rounded-md border font-semibold',
-                              isActive
-                                ? 'bg-flame/[0.06] border-flame/15 text-flame'
-                                : 'bg-paper-deep/60 border-ink/8 text-ink-soft'
-                            )}>
-                              {item.speaker}
-                            </span>
-                            <span className={cn(
-                              'font-mono text-[10.5px] transition-colors',
-                              isActive ? 'text-flame font-semibold' : 'text-ink-mute group-hover/item:text-ink-soft'
-                            )}>
-                              {formatTime(item.start)}
-                            </span>
-                          </div>
-
-                          <p className={cn(
-                            'text-[13.5px] leading-relaxed pl-1.5 transition-colors duration-300 font-sans',
-                            isActive ? 'text-ink font-medium' : 'text-ink-soft group-hover/item:text-ink'
+            {/* 2. Interactive Chapters List Grid */}
+            <div className="w-full max-w-6xl mx-auto flex flex-col gap-5">
+              <h2 className="font-display text-base font-black tracking-tight uppercase text-ink flex items-center gap-2">
+                <Bookmark className="h-4.5 w-4.5 text-flame" />
+                Phân cảnh bài học
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+                {CHAPTERS.map((ch, idx) => {
+                  const isActive = activeChapter === ch.id;
+                  return (
+                    <button
+                      key={ch.id}
+                      onClick={() => seekTo(ch.start)}
+                      className={cn(
+                        'text-left flex flex-col justify-between p-5 md:p-6 rounded-2xl border transition-all duration-300 press h-full gap-4',
+                        isActive
+                          ? 'bg-paper border-flame shadow-[inset_0_1px_0_oklch(1_0_0/0.45),0_15px_30px_-15px_oklch(0.52_0.196_26/0.25)] scale-[1.01]'
+                          : 'bg-paper/40 border-ink/8 hover:border-ink/15 hover:bg-paper/60 hover:shadow-[0_10px_20px_-10px_oklch(0_0_0/0.05)]'
+                      )}
+                    >
+                      <div className="flex gap-3.5">
+                        <span className={cn(
+                          'font-display text-xl font-black shrink-0 select-none transition-colors duration-300',
+                          isActive ? 'text-flame' : 'text-ink-mute'
+                        )}>
+                          0{idx + 1}
+                        </span>
+                        <div>
+                          <h3 className={cn(
+                            'font-display font-bold leading-tight text-sm tracking-tight',
+                            isActive ? 'text-flame' : 'text-ink'
                           )}>
-                            {item.text}
+                            {ch.title}
+                          </h3>
+                          <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-soft">
+                            {ch.description}
                           </p>
                         </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Transcript Footer Helper */}
-                  <div className="border-t border-ink/5 bg-paper-deep/20 px-5 py-3.5 text-center text-[11px] text-ink-soft select-none italic">
-                    💡 Click vào bất cứ đoạn văn bản nào để tua video đến phân đoạn đó.
-                  </div>
-                </div>
+                      </div>
+                      
+                      {/* Time tag / Pulse Indicator */}
+                      <div className="flex items-center gap-2 self-end mt-auto pt-2">
+                        {isActive && (
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-flame/75 opacity-75" />
+                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-flame" />
+                          </span>
+                        )}
+                        <span className={cn(
+                          'font-mono text-[10px] rounded-full px-2.5 py-0.5 border',
+                          isActive
+                            ? 'bg-flame/[0.06] border-flame/20 text-flame font-semibold'
+                            : 'bg-paper-deep/60 border-ink/8 text-ink-soft'
+                        )}>
+                          {formatTime(ch.start)}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
-
             </div>
+
           </div>
         </section>
 
-        {/* Takeaway Lessons Section */}
+{/* Takeaway Lessons Section */}
         <section className="relative overflow-hidden bg-paper py-16">
           <div className="grain absolute inset-0 opacity-25 pointer-events-none" />
           <div className="relative mx-auto max-w-6xl px-4">
