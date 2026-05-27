@@ -33,12 +33,16 @@ const lecturer = { name: 'Hoàng Thắng', role: 'Giảng viên hướng dẫn' 
 const marqueeWords = [
   'Vượt Bão Kinh Tế 1991',
   'Đổi mới Kinh tế 1986',
+  'Đại hội VII',
   'Luật Doanh nghiệp 1990',
   'Khoán 10 Nông nghiệp',
   'Xóa bỏ bao cấp',
   'Kiềm chế siêu lạm phát',
   'Tự lực tự cường',
+  'Lấy dân làm gốc',
   'Cơ chế thị trường',
+  'Kinh tế nhiều thành phần',
+  'Kiên định mục tiêu',
   'Đa phương hóa thương mại',
 ];
 

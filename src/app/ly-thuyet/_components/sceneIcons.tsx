@@ -1,0 +1,35 @@
+import {
+  CloudLightning,
+  Compass,
+  Globe2,
+  HandHeart,
+  Handshake,
+  Lightbulb,
+  Mountain,
+  Network,
+  ShieldAlert,
+  ShoppingBasket,
+  Sprout,
+  Star,
+  Sunrise,
+  Wheat,
+  type LucideIcon,
+} from 'lucide-react';
+import type { SceneIconName } from '../scenes';
+
+export const sceneIconMap: Record<SceneIconName, LucideIcon> = {
+  'shield-alert': ShieldAlert,
+  'cloud-lightning': CloudLightning,
+  network: Network,
+  'shopping-basket': ShoppingBasket,
+  'hand-heart': HandHeart,
+  mountain: Mountain,
+  compass: Compass,
+  globe: Globe2,
+  sprout: Sprout,
+  wheat: Wheat,
+  handshake: Handshake,
+  lightbulb: Lightbulb,
+  'sun-rise': Sunrise,
+  star: Star,
+};
