@@ -98,12 +98,13 @@ const aiSupports = [
 ];
 
 const gallery = [
-  { ...IMAGES.hanoiCity, label: 'Thành phố Hà Nội' },
-  { ...IMAGES.hanoiSunset, label: 'Hoàng hôn sau mưa' },
-  { ...IMAGES.ricePaddy, label: 'Mùa lúa Việt Nam' },
-  { ...IMAGES.duckHerding, label: 'Đồng quê thanh bình' },
-  { ...IMAGES.onePillarPagoda, label: 'Chùa Một Cột' },
-  { ...IMAGES.mausoleum, label: 'Lăng Chủ tịch Hồ Chí Minh' },
+  { ...IMAGES.oilRigVietsovpetro1991, label: 'Giàn khoan Vietsovpetro 1991' },
+  { ...IMAGES.saigonExportPort1991, label: 'Cảng xuất khẩu Sài Gòn 1991' },
+  { ...IMAGES.savingsDepositCounter1991, label: 'Gửi tiết kiệm lãi suất cao' },
+  { ...IMAGES.garmentWorkshop1991, label: 'Xưởng dệt tư nhân 1991' },
+  { ...IMAGES.hanoiVendors1991, label: 'Phố cổ Hà Nội (Xe đạp hàng rong)' },
+  { ...IMAGES.hanoiTempleTrucks1991, label: 'Chùa Huyền Thiên — Hàng Khoai' },
+  { ...IMAGES.ricePaddy, label: 'Thu hoạch lúa (Máy tuốt Khoán 10)' },
 ];
 
 function GalleryCard({ src, alt, label }: { src: string; alt: string; label: string }) {
@@ -391,14 +392,14 @@ export default function HomePage() {
           index="04"
           title={
             <>
-              Việt Nam qua <span className="italic text-flame">ống kính</span>
+              Kinh tế 1991 qua{' '}
+              <span className="italic text-flame">ống kính​ lịch sử</span>
             </>
           }
         />
         <Reveal delay={0.1}>
           <p className="mt-4 max-w-xl text-[15.5px] leading-relaxed text-ink-soft">
-            Những khung hình về đất nước và con người Việt Nam — mạch nguồn của mọi đường lối đổi
-            mới. Rê chuột để dừng băng ảnh.
+            Ảnh tư liệu lịch sử về những trụ cột kinh tế năm 1991: giàn khoan dầu Vietsovpetro tại Vũng Tàu, cảng xuất khẩu Sài Gòn, điểm gửi tiết kiệm lãi suất cao cứu vãn siêu lạm phát, và những xưởng tư nhân nương theo Luật Doanh nghiệp 1990. Rê chuột để dừng băng ảnh.
           </p>
         </Reveal>
         <div className="mt-8 flex flex-col gap-4">

@@ -307,7 +307,7 @@ export const storyScenes: StoryScene[] = [
     image: {
       key: 'ricePaddy',
       ratio: 'aspect-[5/4]',
-      caption: 'Cánh đồng lúa Việt Nam.',
+      caption: 'Thu hoạch lúa bằng máy tuốt cơ giới thời kỳ Khoán 10 (Nguồn: thinhvuongvietnam.com).',
     },
     tone: 'afterglow',
     layout: 'left',
