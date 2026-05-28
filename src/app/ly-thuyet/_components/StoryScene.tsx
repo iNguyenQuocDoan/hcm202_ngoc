@@ -37,7 +37,7 @@ function TitleReveal({ title, tone }: { title: string; tone: SceneTone }) {
   return (
     <h2
       className={cn(
-        'font-display text-4xl font-black leading-[1.02] tracking-tight md:text-[3.4rem]',
+        'font-display text-[clamp(2rem,4.5svh,3.4rem)] font-black leading-[1.02] tracking-tight',
         register.fg,
       )}
     >
@@ -271,12 +271,12 @@ function TimelineRail({ scene, tone }: { scene: Scene; tone: SceneTone }) {
       <div className="relative hidden md:block">
         <div
           className={cn(
-            'absolute left-0 right-0 top-[34px] h-px',
+            'absolute left-0 right-0 top-[29px] h-px',
             dark ? 'bg-paper/15' : 'bg-ink/15',
           )}
         />
         <motion.div
-          className="absolute left-0 top-[34px] h-px origin-left bg-flame"
+          className="absolute left-0 top-[29px] h-px origin-left bg-flame"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -286,8 +286,9 @@ function TimelineRail({ scene, tone }: { scene: Scene; tone: SceneTone }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          variants={{ visible: { transition: { staggerChildren: 0.18, delayChildren: 0.2 } } }}
-          className="relative grid grid-cols-5 gap-4"
+          variants={{ visible: { transition: { staggerChildren: 0.14, delayChildren: 0.2 } } }}
+          className="relative grid gap-3"
+          style={{ gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}
         >
           {steps.map((s, i) => (
             <motion.li
@@ -301,28 +302,33 @@ function TimelineRail({ scene, tone }: { scene: Scene; tone: SceneTone }) {
             >
               <span
                 className={cn(
-                  'flex h-[68px] w-[68px] items-center justify-center rounded-full border-2 font-display text-xs font-black uppercase tracking-[0.18em]',
+                  'flex h-[58px] w-[58px] items-center justify-center rounded-full border-2 font-display text-[11px] font-black uppercase tracking-[0.18em]',
                   dark
-                    ? 'border-flame bg-ink text-flame-soft shadow-[0_0_0_6px_oklch(0.18_0.040_30_/_0.8)]'
-                    : 'border-flame bg-paper text-flame shadow-[0_0_0_6px_oklch(0.964_0.018_78_/_0.9)]',
+                    ? 'border-flame bg-ink text-flame-soft shadow-[0_0_0_5px_oklch(0.18_0.040_30_/_0.8)]'
+                    : 'border-flame bg-paper text-flame shadow-[0_0_0_5px_oklch(0.964_0.018_78_/_0.9)]',
                 )}
               >
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div
                 className={cn(
-                  'mt-4 font-display text-sm font-bold uppercase tracking-[0.18em]',
+                  'mt-3 font-display text-[11px] font-bold uppercase tracking-[0.16em]',
                   dark ? 'text-paper/65' : 'text-ink-soft',
                 )}
               >
                 {s.year}
               </div>
-              <h3 className={cn('mt-1 font-display text-lg font-bold', dark ? 'text-paper' : 'text-ink')}>
+              <h3
+                className={cn(
+                  'mt-1 font-display text-[13.5px] font-bold leading-tight',
+                  dark ? 'text-paper' : 'text-ink',
+                )}
+              >
                 {s.title}
               </h3>
               <p
                 className={cn(
-                  'mt-1.5 max-w-[18ch] text-[13.5px] leading-relaxed',
+                  'mt-1 text-[11.5px] leading-snug',
                   dark ? 'text-paper/70' : 'text-ink-soft',
                 )}
               >
@@ -402,11 +408,11 @@ function StatGrid({ scene, tone }: { scene: Scene; tone: SceneTone }) {
           }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className={cn(
-            'lift rounded-3xl border p-6 backdrop-blur-[2px]',
+            'lift rounded-3xl border p-5 backdrop-blur-[2px]',
             dark ? 'border-paper/12 bg-ink/30 text-paper' : 'border-ink/10 bg-paper/85 text-ink',
           )}
         >
-          <div className="font-display text-[3.2rem] font-black leading-none tracking-tight text-flame">
+          <div className="font-display text-[clamp(2.2rem,4svh,3.2rem)] font-black leading-none tracking-tight text-flame">
             <Counter value={s.value} decimals={s.decimals ?? 0} suffix={s.suffix ?? ''} />
           </div>
           <p
@@ -541,7 +547,7 @@ function VisualLayer({
   return (
     <motion.figure
       style={{ y: scrollY }}
-      className="group relative mx-auto w-full max-w-md"
+      className="group relative mx-auto w-full max-w-[min(26rem,42svh)]"
       initial={{ opacity: 0, scale: 0.94 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -669,11 +675,11 @@ export function StoryScene({ scene, index, total }: StorySceneProps) {
         {scene.index}
       </motion.span>
 
-      <div className="relative mx-auto w-full max-w-6xl px-6 py-20 md:py-24">
+      <div className="relative mx-auto w-full max-w-6xl px-6 py-[clamp(3rem,7svh,5rem)]">
         <motion.div
           style={{ y: contentY }}
           className={cn(
-            'grid items-center gap-12 md:gap-14',
+            'grid items-center gap-8 md:gap-12',
             gridCols,
           )}
         >
@@ -685,7 +691,7 @@ export function StoryScene({ scene, index, total }: StorySceneProps) {
           {/* Content column */}
           <div
             className={cn(
-              'relative flex flex-col gap-6',
+              'relative flex flex-col gap-[clamp(0.75rem,2svh,1.5rem)]',
               layout === 'center' && 'mx-auto max-w-3xl text-center items-center',
             )}
           >
@@ -752,14 +758,14 @@ export function StoryScene({ scene, index, total }: StorySceneProps) {
 
         {/* Stat grid sits below the headline grid when present */}
         {scene.stats && scene.stats.length > 0 && (
-          <div className="mt-8">
+          <div className="mt-[clamp(1.25rem,3svh,2rem)]">
             <StatGrid scene={scene} tone={scene.tone} />
           </div>
         )}
 
         {/* Bullet grid (for crisis / principles / policies / lessons) */}
         {scene.bullets && scene.bullets.length > 0 && (
-          <div className="mt-8">
+          <div className="mt-[clamp(1.25rem,3svh,2rem)]">
             <BulletGrid scene={scene} tone={scene.tone} />
           </div>
         )}
