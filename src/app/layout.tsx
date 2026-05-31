@@ -35,6 +35,7 @@ export default function RootLayout({
     <html
       lang="vi"
       className={`${playfair.variable} ${lora.variable} snap-root h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-paper text-ink selection:bg-flame selection:text-paper">
         <MotionProvider>

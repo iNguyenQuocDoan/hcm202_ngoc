@@ -230,10 +230,34 @@ export const storyScenes: StoryScene[] = [
   },
 
   {
-    id: 'chinh-sach',
+    id: 'loi-day',
     chapter: 'Hồi 5',
-    eyebrow: 'Chính sách thực thi',
+    eyebrow: 'Lời dạy',
     index: '04',
+    title: 'Sức dân là cội nguồn',
+    paragraphs: [
+      'Lấy dân làm gốc trong kinh tế nghĩa là [[lấy đời sống nhân dân làm mục tiêu]] và lấy sức dân làm động lực phát triển. Đây là sợi chỉ xuyên suốt mọi chính sách Đổi mới.',
+    ],
+    quote: {
+      text: 'Dễ trăm lần không dân cũng chịu, khó vạn lần dân liệu cũng xong.',
+      attrib: 'Hồ Chí Minh',
+    },
+    detailKey: 'loi-day',
+    image: {
+      key: 'hoChiMinh',
+      ratio: 'aspect-[4/5]',
+      focus: 'object-top',
+    },
+    tone: 'ink',
+    layout: 'left',
+    effects: ['quote-pillar', 'glow', 'sun-rays', 'image-parallax', 'keyword-highlight'],
+  },
+
+  {
+    id: 'chinh-sach',
+    chapter: 'Hồi 6',
+    eyebrow: 'Chính sách thực thi',
+    index: '05',
     title: 'Bốn hướng chuyển động',
     paragraphs: [
       'Từ định hướng tư tưởng và đường lối Đại hội VII, Đổi mới được cụ thể hóa thành bốn [[hướng chuyển động]] chính — từng bước đưa Việt Nam thoát khỏi khủng hoảng kinh tế đầu thập niên 1990.',
@@ -268,30 +292,6 @@ export const storyScenes: StoryScene[] = [
     tone: 'harvest',
     layout: 'center',
     effects: ['floating-icons', 'glow', 'orb-drift'],
-  },
-
-  {
-    id: 'loi-day',
-    chapter: 'Hồi 6',
-    eyebrow: 'Lời dạy',
-    index: '05',
-    title: 'Sức dân là cội nguồn',
-    paragraphs: [
-      'Lấy dân làm gốc trong kinh tế nghĩa là [[lấy đời sống nhân dân làm mục tiêu]] và lấy sức dân làm động lực phát triển. Đây là sợi chỉ xuyên suốt mọi chính sách Đổi mới.',
-    ],
-    quote: {
-      text: 'Dễ trăm lần không dân cũng chịu, khó vạn lần dân liệu cũng xong.',
-      attrib: 'Hồ Chí Minh',
-    },
-    detailKey: 'loi-day',
-    image: {
-      key: 'hoChiMinh',
-      ratio: 'aspect-[4/5]',
-      focus: 'object-top',
-    },
-    tone: 'ink',
-    layout: 'left',
-    effects: ['quote-pillar', 'glow', 'sun-rays', 'image-parallax', 'keyword-highlight'],
   },
 
   {
