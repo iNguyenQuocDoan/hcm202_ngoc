@@ -94,7 +94,11 @@ export default function GamePage() {
   const handleResetGame = () => {
     const shuffled = [...QUESTIONS]
       .sort(() => 0.5 - Math.random())
-      .slice(0, 20);
+      .slice(0, 20)
+      .map(q => ({
+        ...q,
+        choices: [...q.choices].sort(() => 0.5 - Math.random())
+      }));
     setSessionQuestions(shuffled);
 
     const startEco = getRandomStartValue();
@@ -124,8 +128,9 @@ export default function GamePage() {
   const handleChoiceSelect = (choice: Choice) => {
     setSelectedChoice(choice);
     
-    // Check if the choice is the correct one (Choice 0)
-    const isCorrect = choice === currentQuestion.choices[0];
+    // Check if the choice is the correct one (Choice 0 in the static QUESTIONS database)
+    const originalQuestion = QUESTIONS.find(q => q.id === currentQuestion.id);
+    const isCorrect = originalQuestion ? choice.text === originalQuestion.choices[0].text : false;
 
     // 1% chance of random perfect jackpot
     const isJackpot = Math.random() < 0.01;
@@ -220,6 +225,19 @@ export default function GamePage() {
     if (nextIndex >= sessionQuestions.length) {
       setGameState('VICTORY');
     } else {
+      // Dynamically shuffle the next question's choices on the fly
+      setSessionQuestions(prev => {
+        const copy = [...prev];
+        const nextQ = copy[nextIndex];
+        if (nextQ) {
+          copy[nextIndex] = {
+            ...nextQ,
+            choices: [...nextQ.choices].sort(() => 0.5 - Math.random())
+          };
+        }
+        return copy;
+      });
+
       setCurrentQuestionIndex(nextIndex);
       setDeltas(null);
       setSelectedChoice(null);
