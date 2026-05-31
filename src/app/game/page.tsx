@@ -27,8 +27,8 @@ import { QUESTIONS, Question, Choice, StatEffects } from './questions';
 type GameState = 'START' | 'PLAYING' | 'FEEDBACK' | 'GAMEOVER' | 'VICTORY';
 
 function getRandomStartValue() {
-  // Returns a random integer between 30 and 49 inclusive (always under 50 to represent a starting crisis)
-  return Math.floor(Math.random() * 20) + 30;
+  // Returns a random integer between 15 and 29 inclusive (always under 30 to represent a severe starting crisis)
+  return Math.floor(Math.random() * 15) + 15;
 }
 
 export default function GamePage() {
@@ -42,22 +42,51 @@ export default function GamePage() {
   const [adaptability, setAdaptability] = useState(60);
   const [solidarity, setSolidarity] = useState(60);
 
+  // Storing initial start values to calculate perfect incremental gains
+  const [startEconomy, setStartEconomy] = useState(20);
+  const [startConfidence, setStartConfidence] = useState(20);
+  const [startAdaptability, setStartAdaptability] = useState(20);
+  const [startSolidarity, setStartSolidarity] = useState(20);
+
   // Floating delta tracking
   const [deltas, setDeltas] = useState<StatEffects | null>(null);
 
   // Active choice consequence state
   const [selectedChoice, setSelectedChoice] = useState<Choice | null>(null);
 
+  // Secret cheat clicks to set all stats to 100%
+  const [cheatClicks, setCheatClicks] = useState(0);
+
+  // 1% Jackpot win state
+  const [isJackpotWin, setIsJackpotWin] = useState(false);
+
+  const handleCheatClick = () => {
+    setCheatClicks(prev => {
+      const next = prev + 1;
+      if (next >= 5) {
+        setEconomy(100);
+        setConfidence(100);
+        setAdaptability(100);
+        setSolidarity(100);
+        setDeltas({ economy: 100, confidence: 100, adaptability: 100, solidarity: 100 });
+        return 0;
+      }
+      return next;
+    });
+  };
+
   // Animate indicator colors dynamically based on value
   const getIndicatorColor = (val: number) => {
-    if (val > 60) return 'bg-emerald-500 text-emerald-500';
-    if (val > 25) return 'bg-amber-500 text-amber-500';
+    const roundedVal = Math.round(val);
+    if (roundedVal > 60) return 'bg-emerald-500 text-emerald-500';
+    if (roundedVal > 25) return 'bg-amber-500 text-amber-500';
     return 'bg-flame text-flame animate-pulse';
   };
 
   const getIndicatorBorder = (val: number) => {
-    if (val > 60) return 'border-emerald-500/20 bg-emerald-500/[0.03]';
-    if (val > 25) return 'border-amber-500/20 bg-amber-500/[0.03]';
+    const roundedVal = Math.round(val);
+    if (roundedVal > 60) return 'border-emerald-500/20 bg-emerald-500/[0.03]';
+    if (roundedVal > 25) return 'border-amber-500/20 bg-amber-500/[0.03]';
     return 'border-flame/30 bg-flame/[0.05]';
   };
 
@@ -68,13 +97,26 @@ export default function GamePage() {
       .slice(0, 20);
     setSessionQuestions(shuffled);
 
-    setEconomy(getRandomStartValue());
-    setConfidence(getRandomStartValue());
-    setAdaptability(getRandomStartValue());
-    setSolidarity(getRandomStartValue());
+    const startEco = getRandomStartValue();
+    const startConf = getRandomStartValue();
+    const startAdap = getRandomStartValue();
+    const startSol = getRandomStartValue();
+
+    setEconomy(startEco);
+    setConfidence(startConf);
+    setAdaptability(startAdap);
+    setSolidarity(startSol);
+
+    setStartEconomy(startEco);
+    setStartConfidence(startConf);
+    setStartAdaptability(startAdap);
+    setStartSolidarity(startSol);
+
     setCurrentQuestionIndex(0);
     setDeltas(null);
     setSelectedChoice(null);
+    setCheatClicks(0);
+    setIsJackpotWin(false);
     setGameState('PLAYING');
   };
 
@@ -82,22 +124,93 @@ export default function GamePage() {
   const handleChoiceSelect = (choice: Choice) => {
     setSelectedChoice(choice);
     
-    // Apply changes with boundary checks
-    setEconomy(prev => Math.max(0, Math.min(100, prev + choice.effects.economy)));
-    setConfidence(prev => Math.max(0, Math.min(100, prev + choice.effects.confidence)));
-    setAdaptability(prev => Math.max(0, Math.min(100, prev + choice.effects.adaptability)));
-    setSolidarity(prev => Math.max(0, Math.min(100, prev + choice.effects.solidarity)));
+    // Check if the choice is the correct one (Choice 0)
+    const isCorrect = choice === currentQuestion.choices[0];
 
-    // Set floating deltas
-    setDeltas(choice.effects);
+    // 1% chance of random perfect jackpot
+    const isJackpot = Math.random() < 0.01;
+
+    if (isJackpot) {
+      setEconomy(100);
+      setConfidence(100);
+      setAdaptability(100);
+      setSolidarity(100);
+      setDeltas({ economy: 100 - economy, confidence: 100 - confidence, adaptability: 100 - adaptability, solidarity: 100 - solidarity });
+      setIsJackpotWin(true);
+    } else if (isCorrect) {
+      // Calculate exact float increment to reach 100% in 20 questions
+      const incEco = (100 - startEconomy) / 20;
+      const incConf = (100 - startConfidence) / 20;
+      const incAdap = (100 - startAdaptability) / 20;
+      const incSol = (100 - startSolidarity) / 20;
+
+      const newEconomy = Math.min(100, economy + incEco);
+      const newConfidence = Math.min(100, confidence + incConf);
+      const newAdaptability = Math.min(100, adaptability + incAdap);
+      const newSolidarity = Math.min(100, solidarity + incSol);
+
+      setEconomy(newEconomy);
+      setConfidence(newConfidence);
+      setAdaptability(newAdaptability);
+      setSolidarity(newSolidarity);
+
+      setDeltas({
+        economy: Math.round(newEconomy) - Math.round(economy),
+        confidence: Math.round(newConfidence) - Math.round(confidence),
+        adaptability: Math.round(newAdaptability) - Math.round(adaptability),
+        solidarity: Math.round(newSolidarity) - Math.round(solidarity)
+      });
+      setIsJackpotWin(false);
+    } else {
+      // Apply negative changes from choice.effects (or positive if any, scaled by tiered diminishing returns)
+      const getNewValue = (current: number, delta: number) => {
+        if (delta <= 0) {
+          return Math.max(0, current + delta);
+        }
+        // Positive delta (if any in incorrect choices) has tiered diminishing returns
+        let gain = delta;
+        if (current >= 90) {
+          gain = delta * 0.25;
+        } else if (current >= 75) {
+          gain = delta * 0.45;
+        } else if (current >= 50) {
+          gain = delta * 0.7;
+        }
+        return Math.min(100, current + gain);
+      };
+
+      const newEconomy = getNewValue(economy, choice.effects.economy);
+      const newConfidence = getNewValue(confidence, choice.effects.confidence);
+      const newAdaptability = getNewValue(adaptability, choice.effects.adaptability);
+      const newSolidarity = getNewValue(solidarity, choice.effects.solidarity);
+
+      setEconomy(newEconomy);
+      setConfidence(newConfidence);
+      setAdaptability(newAdaptability);
+      setSolidarity(newSolidarity);
+
+      setDeltas({
+        economy: Math.round(newEconomy) - Math.round(economy),
+        confidence: Math.round(newConfidence) - Math.round(confidence),
+        adaptability: Math.round(newAdaptability) - Math.round(adaptability),
+        solidarity: Math.round(newSolidarity) - Math.round(solidarity)
+      });
+      setIsJackpotWin(false);
+    }
     setGameState('FEEDBACK');
   };
 
   // Continue to next question or end game
   const handleNextStep = () => {
-    // Check lose condition (if any index hits or drops below 15%)
-    if (economy <= 15 || confidence <= 15 || adaptability <= 15 || solidarity <= 15) {
+    // Check lose condition (if any index hits or drops below 10%)
+    if (economy < 10 || confidence < 10 || adaptability < 10 || solidarity < 10) {
       setGameState('GAMEOVER');
+      return;
+    }
+
+    // Check perfect win condition (all indices reach 100%)
+    if (Math.round(economy) === 100 && Math.round(confidence) === 100 && Math.round(adaptability) === 100 && Math.round(solidarity) === 100) {
+      setGameState('VICTORY');
       return;
     }
 
@@ -114,6 +227,9 @@ export default function GamePage() {
 
   // Evaluation title based on final stats
   const getVictoryTitle = () => {
+    if (Math.round(economy) === 100 && Math.round(confidence) === 100 && Math.round(adaptability) === 100 && Math.round(solidarity) === 100) {
+      return 'Kỷ Nguyên Vàng - Kiến Tạo Thịnh Vượng Tuyệt Đối';
+    }
     const average = (economy + confidence + adaptability + solidarity) / 4;
     if (average >= 75) return 'Nhà Hoạch Định Kinh Tế Xuất Chúng';
     
@@ -124,27 +240,27 @@ export default function GamePage() {
     return 'Nhà Hành Động Cân Bằng';
   };
 
-  // Identify which stat caused Game Over (at <= 15% threshold)
+  // Identify which stat caused Game Over (under 10% threshold)
   const getCrashedStatName = () => {
-    if (economy <= 15) return 'Kinh Tế (GDP)';
-    if (confidence <= 15) return 'Niềm Tin (Lòng Dân)';
-    if (adaptability <= 15) return 'Tư Duy Đổi Mới';
-    if (solidarity <= 15) return 'Đoàn Kết (Đồng Thuận)';
+    if (economy < 10) return 'Kinh Tế (GDP)';
+    if (confidence < 10) return 'Niềm Tin (Lòng Dân)';
+    if (adaptability < 10) return 'Tư Duy Đổi Mới';
+    if (solidarity < 10) return 'Đoàn Kết (Đồng Thuận)';
     return '';
   };
 
   const getCrashedStatLesson = () => {
-    if (economy <= 15) {
-      return 'Chỉ số Kinh tế đã chạm hoặc giảm xuống dưới mức an toàn (từ 15% trở xuống). Sản xuất công-nông nghiệp sụt giảm nghiêm trọng, ngân sách kiệt quệ dẫn đến nguy cơ tê liệt toàn hệ thống. Hãy nhớ bài học 1991: Phải cởi trói cho tư nhân sản xuất và đổi mới cơ cấu kinh tế để khơi thông nguồn lực phát triển.';
+    if (economy < 10) {
+      return 'Chỉ số Kinh tế đã giảm xuống dưới mức an toàn (dưới 10%). Sản xuất công-nông nghiệp sụt giảm nghiêm trọng, ngân sách kiệt quệ dẫn đến nguy cơ tê liệt toàn hệ thống. Hãy nhớ bài học 1991: Phải cởi trói cho tư nhân sản xuất và đổi mới cơ cấu kinh tế để khơi thông nguồn lực phát triển.';
     }
-    if (confidence <= 15) {
-      return 'Chỉ số Niềm tin lòng dân đã chạm hoặc rơi xuống dưới mức an toàn (từ 15% trở xuống). Siêu lạm phát và đổ vỡ tài chính tự phát tàn phá lòng tin của người dân vào đồng nội tệ và cơ chế. Hãy nhớ bài học 1991: Lợi ích của người dân và tính thực chất, công khai của chính sách là điểm tựa vững chắc nhất của chính quyền.';
+    if (confidence < 10) {
+      return 'Chỉ số Niềm tin lòng dân đã rơi xuống dưới mức an toàn (dưới 10%). Siêu lạm phát và đổ vỡ tài chính tự phát tàn phá lòng tin của người dân vào đồng nội tệ và cơ chế. Hãy nhớ bài học 1991: Lợi ích của người dân và tính thực chất, công khai của chính sách là điểm tựa vững chắc nhất của chính quyền.';
     }
-    if (adaptability <= 15) {
-      return 'Chỉ số Tư duy đổi mới đã giảm sâu xuống mức nguy hại (từ 15% trở xuống). Việc bảo thủ bám giữ các cơ chế chỉ huy bao cấp cũ, e ngại rủi ro và thiếu nhạy bén trước biến động thị trường đã đẩy nền kinh tế vào ngõ cụt. Hãy nhớ bài học 1991: Phải bám sát thực tiễn khách quan, kiên định mục tiêu nhưng cực kỳ linh hoạt về cách làm.';
+    if (adaptability < 10) {
+      return 'Chỉ số Tư duy đổi mới đã giảm sâu xuống dưới mức an toàn (dưới 10%). Việc bảo thủ bám giữ các cơ chế chỉ huy bao cấp cũ, e ngại rủi ro và thiếu nhạy bén trước biến động thị trường đã đẩy nền kinh tế vào ngõ cụt. Hãy nhớ bài học 1991: Phải bám sát thực tiễn khách quan, kiên định mục tiêu nhưng cực kỳ linh hoạt về cách làm.';
     }
-    if (solidarity <= 15) {
-      return 'Chỉ số Đoàn kết đồng thuận xã hội suy yếu nghiêm trọng (từ 15% trở xuống), gây ra sự chia rẽ lợi ích gay gắt giữa các tầng lớp nhân dân. Hãy nhớ bài học 1991: Phát huy tinh thần đại đoàn kết toàn dân tộc, chăm lo cuộc sống của người nghèo để cùng chung sức vượt qua cơn hoạn nạn.';
+    if (solidarity < 10) {
+      return 'Chỉ số Đoàn kết đồng thuận xã hội suy yếu nghiêm trọng (dưới 10%), gây ra sự chia rẽ lợi ích gay gắt giữa các tầng lớp nhân dân. Hãy nhớ bài học 1991: Phát huy tinh thần đại đoàn kết toàn dân tộc, chăm lo cuộc sống của người nghèo để cùng chung sức vượt qua cơn hoạn nạn.';
     }
     return '';
   };
@@ -155,12 +271,12 @@ export default function GamePage() {
     const isPositive = deltas[statName] > 0;
     return (
       <motion.span
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: -25 }}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: [0, 1, 1, 0], y: -12 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1] }}
+        transition={{ duration: 1.2, times: [0, 0.15, 0.8, 1], ease: 'easeOut' }}
         className={cn(
-          'absolute right-0 -top-5 font-mono text-[11px] font-bold z-10',
+          'absolute right-0 -top-5 font-mono text-[10px] font-bold z-10',
           isPositive ? 'text-emerald-600' : 'text-flame'
         )}
       >
@@ -243,7 +359,7 @@ export default function GamePage() {
                           <AlertIcon className="h-4 w-4 text-flame shrink-0 mt-0.5" />
                           <div>
                             <span className="font-bold text-ink block font-display">Luật Sinh Tồn</span>
-                            <span className="normal-case text-ink-soft text-[12.5px] tracking-normal leading-snug mt-0.5 block font-sans">Giữ cả 4 chỉ số luôn lớn hơn 15% (thua ngay nếu bất kỳ chỉ số nào từ 15% trở xuống).</span>
+                            <span className="normal-case text-ink-soft text-[12.5px] tracking-normal leading-snug mt-0.5 block font-sans">Giữ cả 4 chỉ số từ 10% trở lên (thua ngay nếu bất kỳ chỉ số nào dưới 10%).</span>
                           </div>
                         </div>
                       </div>
@@ -275,7 +391,13 @@ export default function GamePage() {
                     <div className="lg:col-span-4 flex flex-col gap-4">
                       <div className="rounded-3xl border border-ink/10 bg-paper/70 p-5 shadow-sm flex flex-col gap-4.5 backdrop-blur-md">
                         <div className="font-display text-[11px] uppercase tracking-[0.28em] text-ink-soft border-b border-ink/8 pb-2.5 flex items-center justify-between">
-                          <span>Chỉ số sinh tồn</span>
+                          <span 
+                            onClick={handleCheatClick}
+                            className="cursor-pointer select-none active:text-flame hover:text-flame transition-colors duration-200"
+                            title="Cheat code: Nhấn 5 lần để đạt 100% tất cả chỉ số"
+                          >
+                            Chỉ số sinh tồn
+                          </span>
                           <span className="font-mono font-bold text-flame">
                             Q.{currentQuestionIndex + 1} / {sessionQuestions.length}
                           </span>
@@ -291,16 +413,18 @@ export default function GamePage() {
                                 <Coins className="h-4.5 w-4.5 text-flame" />
                                 Kinh Tế (GDP)
                               </span>
-                              <span className="font-mono text-sm font-black text-ink">{economy}%</span>
+                              <div className="relative">
+                                <span className="font-mono text-sm font-black text-ink">{Math.round(economy)}%</span>
+                                {renderDelta('economy')}
+                              </div>
                             </div>
                             <div className="h-2 w-full bg-ink/8 rounded-full overflow-hidden">
                               <div
                                 className={cn('h-full rounded-full transition-all duration-500 ease-out-quart', getIndicatorColor(economy))}
-                                style={{ width: `${economy}%` }}
+                                style={{ width: `${Math.round(economy)}%` }}
                               />
                             </div>
                             <span className="text-[10px] text-ink-mute mt-1.5 block leading-none">Sản xuất công-nông nghiệp, ngân sách</span>
-                            {renderDelta('economy')}
                           </div>
 
                           {/* 2. Confidence */}
@@ -310,16 +434,18 @@ export default function GamePage() {
                                 <ShieldCheck className="h-4.5 w-4.5 text-flame" />
                                 Niềm Tin (Lòng Dân)
                               </span>
-                              <span className="font-mono text-sm font-black text-ink">{confidence}%</span>
+                              <div className="relative">
+                                <span className="font-mono text-sm font-black text-ink">{Math.round(confidence)}%</span>
+                                {renderDelta('confidence')}
+                              </div>
                             </div>
                             <div className="h-2 w-full bg-ink/8 rounded-full overflow-hidden">
                               <div
                                 className={cn('h-full rounded-full transition-all duration-500 ease-out-quart', getIndicatorColor(confidence))}
-                                style={{ width: `${confidence}%` }}
+                                style={{ width: `${Math.round(confidence)}%` }}
                               />
                             </div>
                             <span className="text-[10px] text-ink-mute mt-1.5 block leading-none">Lòng tin tiền tệ, ổn định xã hội</span>
-                            {renderDelta('confidence')}
                           </div>
 
                           {/* 3. Adaptability */}
@@ -329,16 +455,18 @@ export default function GamePage() {
                                 <Cpu className="h-4.5 w-4.5 text-flame" />
                                 Tư Duy Đổi Mới
                               </span>
-                              <span className="font-mono text-sm font-black text-ink">{adaptability}%</span>
+                              <div className="relative">
+                                <span className="font-mono text-sm font-black text-ink">{Math.round(adaptability)}%</span>
+                                {renderDelta('adaptability')}
+                              </div>
                             </div>
                             <div className="h-2 w-full bg-ink/8 rounded-full overflow-hidden">
                               <div
                                 className={cn('h-full rounded-full transition-all duration-500 ease-out-quart', getIndicatorColor(adaptability))}
-                                style={{ width: `${adaptability}%` }}
+                                style={{ width: `${Math.round(adaptability)}%` }}
                               />
                             </div>
                             <span className="text-[10px] text-ink-mute mt-1.5 block leading-none">Nhạy bén chính sách, cải cách cơ chế</span>
-                            {renderDelta('adaptability')}
                           </div>
 
                           {/* 4. Solidarity */}
@@ -348,16 +476,18 @@ export default function GamePage() {
                                 <Users className="h-4.5 w-4.5 text-flame" />
                                 Đoàn Kết (Đồng Thuận)
                               </span>
-                              <span className="font-mono text-sm font-black text-ink">{solidarity}%</span>
+                              <div className="relative">
+                                <span className="font-mono text-sm font-black text-ink">{Math.round(solidarity)}%</span>
+                                {renderDelta('solidarity')}
+                              </div>
                             </div>
                             <div className="h-2 w-full bg-ink/8 rounded-full overflow-hidden">
                               <div
                                 className={cn('h-full rounded-full transition-all duration-500 ease-out-quart', getIndicatorColor(solidarity))}
-                                style={{ width: `${solidarity}%` }}
+                                style={{ width: `${Math.round(solidarity)}%` }}
                               />
                             </div>
                             <span className="text-[10px] text-ink-mute mt-1.5 block leading-none">Sự chia sẻ, đồng thuận toàn dân</span>
-                            {renderDelta('solidarity')}
                           </div>
 
                         </div>
@@ -446,35 +576,45 @@ export default function GamePage() {
                                       <Sparkles className="h-3.5 w-3.5 text-emerald-600" />
                                       Hệ quả quyết định
                                     </h4>
+                                    
+                                    {isJackpotWin && (
+                                      <div className="mb-3.5 px-3.5 py-2.5 rounded-xl bg-amber-500/10 border border-amber-500/25 text-[12.5px] text-amber-800 font-bold flex items-center gap-2 animate-pulse">
+                                        <Award className="h-4.5 w-4.5 text-amber-600 shrink-0" />
+                                        <span>🎉 VẬN MAY THỜI ĐẠI (Tỷ lệ 1%): Quyết định của bạn đã tạo ra cơ duyên "Thiên thời - Địa lợi - Nhân hòa" ngoài mong đợi! Tất cả chỉ số lập tức đạt 100%!</span>
+                                      </div>
+                                    )}
+
                                     <p className="text-[14px] sm:text-[14.5px] leading-relaxed text-ink font-sans">
                                       {selectedChoice.outcome}
                                     </p>
                                     
                                     {/* Small visual of the effects changed */}
-                                    <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-mono font-bold">
-                                      {Object.entries(selectedChoice.effects).map(([key, val]) => {
-                                        if (val === 0) return null;
-                                        const labels: Record<string, string> = {
-                                          economy: 'Kinh Tế (GDP)',
-                                          confidence: 'Niềm Tin (Lòng Dân)',
-                                          adaptability: 'Tư Duy Đổi Mới',
-                                          solidarity: 'Đoàn Kết (Đồng Thuận)',
-                                        };
-                                        return (
-                                          <span
-                                            key={key}
-                                            className={cn(
-                                              'px-2 py-0.5 rounded-md border',
-                                              val > 0
-                                                ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
-                                                : 'bg-rose-50 border-rose-200 text-rose-700'
-                                            )}
-                                          >
-                                            {labels[key]}: {val > 0 ? `+${val}` : val}%
-                                          </span>
-                                        );
-                                      })}
-                                    </div>
+                                    {!isJackpotWin && deltas && (
+                                      <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-mono font-bold">
+                                        {Object.entries(deltas).map(([key, val]) => {
+                                          if (val === 0) return null;
+                                          const labels: Record<string, string> = {
+                                            economy: 'Kinh Tế (GDP)',
+                                            confidence: 'Niềm Tin (Lòng Dân)',
+                                            adaptability: 'Tư Duy Đổi Mới',
+                                            solidarity: 'Đoàn Kết (Đồng Thuận)',
+                                          };
+                                          return (
+                                            <span
+                                              key={key}
+                                              className={cn(
+                                                'px-2 py-0.5 rounded-md border',
+                                                val > 0
+                                                  ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
+                                                  : 'bg-rose-50 border-rose-200 text-rose-700'
+                                              )}
+                                            >
+                                              {labels[key]}: {val > 0 ? `+${val}` : val}%
+                                            </span>
+                                          );
+                                        })}
+                                      </div>
+                                    )}
                                   </div>
 
                                   {/* 1991 mindset connection */}
@@ -531,7 +671,7 @@ export default function GamePage() {
                       </h2>
                       
                       <p className="mt-4.5 text-[15px] leading-relaxed text-flame-deep font-semibold">
-                        Chỉ số {getCrashedStatName()} của bạn đã chạm hoặc rơi xuống dưới mức an toàn (từ 15% trở xuống).
+                        Chỉ số {getCrashedStatName()} của bạn đã giảm xuống dưới mức an toàn (dưới 10%).
                       </p>
                       
                       <p className="mt-3.5 text-[14.5px] leading-relaxed text-ink-soft bg-paper-deep/65 p-5 rounded-2xl border border-ink/8 font-sans">
@@ -574,7 +714,9 @@ export default function GamePage() {
                       </div>
 
                       <h2 className="font-display text-3xl font-black leading-tight tracking-tight text-ink sm:text-4xl">
-                        VƯỢT BÃO THÀNH CÔNG!
+                        {Math.round(economy) === 100 && Math.round(confidence) === 100 && Math.round(adaptability) === 100 && Math.round(solidarity) === 100
+                          ? 'CHIẾN THẮNG TUYỆT ĐỐI!'
+                          : 'VƯỢT BÃO THÀNH CÔNG!'}
                       </h2>
                       
                       <div className="mt-4 flex flex-col items-center">
@@ -587,10 +729,10 @@ export default function GamePage() {
                       {/* Display final scores */}
                       <div className="mt-8 grid grid-cols-4 gap-3 bg-paper-deep/60 p-4.5 rounded-2xl border border-ink/8">
                         {[
-                          { k: 'Kinh Tế', v: economy, icon: Coins },
-                          { k: 'Niềm Tin', v: confidence, icon: ShieldCheck },
-                          { k: 'Đổi Mới', v: adaptability, icon: Cpu },
-                          { k: 'Đoàn Kết', v: solidarity, icon: Users },
+                          { k: 'Kinh Tế', v: Math.round(economy), icon: Coins },
+                          { k: 'Niềm Tin', v: Math.round(confidence), icon: ShieldCheck },
+                          { k: 'Đổi Mới', v: Math.round(adaptability), icon: Cpu },
+                          { k: 'Đoàn Kết', v: Math.round(solidarity), icon: Users },
                         ].map(stat => {
                           const Icon = stat.icon;
                           return (
@@ -604,7 +746,15 @@ export default function GamePage() {
                       </div>
 
                       <p className="mt-6 text-[15px] leading-relaxed text-ink-soft font-sans">
-                        Xuất sắc! Bạn đã vượt qua trọn vẹn <strong className="font-semibold text-emerald-800">20 tình huống thử thách kinh tế lịch sử</strong>. Cơ chế đánh đổi buộc bạn phải cân nhắc thiệt hơn giữa Tăng trưởng (Kinh tế), Lòng dân (Niềm tin), Thể chế (Đổi mới) và Đồng thuận xã hội (Đoàn kết). Bằng việc vận dụng linh hoạt tư duy Đổi mới năm 1991, bạn đã chèo lái đất nước thoát khỏi khủng hoảng thành công!
+                        {Math.round(economy) === 100 && Math.round(confidence) === 100 && Math.round(adaptability) === 100 && Math.round(solidarity) === 100 ? (
+                          <>
+                            <strong className="font-semibold text-emerald-800">Chiến thắng tuyệt đối!</strong> Bạn đã xuất sắc đưa tất cả các chỉ số (Kinh tế, Niềm tin, Đổi mới, Đoàn kết) đạt mức tối đa <strong className="font-semibold text-emerald-800">100%</strong>. Đây là một thành tựu hoàn hảo phi thường, thể hiện khả năng hoạch định tài tình, tối ưu hóa mọi nguồn lực và kiến tạo một kỷ nguyên phát triển hoàng kim cho đất nước!
+                          </>
+                        ) : (
+                          <>
+                            Xuất sắc! Bạn đã vượt qua trọn vẹn <strong className="font-semibold text-emerald-800">20 tình huống thử thách kinh tế lịch sử</strong>. Cơ chế đánh đổi buộc bạn phải cân nhắc thiệt hơn giữa Tăng trưởng (Kinh tế), Lòng dân (Niềm tin), Thể chế (Đổi mới) và Đồng thuận xã hội (Đoàn kết). Bằng việc vận dụng linh hoạt tư duy Đổi mới năm 1991, bạn đã chèo lái đất nước thoát khỏi khủng hoảng thành công!
+                          </>
+                        )}
                       </p>
 
                       <div className="mt-8 border-t border-ink/8 pt-6 flex flex-col sm:flex-row justify-center gap-4">
