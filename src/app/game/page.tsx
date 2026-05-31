@@ -165,7 +165,9 @@ export default function GamePage() {
       // Apply negative changes from choice.effects (or positive if any, scaled by tiered diminishing returns)
       const getNewValue = (current: number, delta: number) => {
         if (delta <= 0) {
-          return Math.max(0, current + delta);
+          // Scale down negative impact so a single mistake doesn't cause instant game over
+          const scaledPenalty = Math.round(delta * 0.4);
+          return Math.max(0, current + scaledPenalty);
         }
         // Positive delta (if any in incorrect choices) has tiered diminishing returns
         let gain = delta;
