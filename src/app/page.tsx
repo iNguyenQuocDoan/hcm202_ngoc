@@ -47,10 +47,10 @@ const marqueeWords = [
 ];
 
 const groupMembers = [
-  { name: 'Nguyễn Thành Ngọc', id: 'SE180279', role: 'Lý thuyết & giao diện' },
-  { name: 'Nguyễn Quốc Đoàn', id: 'SE180466', role: 'Nội dung & nghiên cứu' },
-  { name: '[Thành viên 3]', id: '—', role: 'Hình ảnh & video' },
-  { name: '[Thành viên 4]', id: '—', role: 'Trò chơi & tương tác' },
+  { name: 'Nguyễn Thành Ngọc', id: 'SE180279', role: 'Game & video' },
+  { name: 'Nguyễn Quốc Đoàn', id: 'SE180466', role: 'Lý thuyết & giao diện' },
+  { name: 'Trần Lê Sĩ Quỳnh', id: 'SE184191', role: 'Nội dung & nghiên cứu' },
+  { name: 'Đỗ Minh Trí', id: 'SE184645', role: 'Hình ảnh & tương tác' },
 ];
 
 const outline = [
