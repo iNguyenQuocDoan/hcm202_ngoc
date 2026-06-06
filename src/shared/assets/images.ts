@@ -12,8 +12,8 @@ export const IMAGES = {
     credit: 'Wikimedia Commons',
   },
   baDinhSquare: {
-    src: '/images/ba-dinh-square.jpg',
-    alt: 'Quảng trường Ba Đình, Hà Nội — nơi diễn ra các sự kiện trọng đại của đất nước.',
+    src: '/images/ba-dinh-hall.jpg',
+    alt: 'Hội trường Ba Đình lịch sử tại Hà Nội, nơi tổ chức Đại hội đại biểu toàn quốc lần thứ VII năm 1991.',
     credit: 'Wikimedia Commons',
   },
   mausoleum: {
@@ -31,7 +31,8 @@ export const IMAGES = {
   ricePaddy: {
     src: '/images/hanoi-rice-thresher-1991.png',
     alt: 'Nông dân thu hoạch lúa bằng máy tuốt cải tiến thời kỳ Khoán 10 (Nguồn: thinhvuongvietnam.com)',
-    credit: 'thinhvuongvietnam.com (thinhvuongvietnam.com/Content/tu-chinh-sach-tam-nong-o-an-giang-den-nghi-quyet-10-cua-bo-chinh-tri-ve-doi-moi-quan-ly-kinh-te-nong-nghiep-522514)',
+    credit:
+      'thinhvuongvietnam.com (thinhvuongvietnam.com/Content/tu-chinh-sach-tam-nong-o-an-giang-den-nghi-quyet-10-cua-bo-chinh-tri-ve-doi-moi-quan-ly-kinh-te-nong-nghiep-522514)',
   },
   flag: {
     src: '/images/flag.png',
@@ -71,7 +72,8 @@ export const IMAGES = {
   savingsDepositCounter1991: {
     src: '/images/savings-deposit-counter-1991.jpg',
     alt: 'Hoạt động tài chính, tiền tệ tại ngân hàng thời kỳ đổi mới — điểm gửi tiết kiệm lãi suất thực dương cao để kiềm chế siêu lạm phát 1986-1989 (Nguồn: thoibaonganhang.vn)',
-    credit: 'thoibaonganhang.vn (thoibaonganhang.vn/khai-quat-lich-su-ngan-hang-viet-nam-qua-cac-thoi-ky-2574.html)',
+    credit:
+      'thoibaonganhang.vn (thoibaonganhang.vn/khai-quat-lich-su-ngan-hang-viet-nam-qua-cac-thoi-ky-2574.html)',
   },
   // Nguồn ảnh: https://redsvn.net/wp-content/uploads/2017/10/vietnam_1991_00321.jpg
   // Chú thích: Xưởng thảm thủ công tư nhân Hà Nội 1991 - phụ nữ dệt thảm

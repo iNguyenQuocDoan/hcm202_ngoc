@@ -118,7 +118,8 @@ export const storyScenes: StoryScene[] = [
     image: {
       key: 'baDinhSquare',
       ratio: 'aspect-[4/5]',
-      caption: 'Quảng trường Ba Đình, Hà Nội.',
+      caption:
+        'Hội trường Ba Đình cũ, nơi diễn ra Đại hội VII năm 1991 (Nguồn: Wikimedia Commons).',
     },
     tone: 'dawn',
     layout: 'right',
@@ -158,9 +159,14 @@ export const storyScenes: StoryScene[] = [
       },
     ],
     detailKey: 'boi-canh',
+    image: {
+      key: 'hanoiVendors1991',
+      ratio: 'aspect-[4/5]',
+      caption: 'Bán hoa quả và rau từ xe đạp ở phố cổ Hà Nội năm 1991 (Ảnh: Hans-Peter Grumpe).',
+    },
     tone: 'storm',
-    layout: 'center',
-    effects: ['particles', 'rain-streaks', 'card-burst', 'keyword-highlight'],
+    layout: 'left',
+    effects: ['particles', 'rain-streaks', 'card-burst', 'keyword-highlight', 'image-parallax'],
   },
 
   {
@@ -173,14 +179,46 @@ export const storyScenes: StoryScene[] = [
       'Từ một mốc khởi xướng đến một mốc thử thách, dòng thời gian 1986 – 1995 vẽ nên đường bay của Đổi mới: vạch ra, va đập, kiên trì, và bứt lên.',
     ],
     timelineSteps: [
-      { year: '1986', title: 'Đại hội VI', body: 'Khởi xướng Đổi mới: ba chương trình lương thực, hàng tiêu dùng, xuất khẩu.' },
-      { year: '1988', title: 'Khoán 10', body: 'Nghị quyết 10 trao quyền chủ động sản xuất cho hộ nông dân.' },
-      { year: '1989', title: 'Biến động Đông Âu', body: 'Các nước XHCN Đông Âu lâm vào khủng hoảng, viện trợ truyền thống suy giảm.' },
-      { year: '6 · 1991', title: 'Đại hội VII', body: 'Họp tại Hà Nội 24 – 27/6, thông qua Cương lĩnh và Chiến lược đến 2000.' },
-      { year: '10 · 1991', title: 'Hiệp định Paris', body: 'Ngày 23/10/1991, Hiệp định Paris về Campuchia tháo gỡ thế bao vây ngoại giao.' },
-      { year: '11 · 1991', title: 'Bình thường hóa Việt – Trung', body: 'Mở rộng đối ngoại, chuyển mạnh sang đa phương hóa, đa dạng hóa quan hệ.' },
-      { year: '12 · 1991', title: 'Liên Xô tan rã', body: 'Việt Nam dựa vào nội lực, tìm quan hệ kinh tế mới với khu vực, thế giới.' },
-      { year: '1991 – 95', title: 'Kiên trì Đổi mới', body: 'GDP bình quân +8,2%/năm, từng bước thoát khủng hoảng kinh tế – xã hội.' },
+      {
+        year: '1986',
+        title: 'Đại hội VI',
+        body: 'Khởi xướng Đổi mới: ba chương trình lương thực, hàng tiêu dùng, xuất khẩu.',
+      },
+      {
+        year: '1988',
+        title: 'Khoán 10',
+        body: 'Nghị quyết 10 trao quyền chủ động sản xuất cho hộ nông dân.',
+      },
+      {
+        year: '1989',
+        title: 'Biến động Đông Âu',
+        body: 'Các nước XHCN Đông Âu lâm vào khủng hoảng, viện trợ truyền thống suy giảm.',
+      },
+      {
+        year: '6 · 1991',
+        title: 'Đại hội VII',
+        body: 'Họp tại Hà Nội 24 – 27/6, thông qua Cương lĩnh và Chiến lược đến 2000.',
+      },
+      {
+        year: '10 · 1991',
+        title: 'Hiệp định Paris',
+        body: 'Ngày 23/10/1991, Hiệp định Paris về Campuchia tháo gỡ thế bao vây ngoại giao.',
+      },
+      {
+        year: '11 · 1991',
+        title: 'Bình thường hóa Việt – Trung',
+        body: 'Mở rộng đối ngoại, chuyển mạnh sang đa phương hóa, đa dạng hóa quan hệ.',
+      },
+      {
+        year: '12 · 1991',
+        title: 'Liên Xô tan rã',
+        body: 'Việt Nam dựa vào nội lực, tìm quan hệ kinh tế mới với khu vực, thế giới.',
+      },
+      {
+        year: '1991 – 95',
+        title: 'Kiên trì Đổi mới',
+        body: 'GDP bình quân +8,2%/năm, từng bước thoát khủng hoảng kinh tế – xã hội.',
+      },
     ],
     detailKey: 'truc-thoi-gian',
     tone: 'ember',
@@ -266,9 +304,15 @@ export const storyScenes: StoryScene[] = [
       },
     ],
     detailKey: 'chinh-sach',
+    image: {
+      key: 'saigonExportPort1991',
+      ratio: 'aspect-[4/3]',
+      caption:
+        'Hoạt động xuất nhập khẩu hàng hoá tại Cảng Sài Gòn năm 1991 (Nguồn: Wikimedia Commons).',
+    },
     tone: 'harvest',
-    layout: 'center',
-    effects: ['floating-icons', 'glow', 'orb-drift'],
+    layout: 'right',
+    effects: ['floating-icons', 'glow', 'orb-drift', 'image-parallax', 'keyword-highlight'],
   },
 
   {
@@ -314,10 +358,11 @@ export const storyScenes: StoryScene[] = [
     image: {
       key: 'ricePaddy',
       ratio: 'aspect-[5/4]',
-      caption: 'Thu hoạch lúa bằng máy tuốt cơ giới thời kỳ Khoán 10 (Nguồn: thinhvuongvietnam.com).',
+      caption:
+        'Thu hoạch lúa bằng máy tuốt cơ giới thời kỳ Khoán 10 (Nguồn: thinhvuongvietnam.com).',
     },
     tone: 'afterglow',
-    layout: 'left',
+    layout: 'right',
     effects: ['sun-rays', 'stat-grid', 'glow', 'orb-drift', 'image-parallax', 'keyword-highlight'],
   },
 
@@ -385,7 +430,7 @@ export const storyScenes: StoryScene[] = [
       caption: 'Lăng Chủ tịch Hồ Chí Minh, Hà Nội.',
     },
     tone: 'paper',
-    layout: 'right',
+    layout: 'left',
     effects: ['glow', 'sun-rays', 'orb-drift', 'image-parallax', 'keyword-highlight'],
   },
 ];

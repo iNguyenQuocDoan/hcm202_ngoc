@@ -237,7 +237,7 @@ export function SceneAtmosphere({
       {/* Soft halo when the scene's effects request a glow only */}
       {effects.includes('glow') && (
         <div
-          className="absolute left-1/2 top-1/2 h-[60vmin] w-[60vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-3xl"
+          className="absolute top-1/2 left-1/2 h-[60vmin] w-[60vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-3xl"
           style={{ background: palette.glowColor }}
         />
       )}
@@ -276,7 +276,9 @@ export function SceneAtmosphere({
       ))}
 
       {/* Compass SVG behind content — only for the "vận dụng tư tưởng" scene */}
-      {effects.includes('compass') && <CompassRing color={palette.particleColor} progress={progress} />}
+      {effects.includes('compass') && (
+        <CompassRing color={palette.particleColor} progress={progress} />
+      )}
 
       {/* Sun rays — radiating from top centre */}
       {effects.includes('sun-rays') && <SunRays color={palette.glowColor} />}
@@ -295,7 +297,7 @@ function CompassRing({ color, progress }: { color: string; progress: MotionValue
   return (
     <motion.svg
       viewBox="0 0 200 200"
-      className="absolute left-1/2 top-1/2 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 opacity-30"
+      className="absolute top-1/2 left-1/2 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 opacity-30"
       style={{ rotate }}
     >
       <defs>
@@ -305,17 +307,33 @@ function CompassRing({ color, progress }: { color: string; progress: MotionValue
         </radialGradient>
       </defs>
       <circle cx="100" cy="100" r="95" fill="url(#compass-grad)" />
-      <circle cx="100" cy="100" r="70" fill="none" stroke={color} strokeOpacity="0.3" strokeWidth="0.4" />
-      <circle cx="100" cy="100" r="50" fill="none" stroke={color} strokeOpacity="0.5" strokeWidth="0.4" />
+      <circle
+        cx="100"
+        cy="100"
+        r="70"
+        fill="none"
+        stroke={color}
+        strokeOpacity="0.3"
+        strokeWidth="0.4"
+      />
+      <circle
+        cx="100"
+        cy="100"
+        r="50"
+        fill="none"
+        stroke={color}
+        strokeOpacity="0.5"
+        strokeWidth="0.4"
+      />
       {Array.from({ length: 32 }).map((_, i) => {
         const angle = (i / 32) * Math.PI * 2;
         const long = i % 4 === 0;
         const r1 = long ? 78 : 86;
         const r2 = 95;
-        const x1 = 100 + Math.cos(angle) * r1;
-        const y1 = 100 + Math.sin(angle) * r1;
-        const x2 = 100 + Math.cos(angle) * r2;
-        const y2 = 100 + Math.sin(angle) * r2;
+        const x1 = Number((100 + Math.cos(angle) * r1).toFixed(4));
+        const y1 = Number((100 + Math.sin(angle) * r1).toFixed(4));
+        const x2 = Number((100 + Math.cos(angle) * r2).toFixed(4));
+        const y2 = Number((100 + Math.sin(angle) * r2).toFixed(4));
         return (
           <line
             key={i}
@@ -329,16 +347,8 @@ function CompassRing({ color, progress }: { color: string; progress: MotionValue
           />
         );
       })}
-      <polygon
-        points="100,30 96,100 100,30"
-        fill={color}
-        fillOpacity="0.7"
-      />
-      <polygon
-        points="100,170 104,100 100,170"
-        fill={color}
-        fillOpacity="0.3"
-      />
+      <polygon points="100,30 96,100 100,30" fill={color} fillOpacity="0.7" />
+      <polygon points="100,170 104,100 100,170" fill={color} fillOpacity="0.3" />
     </motion.svg>
   );
 }
@@ -381,7 +391,7 @@ function FlagFlutter() {
   return (
     <svg
       viewBox="0 0 120 80"
-      className="absolute right-[4%] top-[10%] h-20 w-32 opacity-50 md:h-28 md:w-44"
+      className="absolute top-[10%] right-[4%] h-20 w-32 opacity-50 md:h-28 md:w-44"
     >
       <defs>
         <linearGradient id="flag-shade" x1="0%" x2="100%">
@@ -390,10 +400,7 @@ function FlagFlutter() {
         </linearGradient>
       </defs>
       <g className="flag-flutter origin-left">
-        <path
-          d="M0,4 Q30,0 60,8 T120,4 L120,72 Q90,80 60,68 T0,76 Z"
-          fill="url(#flag-shade)"
-        />
+        <path d="M0,4 Q30,0 60,8 T120,4 L120,72 Q90,80 60,68 T0,76 Z" fill="url(#flag-shade)" />
         <polygon
           points="60,28 65,42 80,42 68,50 73,64 60,56 47,64 52,50 40,42 55,42"
           fill="oklch(0.82 0.150 78)"
