@@ -171,9 +171,11 @@ function BulletGrid({ scene, tone }: { scene: Scene; tone: SceneTone }) {
   const cols =
     bullets.length === 4
       ? 'sm:grid-cols-2 lg:grid-cols-4'
-      : bullets.length === 3
-        ? 'sm:grid-cols-3'
-        : 'sm:grid-cols-2';
+      : bullets.length === 5
+        ? 'sm:grid-cols-2 lg:grid-cols-3'
+        : bullets.length === 3
+          ? 'sm:grid-cols-3'
+          : 'sm:grid-cols-2';
   return (
     <motion.ul
       initial="hidden"
