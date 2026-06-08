@@ -200,8 +200,11 @@ body {
   will-change: transform;
 }
 
-/* Scenes never snap — the .slide rules only apply to elements with that class */
-.story-scene { scroll-snap-align: none; }
+/* Story scenes are full-viewport frames; hash jumps should show the whole frame. */
+.story-scene {
+  scroll-margin-top: 0;
+  scroll-snap-align: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .dust-particle,

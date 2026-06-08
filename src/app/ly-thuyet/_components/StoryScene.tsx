@@ -651,7 +651,7 @@ export function StoryScene({ scene, index, total }: StorySceneProps) {
     <section
       ref={ref}
       id={scene.id}
-      className="story-scene relative isolate flex min-h-[100svh] w-full items-center overflow-hidden scroll-mt-20"
+      className="story-scene relative isolate flex min-h-[100svh] w-full items-center overflow-hidden"
     >
       <SceneAtmosphere
         sceneId={scene.id}
