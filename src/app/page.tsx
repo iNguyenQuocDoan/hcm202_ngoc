@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Bot, Brain, Code2, NotebookPen, Sunrise } from 'lucide-react';
-import { SiGithubcopilot, SiGooglegemini, SiOpenai } from 'react-icons/si';
+import { ArrowUpRight, Bot, Brain, Code2, Notebook, NotebookPen, Sunrise } from 'lucide-react';
+import { SiGithubcopilot, SiGooglegemini, SiOpenai, SiNotebooklm } from 'react-icons/si';
 import { IMAGES } from '@/shared/assets/images';
 import { Footer, Slide, SlideHeading } from '@/shared/components/layout';
 import {
@@ -94,6 +94,12 @@ const aiSupports = [
     purpose: 'Đồng hành khi viết và chỉnh sửa code giao diện.',
     Icon: SiGithubcopilot,
     Accent: Code2,
+  },
+  {
+    name: 'Notebook',
+    purpose: 'Chạy các mô hình và kịch bản AI để tạo dựng video tư liệu.',
+    Icon: SiNotebooklm,
+    Accent: Notebook,
   },
 ];
 
@@ -427,7 +433,7 @@ export default function HomePage() {
             </>
           }
         />
-        <Stagger className="mt-8 grid gap-5 md:grid-cols-3">
+        <Stagger className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {aiSupports.map(({ name, purpose, Icon, Accent }) => (
             <StaggerItem key={name} className="h-full">
               <TiltCard className="lift h-full rounded-3xl border border-ink/10 bg-paper-deep/55 p-6">
