@@ -264,7 +264,7 @@ export default function VideoPage() {
     videoRef.current.currentTime = seconds;
     setCurrentTime(seconds);
     if (!isPlaying) {
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
     }
   };
 
@@ -447,7 +447,7 @@ export default function VideoPage() {
         {/* Video Player + Chapters Layout Grid */}
         <section className="relative bg-paper-deep/45 py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 md:px-8 flex flex-col gap-12">
-            
+
             {/* 1. Video Player Container */}
             <div className="w-full max-w-6xl mx-auto">
               <div
@@ -456,14 +456,14 @@ export default function VideoPage() {
                 onMouseLeave={() => isPlaying && setShowControls(false)}
                 className={cn(
                   'group/player relative overflow-hidden bg-storm select-none w-full transition-all duration-300',
-                  isFullscreen 
+                  isFullscreen
                     ? 'w-screen h-screen flex items-center justify-center'
                     : 'aspect-video rounded-3xl border border-ink/12 shadow-[0_30px_60px_-15px_oklch(0.20_0.038_250/0.3)] hover:shadow-[0_40px_85px_-20px_oklch(0.20_0.038_250/0.45)]'
                 )}
               >
                 <video
                   ref={videoRef}
-                  src="/video/Khủng_Hoảng_1991_&_Đổi_Mới.mp4"
+                  src="/video/Project 2.mp4"
                   preload="metadata"
                   onClick={togglePlay}
                   onTimeUpdate={handleTimeUpdate}
@@ -503,7 +503,7 @@ export default function VideoPage() {
                     showControls ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
                   )}
                 >
-                  
+
                   {/* Timeline Slider Track */}
                   <div className="relative group/timeline flex items-center h-4">
                     <div
@@ -585,7 +585,7 @@ export default function VideoPage() {
 
                     {/* Right controls: Playback rate, volume, fullscreen */}
                     <div className="flex items-center gap-2 sm:gap-3">
-                      
+
                       {/* Playback speed menu */}
                       <div className="relative group/speed">
                         <button
@@ -627,7 +627,7 @@ export default function VideoPage() {
                             <Volume2 className="h-5 w-5" />
                           )}
                         </button>
-                        
+
                         <input
                           type="range"
                           min="0"
@@ -696,7 +696,7 @@ export default function VideoPage() {
                           </p>
                         </div>
                       </div>
-                      
+
                       {/* Time tag / Pulse Indicator */}
                       <div className="flex items-center gap-2 self-end mt-auto pt-2">
                         {isActive && (
@@ -723,11 +723,11 @@ export default function VideoPage() {
           </div>
         </section>
 
-{/* Takeaway Lessons Section */}
+        {/* Takeaway Lessons Section */}
         <section className="relative overflow-hidden bg-paper py-16">
           <div className="grain absolute inset-0 opacity-25 pointer-events-none" />
           <div className="relative mx-auto max-w-6xl px-4">
-            
+
             <div className="flex flex-col gap-2 items-center text-center mb-10">
               <div className="flex items-center gap-3">
                 <span className="h-px w-8 bg-flame" />
@@ -750,7 +750,7 @@ export default function VideoPage() {
                       <div className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/12 bg-paper text-flame transition-all duration-300 ease-out-quart group-hover/card:scale-110 group-hover/card:bg-flame group-hover/card:text-paper">
                         <Icon className="h-5 w-5" strokeWidth={1.6} />
                       </div>
-                      
+
                       <h3 className="mt-5 font-display text-base font-bold tracking-tight text-ink">
                         {takeaway.title}
                       </h3>
